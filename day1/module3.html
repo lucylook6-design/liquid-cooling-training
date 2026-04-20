@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 1 模块3：软管与快接头的分合关系</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    line-height: 1.8;
+    color: #222;
+    background: #f5f7fa;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  header {
+    background: linear-gradient(135deg, #e87020 0%, #c85a10 100%);
+    color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+  }
+  h1 { font-size: 32px; margin-bottom: 10px; }
+  .subtitle { font-size: 16px; color: #ffd4b0; }
+  .section {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  h2 {
+    font-size: 24px;
+    color: #e87020;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #e87020;
+  }
+  h3 {
+    font-size: 20px;
+    color: #1a73e8;
+    margin: 25px 0 15px;
+  }
+  .highlight-box {
+    background: #fff4e6;
+    border-left: 4px solid #e87020;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  .warning-box {
+    background: #fce8e6;
+    border-left: 4px solid #ea4335;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  .info-box {
+    background: #e8f4fd;
+    border-left: 4px solid #1a73e8;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+  }
+  th {
+    background: #e87020;
+    color: #fff;
+    font-weight: 600;
+  }
+  tr:nth-child(even) { background: #f9f9f9; }
+  .mermaid {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+  }
+  .key-point {
+    font-size: 18px;
+    font-weight: 600;
+    color: #e87020;
+    margin: 20px 0;
+  }
+  .analogy-box {
+    background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+    border: 2px solid #f9a825;
+    border-radius: 12px;
+    padding: 25px;
+    margin: 25px 0;
+  }
+  .analogy-box h4 {
+    color: #e65100;
+    margin-bottom: 15px;
+    font-size: 20px;
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>Day 1 模块3：软管与快接头的分合关系</h1>
+    <div class="subtitle">学习时长：2小时 | 理解液冷系统的"血管"与"接口"</div>
+  </header>
+
+  <!-- 1. 类比理解 -->
+  <div class="section">
+    <h2>一、用人体血液循环系统理解液冷</h2>
+
+    <div class="analogy-box">
+      <h4>🫀 类比：液冷系统 = 人体循环系统</h4>
+      <table style="margin-top: 15px;">
+        <thead>
+          <tr>
+            <th>人体部件</th>
+            <th>液冷系统对应</th>
+            <th>功能</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>心脏</strong></td>
+            <td>CDU（冷却分配单元）</td>
+            <td>提供动力，驱动液体循环</td>
+          </tr>
+          <tr>
+            <td><strong>血管（动脉/静脉）</strong></td>
+            <td>软管（供水管/回水管）</td>
+            <td>输送冷却液</td>
+          </tr>
+          <tr>
+            <td><strong>毛细血管</strong></td>
+            <td>冷板内部微通道</td>
+            <td>与GPU直接接触，带走热量</td>
+          </tr>
+          <tr>
+            <td><strong>血管接口（静脉穿刺点）</strong></td>
+            <td>快接头</td>
+            <td>连接/断开，便于维护</td>
+          </tr>
+          <tr>
+            <td><strong>血液</strong></td>
+            <td>冷却液（水+乙二醇）</td>
+            <td>携带热量</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="key-point">
+      💡 核心洞察：软管和快接头是"分"（独立产品）又"合"（必须配合）的关系，就像血管和静脉穿刺针，缺一不可。
+    </div>
+
+    <h3>1.1 为什么需要快接头？</h3>
+    <div class="highlight-box">
+      <p><strong>场景1：服务器维护</strong></p>
+      <p>如果没有快接头，更换一台故障服务器需要：</p>
+      <ol style="margin-left: 20px; margin-top: 10px;">
+        <li>关闭整个机柜的冷却系统（影响其他服务器）</li>
+        <li>排空软管内的冷却液（浪费+污染风险）</li>
+        <li>切断软管，更换服务器</li>
+        <li>重新焊接软管</li>
+        <li>重新注液、排气</li>
+        <li><strong>总耗时：4-6小时，停机损失$10k+</strong></li>
+      </ol>
+      <p style="margin-top: 15px;"><strong>有了快接头：</strong></p>
+      <ol style="margin-left: 20px; margin-top: 10px;">
+        <li>按下快接头锁定按钮</li>
+        <li>拔出快接头（自动密封，零泄漏）</li>
+        <li>更换服务器</li>
+        <li>插入快接头（听到"咔哒"声即锁定）</li>
+        <li><strong>总耗时：5-10分钟，停机损失$50</strong></li>
+      </ol>
+    </div>
+
+    <div class="warning-box">
+      <strong>⚠️ 销售话术：</strong><br>
+      "没有快接头的液冷系统，就像没有USB接口的电脑——理论上能用，但维护成本高到无法接受。快接头让您的MTTR（平均修复时间）从4小时降到5分钟，这就是$200投资的价值。"
+    </div>
+  </div>
+
+  <!-- 2. 软管的核心功能 -->
+  <div class="section">
+    <h2>二、软管：液冷系统的"血管"</h2>
+
+    <h3>2.1 软管的三大核心功能</h3>
+    <div class="mermaid">
+graph LR
+    A[软管核心功能] --> B[输送冷却液]
+    A --> C[承受压力]
+    A --> D[适应运动]
+    
+    B --> B1[流量：10-100 LPM]
+    B --> B2[温度：-40°C ~ +80°C]
+    
+    C --> C1[工作压力：10-15 bar]
+    C --> C2[爆破压力：40-60 bar]
+    
+    D --> D1[弯曲半径：≥4倍外径]
+    D --> D2[振动吸收]
+    </div>
+
+    <h3>2.2 软管结构解析</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>层级</th>
+          <th>材料</th>
+          <th>功能</th>
+          <th>厚度</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>内层（接触冷却液）</strong></td>
+          <td>EPDM、PTFE</td>
+          <td>耐乙二醇腐蚀、低摩擦</td>
+          <td>1-2mm</td>
+        </tr>
+        <tr>
+          <td><strong>增强层</strong></td>
+          <td>编织钢丝、芳纶纤维</td>
+          <td>承受压力、防爆破</td>
+          <td>2-3mm</td>
+        </tr>
+        <tr>
+          <td><strong>外层（保护层）</strong></td>
+          <td>TPU、橡胶</td>
+          <td>耐磨、耐候、阻燃</td>
+          <td>1-2mm</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="info-box">
+      <strong>💡 材料选择关键：</strong>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>内层必须用EPDM或PTFE：</strong>NBR（丁腈橡胶）会被乙二醇溶胀，导致软管内径变小，流量下降30%</li>
+        <li><strong>增强层推荐钢丝编织：</strong>芳纶纤维虽然轻，但长期压力下会蠕变，导致软管膨胀</li>
+        <li><strong>外层必须阻燃：</strong>数据中心消防要求UL94 V-0级别</li>
+      </ul>
+    </div>
+
+    <h3>2.3 软管规格选型</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>应用场景</th>
+          <th>内径</th>
+          <th>工作压力</th>
+          <th>弯曲半径</th>
+          <th>推荐型号</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>单GPU连接</td>
+          <td>6mm (1/4")</td>
+          <td>10 bar</td>
+          <td>25mm</td>
+          <td>Parker 794TC-6</td>
+        </tr>
+        <tr>
+          <td>服务器级（2-8 GPU）</td>
+          <td>10mm (3/8")</td>
+          <td>10 bar</td>
+          <td>40mm</td>
+          <td>Parker 794TC-10</td>
+        </tr>
+        <tr>
+          <td>机柜级（>8 GPU）</td>
+          <td>16mm (5/8")</td>
+          <td>15 bar</td>
+          <td>65mm</td>
+          <td>Parker 794TC-16</td>
+        </tr>
+        <tr>
+          <td>CDU主管路</td>
+          <td>25mm (1")</td>
+          <td>15 bar</td>
+          <td>100mm</td>
+          <td>Parker 794TC-25</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight-box">
+      <strong>🎯 选型金句：</strong><br>
+      "软管内径选小了，流量不足，GPU过热降频；选大了，成本浪费，弯曲半径过大，机柜装不下。正确的选型是：根据流量需求（LPM）和压降要求，选择最小可行内径。"
+    </div>
+  </div>
+
+  <!-- 3. 快接头的核心功能 -->
+  <div class="section">
+    <h2>三、快接头：液冷系统的"USB接口"</h2>
+
+    <h3>3.1 快接头的工作原理</h3>
+    <div class="mermaid">
+graph TD
+    A[快接头断开状态] --> B[内部阀门关闭]
+    B --> C[零泄漏 <0.1ml]
+    
+    D[快接头连接状态] --> E[阀门自动打开]
+    E --> F[冷却液流通]
+    
+    G[连接过程] --> G1[对准 ±2mm容差]
+    G1 --> G2[插入 听到咔哒声]
+    G2 --> G3[锁定 拉力>50N]
+    
+    </div>
+
+    <h3>3.2 快接头的核心部件</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>部件</th>
+          <th>材料</th>
+          <th>功能</th>
+          <th>失效模式</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>阀芯</strong></td>
+          <td>316不锈钢</td>
+          <td>控制流体通断</td>
+          <td>卡滞（污染物）</td>
+        </tr>
+        <tr>
+          <td><strong>密封圈（主）</strong></td>
+          <td>EPDM、FKM</td>
+          <td>防止泄漏</td>
+          <td>老化、溶胀</td>
+        </tr>
+        <tr>
+          <td><strong>密封圈（副）</strong></td>
+          <td>EPDM、FKM</td>
+          <td>备用密封</td>
+          <td>老化、溶胀</td>
+        </tr>
+        <tr>
+          <td><strong>弹簧</strong></td>
+          <td>316不锈钢</td>
+          <td>驱动阀芯关闭</td>
+          <td>疲劳断裂</td>
+        </tr>
+        <tr>
+          <td><strong>锁定机构</strong></td>
+          <td>POM、PA66+GF</td>
+          <td>防止意外脱落</td>
+          <td>磨损、断裂</td>
+        </tr>
+        <tr>
+          <td><strong>本体</strong></td>
+          <td>316不锈钢、黄铜镀镍</td>
+          <td>承受压力</td>
+          <td>腐蚀、裂纹</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="warning-box">
+      <strong>⚠️ 常见失效原因分析：</strong>
+      <ol style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>密封圈老化（60%）：</strong>使用NBR材料，在乙二醇环境下6个月溶胀30%</li>
+        <li><strong>污染物卡滞（20%）：</strong>冷却液中的颗粒物卡住阀芯，导致无法关闭</li>
+        <li><strong>弹簧疲劳（10%）：</strong>使用碳钢弹簧，锈蚀后弹力下降</li>
+        <li><strong>锁定机构断裂（10%）：</strong>使用ABS材料，强度不足</li>
+      </ol>
+    </div>
+
+    <h3>3.3 快接头类型对比</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>类型</th>
+          <th>连接方式</th>
+          <th>优点</th>
+          <th>缺点</th>
+          <th>应用场景</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>按压式</strong></td>
+          <td>拇指按压锁定按钮</td>
+          <td>单手操作、快速</td>
+          <td>锁定力较低（30N）</td>
+          <td>低压场景（<5 bar）</td>
+        </tr>
+        <tr>
+          <td><strong>螺纹式</strong></td>
+          <td>旋转锁定</td>
+          <td>锁定力高（100N）</td>
+          <td>需双手、慢</td>
+          <td>高压场景（>10 bar）</td>
+        </tr>
+        <tr>
+          <td><strong>推拉式</strong></td>
+          <td>推入自动锁定</td>
+          <td>盲插、快速</td>
+          <td>需精确对准</td>
+          <td>NVIDIA UQD标准</td>
+        </tr>
+        <tr>
+          <td><strong>卡套式</strong></td>
+          <td>卡套压紧</td>
+          <td>永久连接、低成本</td>
+          <td>不可拆卸</td>
+          <td>固定管路</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="info-box">
+      <strong>💡 NVIDIA UQD为什么选择推拉式？</strong><br>
+      推拉式快接头结合了按压式的快速和螺纹式的可靠性，同时支持盲插（±2mm容差），非常适合高密度机柜环境。
+    </div>
+  </div>
+
+  <!-- 4. 软管与快接头的配合 -->
+  <div class="section">
+    <h2>四、软管与快接头的"分合"关系</h2>
+
+    <h3>4.1 "分"：独立的产品与标准</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>维度</th>
+          <th>软管</th>
+          <th>快接头</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>核心功能</strong></td>
+          <td>输送流体</td>
+          <td>快速连接/断开</td>
+        </tr>
+        <tr>
+          <td><strong>技术标准</strong></td>
+          <td>ISO 19879（液压软管）<br>SAE J517（汽车软管）</td>
+          <td>ISO 16028（快接头）<br>NVIDIA UQD（数据中心）</td>
+        </tr>
+        <tr>
+          <td><strong>供应商</strong></td>
+          <td>Parker, Eaton, Swagelok</td>
+          <td>Stäubli, CPC, Parker</td>
+        </tr>
+        <tr>
+          <td><strong>采购决策</strong></td>
+          <td>基于流量、压力、长度</td>
+          <td>基于插拔频率、压力、盲插需求</td>
+        </tr>
+        <tr>
+          <td><strong>更换周期</strong></td>
+          <td>5-10年（老化）</td>
+          <td>10-15年（磨损）</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>4.2 "合"：必须配合的系统</h3>
+    <div class="highlight-box">
+      <p><strong>配合要点1：接口尺寸匹配</strong></p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li>软管内径10mm → 快接头接口3/8"（9.5mm）</li>
+        <li>软管外径16mm → 快接头卡套内径16mm</li>
+        <li><strong>错配后果：</strong>泄漏、压降增大、软管脱落</li>
+      </ul>
+
+      <p style="margin-top: 15px;"><strong>配合要点2：压力等级匹配</strong></p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li>软管工作压力10 bar → 快接头工作压力≥10 bar</li>
+        <li>软管爆破压力40 bar → 快接头爆破压力≥40 bar</li>
+        <li><strong>错配后果：</strong>快接头先于软管爆破，系统失效</li>
+      </ul>
+
+      <p style="margin-top: 15px;"><strong>配合要点3：材料兼容性</strong></p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li>软管内层EPDM → 快接头密封圈EPDM（同材料系）</li>
+        <li>冷却液30%乙二醇 → 软管+快接头均需耐乙二醇</li>
+        <li><strong>错配后果：</strong>一方老化速度快，系统寿命缩短</li>
+      </ul>
+    </div>
+
+    <h3>4.3 一体化 vs 分体式方案对比</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>方案</th>
+          <th>描述</th>
+          <th>优点</th>
+          <th>缺点</th>
+          <th>适用场景</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>一体化</strong></td>
+          <td>软管+快接头预装配</td>
+          <td>• 无现场装配错误<br>• 压降最优<br>• 质保统一</td>
+          <td>• 价格高30%<br>• 长度固定<br>• 库存SKU多</td>
+          <td>标准化部署<br>（如Meta、Google）</td>
+        </tr>
+        <tr>
+          <td><strong>分体式</strong></td>
+          <td>软管+快接头现场装配</td>
+          <td>• 灵活定制长度<br>• 库存SKU少<br>• 价格低</td>
+          <td>• 现场装配质量不稳定<br>• 压降可能增大10%<br>• 质保分离</td>
+          <td>定制化部署<br>（如中小型数据中心）</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="key-point">
+      💡 销售策略：对于>100台服务器的大客户，推荐一体化方案；对于<50台的中小客户，推荐分体式方案。
+    </div>
+  </div>
+
+  <!-- 5. 常见问题与解决方案 -->
+  <div class="section">
+    <h2>五、软管+快接头常见问题与解决方案</h2>
+
+    <h3>5.1 问题1：软管与快接头连接处泄漏</h3>
+    <div class="warning-box">
+      <p><strong>症状：</strong>运行3-6个月后，软管与快接头连接处出现渗漏</p>
+      <p><strong>原因分析：</strong></p>
+      <ol style="margin-left: 20px; margin-top: 10px;">
+        <li>卡套未压紧（扭矩不足）</li>
+        <li>软管外径公差过大（±0.5mm → ±0.2mm）</li>
+        <li>卡套材料不匹配（铝卡套 vs 钢软管）</li>
+      </ol>
+      <p><strong>解决方案：</strong></p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li>使用扭矩扳手，按规定扭矩（25-30 Nm）压紧卡套</li>
+        <li>选择外径公差≤±0.2mm的软管</li>
+        <li>卡套材料与软管外层材料匹配（钢对钢、铜对铜）</li>
+      </ul>
+    </div>
+
+    <h3>5.2 问题2：快接头插拔力过大</h3>
+    <div class="warning-box">
+      <p><strong>症状：</strong>快接头需要双手用力才能插入/拔出</p>
+      <p><strong>原因分析：</strong></p>
+      <ol style="margin-left: 20px; margin-top: 10px;">
+        <li>密封圈溶胀（NBR材料）</li>
+        <li>污染物卡滞（冷却液中的颗粒）</li>
+        <li>对准偏差过大（>±2mm）</li>
+      </ol>
+      <p><strong>解决方案：</strong></p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li>更换为EPDM密封圈的快接头</li>
+        <li>在冷却液回路中增加5μm过滤器</li>
+        <li>使用导向锥设计的快接头（如Stäubli RMI）</li>
+      </ul>
+    </div>
+
+    <h3>5.3 问题3：软管老化开裂</h3>
+    <div class="warning-box">
+      <p><strong>症状：</strong>运行2-3年后，软管外层出现裂纹</p>
+      <p><strong>原因分析：</strong></p>
+      <ol style="margin-left: 20px; margin-top: 10px;">
+        <li>外层材料不耐臭氧（天然橡胶）</li>
+        <li>弯曲半径过小（<4倍外径）</li>
+        <li>温度循环（-20°C ~ +60°C）</li>
+      </ol>
+      <p><strong>解决方案：</strong></p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li>选择TPU或EPDM外层的软管（耐臭氧）</li>
+        <li>确保弯曲半径≥4倍外径（10mm软管 → 弯曲半径≥40mm）</li>
+        <li>在软管外层增加保护套（编织网）</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 6. 案例学习 -->
+  <div class="section">
+    <h2>六、案例学习：Parker一体化解决方案</h2>
+
+    <div class="highlight-box">
+      <p><strong>产品：</strong>Parker H系列液冷软管总成</p>
+      <p><strong>配置：</strong></p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li>软管：794TC-10（10mm内径，EPDM内层，钢丝编织）</li>
+        <li>快接头：H6-62（推拉式，316不锈钢，EPDM密封圈）</li>
+        <li>长度：0.5m / 1.0m / 1.5m（标准长度）</li>
+        <li>价格：$180 / $220 / $260</li>
+      </ul>
+      <p><strong>技术优势：</strong></p>
+      <ol style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>工厂预装配：</strong>卡套压接扭矩精确控制（28±2 Nm），泄漏率<0.01%</li>
+        <li><strong>压降优化：</strong>软管内径与快接头流道完美匹配，压降比分体式低15%</li>
+        <li><strong>统一质保：</strong>5年质保，覆盖软管+快接头</li>
+        <li><strong>快速交付：</strong>标准长度现货，定制长度2周交付</li>
+      </ol>
+      <p><strong>客户案例：</strong>某欧洲超算中心采用Parker H系列，部署2,000套，运行18个月，零泄漏事故。</p>
+    </div>
+
+    <div class="info-box">
+      <strong>💡 销售话术：</strong><br>
+      "Parker一体化方案比分体式贵30%，但压降低15%意味着泵功耗降低15%，1年就能省回差价。更重要的是，工厂预装配的泄漏率是现场装配的1/10，这是用钱买不到的可靠性。"
+    </div>
+  </div>
+
+  <!-- 7. 延伸学习 -->
+  <div class="section">
+    <h2>七、延伸学习资源</h2>
+
+    <h3>7.1 必读文档</h3>
+    <ul style="margin-left: 30px;">
+      <li><strong>ISO 19879:2010 液压软管标准</strong><br>
+        <a href="https://www.iso.org/standard/51277.html" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 访问ISO官网</a>
+      </li>
+      <li style="margin-top: 15px;"><strong>ISO 16028:2003 快接头标准</strong><br>
+        <a href="https://www.iso.org/standard/29690.html" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 访问ISO官网</a>
+      </li>
+      <li style="margin-top: 15px;"><strong>Parker 794TC产品手册</strong><br>
+        <a href="https://www.parker.com/us/en/products/hose-tubing-fittings-and-couplings.html" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 访问Parker官网下载</a>
+      </li>
+      <li style="margin-top: 15px;"><strong>SAE J517 汽车软管标准</strong><br>
+        <a href="https://www.sae.org/standards/content/j517_202001/" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 访问SAE官网</a>
+      </li>
+    </ul>
+
+    <h3>7.2 必看视频</h3>
+    <ul style="margin-left: 30px;">
+      <li><strong>Parker液冷软管装配教程</strong><br>
+        <a href="https://www.youtube.com/results?search_query=Parker+hose+assembly+tutorial" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 YouTube搜索链接</a> | 
+        <a href="https://www.parker.com/us/en/support/training.html" target="_blank" style="color: #e87020; text-decoration: none;">🔗 Parker培训中心</a>
+      </li>
+      <li style="margin-top: 15px;"><strong>Stäubli快接头工作原理动画</strong><br>
+        <a href="https://www.youtube.com/results?search_query=Staubli+quick+disconnect+animation" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 YouTube搜索链接</a> | 
+        <a href="https://www.staubli.com/en-us/fluid-connectors/products/" target="_blank" style="color: #e87020; text-decoration: none;">🔗 Stäubli产品演示</a>
+      </li>
+      <li style="margin-top: 15px;"><strong>软管与快接头匹配选型指南</strong><br>
+        <a href="https://www.youtube.com/results?search_query=hose+quick+disconnect+selection+guide" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 YouTube搜索链接</a>
+      </li>
+      <li style="margin-top: 15px;"><strong>液冷系统泄漏测试方法</strong><br>
+        <a href="https://www.youtube.com/results?search_query=liquid+cooling+leak+test+methods" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 YouTube搜索链接</a>
+      </li>
+    </ul>
+
+    <h3>7.3 供应商技术支持</h3>
+    <ul style="margin-left: 30px;">
+      <li><strong>Parker技术支持中心</strong><br>
+        <a href="https://www.parker.com/us/en/support.html" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 在线咨询与技术文档</a>
+      </li>
+      <li style="margin-top: 15px;"><strong>Eaton液压产品选型工具</strong><br>
+        <a href="https://www.eaton.com/us/en-us/products/hydraulics.html" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 在线选型计算器</a>
+      </li>
+      <li style="margin-top: 15px;"><strong>Swagelok软管选型指南</strong><br>
+        <a href="https://www.swagelok.com/en/products/hose" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 产品目录与技术资料</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 8. 复习题 -->
+  <div class="section">
+    <h2>八、模块3复习题</h2>
+
+    <h3>单选题（5道）</h3>
+    <ol style="margin-left: 30px;">
+      <li>软管内层推荐使用哪种材料？<br>
+        A. NBR &nbsp; <strong>B. EPDM</strong> &nbsp; C. PVC &nbsp; D. 硅胶
+      </li>
+      <li>快接头的核心功能是？<br>
+        A. 输送流体 &nbsp; <strong>B. 快速连接/断开</strong> &nbsp; C. 承受压力 &nbsp; D. 过滤杂质
+      </li>
+      <li>软管弯曲半径应≥多少倍外径？<br>
+        A. 2倍 &nbsp; B. 3倍 &nbsp; <strong>C. 4倍</strong> &nbsp; D. 5倍
+      </li>
+      <li>一体化方案比分体式方案贵多少？<br>
+        A. 10% &nbsp; B. 20% &nbsp; <strong>C. 30%</strong> &nbsp; D. 50%
+      </li>
+      <li>快接头断开时的泄漏量应<多少？<br>
+        <strong>A. 0.1ml</strong> &nbsp; B. 1ml &nbsp; C. 10ml &nbsp; D. 100ml
+      </li>
+    </ol>
+
+    <h3>简答题（2道）</h3>
+    <ol style="margin-left: 30px;">
+      <li>请用类比法向非技术客户解释"为什么液冷系统需要快接头"。<br>
+        <em>参考答案：液冷系统就像人体的血液循环，软管是血管，快接头是静脉穿刺点。如果没有快接头，每次维护都要"切断血管"，既危险又耗时。有了快接头，就像医院的留置针，随时可以"插拔"，安全又快速。</em>
+      </li>
+      <li>客户问："为什么不能用便宜的NBR密封圈？"请给出专业回答。<br>
+        <em>参考答案：NBR（丁腈橡胶）在乙二醇环境下会溶胀30%，导致快接头插拔力增大，6个月后可能无法拔出。EPDM密封圈在乙二醇中稳定，10年不溶胀。NBR密封圈便宜$2，但6个月后更换快接头的人工成本是$200，得不偿失。</em>
+      </li>
+    </ol>
+  </div>
+
+  <!-- 导航 -->
+  <div class="section" style="text-align: center; background: #f5f7fa;">
+    <a href="../index.html" style="display: inline-block; background: #666; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none; margin-right: 20px;">
+      🏠 返回首页
+    </a>
+    <a href="module2.html" style="display: inline-block; background: #999; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none; margin-right: 20px;">
+      ← 上一模块：英伟达液冷生态
+    </a>
+    <a href="module4.html" style="display: inline-block; background: #e87020; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none; opacity: 0.5; cursor: not-allowed;" onclick="alert('模块4开发中，敬请期待！'); return false;">
+      下一模块：海外市场与合规 → (开发中)
+    </a>
+  </div>
+
+</div>
+
+</body>
+</html>

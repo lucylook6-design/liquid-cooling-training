@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 1 模块2：英伟达液冷生态与技术规范</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    line-height: 1.8;
+    color: #222;
+    background: #f5f7fa;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  header {
+    background: linear-gradient(135deg, #76b900 0%, #5a8f00 100%);
+    color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+  }
+  h1 { font-size: 32px; margin-bottom: 10px; }
+  .subtitle { font-size: 16px; color: #d4f0a0; }
+  .section {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  h2 {
+    font-size: 24px;
+    color: #76b900;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #76b900;
+  }
+  h3 {
+    font-size: 20px;
+    color: #e87020;
+    margin: 25px 0 15px;
+  }
+  .highlight-box {
+    background: #f0f9e8;
+    border-left: 4px solid #76b900;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  .warning-box {
+    background: #fce8e6;
+    border-left: 4px solid #ea4335;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  .info-box {
+    background: #e8f4fd;
+    border-left: 4px solid #1a73e8;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+  }
+  th {
+    background: #76b900;
+    color: #fff;
+    font-weight: 600;
+  }
+  tr:nth-child(even) { background: #f9f9f9; }
+  .mermaid {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+  }
+  .key-point {
+    font-size: 18px;
+    font-weight: 600;
+    color: #76b900;
+    margin: 20px 0;
+  }
+  .spec-card {
+    background: #fff;
+    border: 2px solid #76b900;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 15px 0;
+  }
+  .spec-card h4 {
+    color: #76b900;
+    margin-bottom: 10px;
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>Day 1 模块2：英伟达液冷生态与技术规范</h1>
+    <div class="subtitle">学习时长：2小时 | 掌握NVIDIA UQD/UQDB标准与全球供应链</div>
+  </header>
+
+  <!-- 1. NVIDIA在液冷领域的主导地位 -->
+  <div class="section">
+    <h2>一、为什么NVIDIA主导液冷技术方向？</h2>
+    
+    <h3>1.1 市场份额决定话语权</h3>
+    <div class="mermaid">
+pie title 2024全球AI加速卡市场份额
+    "NVIDIA" : 92
+    "AMD" : 5
+    "Intel" : 2
+    "其他" : 1
+    </div>
+
+    <div class="highlight-box">
+      <strong>核心事实：</strong>NVIDIA占据全球AI加速卡市场<strong>92%</strong>的份额，这意味着：
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li>全球90%以上的AI超算中心使用NVIDIA GPU</li>
+        <li>NVIDIA制定的液冷标准 = 事实上的行业标准</li>
+        <li>不符合NVIDIA规范的产品 = 无法进入主流市场</li>
+      </ul>
+    </div>
+
+    <h3>1.2 NVIDIA液冷技术演进路线图</h3>
+    <div class="mermaid">
+timeline
+    title NVIDIA液冷技术演进
+    2020 : A100 (风冷为主)
+    2022 : H100 (引入冷板液冷选项)
+    2023 : H100 NVL (强制液冷)
+    2024 : B200/GB200 (全面液冷) : 发布UQD 1.0标准
+    2025 : GB200 NVL72 (机柜级液冷) : 发布UQDB 2.0标准
+    2026 : GB300 (浸没式液冷选项)
+    2027 : Rubin (强制浸没式液冷)
+    </div>
+
+    <div class="key-point">
+      💡 关键洞察：从2024年起，NVIDIA所有新架构GPU都<strong>默认液冷</strong>，风冷已成为历史。
+    </div>
+  </div>
+
+  <!-- 2. UQD/UQDB标准详解 -->
+  <div class="section">
+    <h2>二、NVIDIA UQD/UQDB标准详解</h2>
+
+    <h3>2.1 什么是UQD和UQDB？</h3>
+    
+    <div class="spec-card">
+      <h4>🔌 UQD (Universal Quick Disconnect)</h4>
+      <p><strong>定义：</strong>通用快速断开连接器，用于单台服务器级别的液冷连接</p>
+      <p><strong>应用场景：</strong>1U/2U服务器、单机柜部署、边缘计算</p>
+      <p><strong>核心特性：</strong></p>
+      <ul style="margin-left: 20px;">
+        <li>单手盲插操作（Blind Mating）</li>
+        <li>断开时自动密封，零泄漏（<0.1ml）</li>
+        <li>耐压：10 bar（145 psi）</li>
+        <li>流量：10-30 LPM（升/分钟）</li>
+        <li>寿命：≥10,000次插拔循环</li>
+      </ul>
+    </div>
+
+    <div class="spec-card">
+      <h4>🏢 UQDB (Universal Quick Disconnect - Blind Mate)</h4>
+      <p><strong>定义：</strong>机柜级盲插快接头，用于大规模液冷部署</p>
+      <p><strong>应用场景：</strong>GB200 NVL72（72张GPU机柜）、超大规模数据中心</p>
+      <p><strong>核心特性：</strong></p>
+      <ul style="margin-left: 20px;">
+        <li>完全盲插，无需目视对准（±5mm容差）</li>
+        <li>自动锁定机制（Audible Click）</li>
+        <li>耐压：15 bar（217 psi）</li>
+        <li>流量：50-100 LPM（机柜级）</li>
+        <li>寿命：≥5,000次插拔循环</li>
+        <li>支持热插拔（Hot Swap）</li>
+      </ul>
+    </div>
+
+    <h3>2.2 UQD vs UQDB 对比</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>对比维度</th>
+          <th>UQD</th>
+          <th>UQDB</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>应用层级</strong></td>
+          <td>服务器级（1-2U）</td>
+          <td>机柜级（42U）</td>
+        </tr>
+        <tr>
+          <td><strong>盲插容差</strong></td>
+          <td>±2mm</td>
+          <td>±5mm</td>
+        </tr>
+        <tr>
+          <td><strong>流量</strong></td>
+          <td>10-30 LPM</td>
+          <td>50-100 LPM</td>
+        </tr>
+        <tr>
+          <td><strong>耐压</strong></td>
+          <td>10 bar</td>
+          <td>15 bar</td>
+        </tr>
+        <tr>
+          <td><strong>插拔寿命</strong></td>
+          <td>≥10,000次</td>
+          <td>≥5,000次</td>
+        </tr>
+        <tr>
+          <td><strong>单价</strong></td>
+          <td>$50-150/对</td>
+          <td>$300-800/对</td>
+        </tr>
+        <tr>
+          <td><strong>主要供应商</strong></td>
+          <td>Stäubli, CPC, Parker</td>
+          <td>Stäubli, Danfoss Hansen</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="warning-box">
+      <strong>⚠️ 销售关键点：</strong><br>
+      客户问"为什么你们的快接头这么贵？"<br>
+      回答："NVIDIA UQD标准要求10,000次插拔寿命，这意味着每天插拔3次，可以用10年。廉价快接头可能1,000次就漏液，您愿意每年更换一次，还是10年无忧？"
+    </div>
+  </div>
+
+  <!-- 3. 全球液冷供应链生态 -->
+  <div class="section">
+    <h2>三、全球液冷供应链生态图谱</h2>
+
+    <h3>3.1 NVIDIA官方认证供应商（Tier 1）</h3>
+    <div class="mermaid">
+graph LR
+    A[NVIDIA] --> B[快接头]
+    A --> C[软管]
+    A --> D[冷板]
+    A --> E[CDU冷却分配单元]
+    
+    B --> B1[Stäubli 瑞士]
+    B --> B2[CPC 美国]
+    B --> B3[Parker 美国]
+    B --> B4[Danfoss Hansen 丹麦]
+    
+    C --> C1[Parker 美国]
+    C --> C2[Eaton 美国]
+    C --> C3[Swagelok 美国]
+    
+    D --> D1[Boyd 美国]
+    D --> D2[Aavid 美国]
+    
+    E --> E1[Vertiv 美国]
+    E --> E2[Schneider 法国]
+    
+    </div>
+
+    <div class="info-box">
+      <strong>📊 市场格局分析：</strong>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>快接头市场：</strong>Stäubli占40%，CPC占25%，Parker占20%，其他15%</li>
+        <li><strong>软管市场：</strong>Parker占35%，Eaton占25%，Swagelok占15%，其他25%</li>
+        <li><strong>中国厂商机会：</strong>目前占比<5%，主要在Tier 2/3供应链</li>
+      </ul>
+    </div>
+
+    <h3>3.2 全球顶级供应商产品对标</h3>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>供应商</th>
+          <th>核心产品</th>
+          <th>技术优势</th>
+          <th>价格区间</th>
+          <th>市场定位</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Stäubli（瑞士）</strong></td>
+          <td>RMI系列快接头</td>
+          <td>50,000次插拔寿命<br>零泄漏专利技术</td>
+          <td>$200-500/对</td>
+          <td>超高端（NVIDIA首选）</td>
+        </tr>
+        <tr>
+          <td><strong>CPC（美国）</strong></td>
+          <td>LQ系列快接头</td>
+          <td>单手操作<br>FDA认证材料</td>
+          <td>$80-200/对</td>
+          <td>高端（医疗+数据中心）</td>
+        </tr>
+        <tr>
+          <td><strong>Parker（美国）</strong></td>
+          <td>H系列软管+快接头</td>
+          <td>一体化解决方案<br>全球服务网络</td>
+          <td>$150-400/套</td>
+          <td>高端（工业+数据中心）</td>
+        </tr>
+        <tr>
+          <td><strong>Danfoss Hansen（丹麦）</strong></td>
+          <td>HK系列盲插快接头</td>
+          <td>±10mm盲插容差<br>适用UQDB</td>
+          <td>$400-800/对</td>
+          <td>超高端（机柜级）</td>
+        </tr>
+        <tr>
+          <td><strong>CEJN（瑞典）</strong></td>
+          <td>eSafe系列</td>
+          <td>防误插设计<br>彩色编码</td>
+          <td>$60-150/对</td>
+          <td>中高端（工业为主）</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight-box">
+      <strong>🎯 对标学习重点：</strong>
+      <ol style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>Stäubli的零泄漏技术：</strong>双重密封圈设计 + 自动补偿磨损机制</li>
+        <li><strong>CPC的单手操作：</strong>拇指按压式锁定，无需旋转</li>
+        <li><strong>Parker的一体化方案：</strong>软管+快接头预装配，减少现场安装错误</li>
+        <li><strong>Danfoss的盲插容差：</strong>浮动对接机构 + 导向锥设计</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- 4. NVIDIA认证流程 -->
+  <div class="section">
+    <h2>四、如何成为NVIDIA认证供应商？</h2>
+
+    <h3>4.1 认证流程（12-18个月）</h3>
+    <div class="mermaid">
+graph TD
+    A[提交申请] --> B[技术审核]
+    B --> C[样品测试]
+    C --> D[现场审核]
+    D --> E[小批量试产]
+    E --> F[可靠性测试]
+    F --> G[正式认证]
+    
+    B --> B1[UQD规范符合性]
+    C --> C1[10,000次插拔测试]
+    C --> C2[压力循环测试]
+    C --> C3[温度循环测试]
+    D --> D1[ISO 9001审核]
+    D --> D2[清洁度审核]
+    F --> F1[6个月加速老化]
+    </div>
+
+    <h3>4.2 核心测试项目</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>测试项目</th>
+          <th>测试标准</th>
+          <th>合格标准</th>
+          <th>测试周期</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>插拔寿命测试</strong></td>
+          <td>NVIDIA UQD-TEST-001</td>
+          <td>≥10,000次，泄漏<0.1ml</td>
+          <td>4周</td>
+        </tr>
+        <tr>
+          <td><strong>压力循环测试</strong></td>
+          <td>ISO 19879</td>
+          <td>0-15 bar，100,000次循环</td>
+          <td>6周</td>
+        </tr>
+        <tr>
+          <td><strong>温度循环测试</strong></td>
+          <td>MIL-STD-810</td>
+          <td>-40°C ~ +80°C，1,000次循环</td>
+          <td>8周</td>
+        </tr>
+        <tr>
+          <td><strong>振动测试</strong></td>
+          <td>IEC 60068-2-6</td>
+          <td>10-500Hz，2小时无泄漏</td>
+          <td>1周</td>
+        </tr>
+        <tr>
+          <td><strong>盐雾腐蚀测试</strong></td>
+          <td>ASTM B117</td>
+          <td>1,000小时无腐蚀</td>
+          <td>6周</td>
+        </tr>
+        <tr>
+          <td><strong>材料兼容性测试</strong></td>
+          <td>NVIDIA MAT-001</td>
+          <td>与指定冷却液兼容</td>
+          <td>12周</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="warning-box">
+      <strong>⚠️ 认证成本估算：</strong>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li>测试费用：$50k - $100k</li>
+        <li>样品制作：$20k - $50k</li>
+        <li>现场审核：$10k - $20k</li>
+        <li>人力成本：2-3名工程师 × 12个月</li>
+        <li><strong>总成本：$150k - $300k</strong></li>
+      </ul>
+      <p style="margin-top: 10px;"><strong>但认证后的回报：</strong>进入NVIDIA全球供应链，年订单量可达$5M - $50M</p>
+    </div>
+  </div>
+
+  <!-- 5. 技术规范速查表 -->
+  <div class="section">
+    <h2>五、NVIDIA UQD技术规范速查表</h2>
+
+    <h3>5.1 机械性能要求</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>参数</th>
+          <th>UQD标准</th>
+          <th>UQDB标准</th>
+          <th>测试方法</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>插拔力</td>
+          <td>5-20 N</td>
+          <td>10-30 N</td>
+          <td>NVIDIA UQD-TEST-002</td>
+        </tr>
+        <tr>
+          <td>盲插容差</td>
+          <td>±2mm（X/Y轴）</td>
+          <td>±5mm（X/Y轴）</td>
+          <td>NVIDIA UQD-TEST-003</td>
+        </tr>
+        <tr>
+          <td>角度容差</td>
+          <td>±3°</td>
+          <td>±5°</td>
+          <td>NVIDIA UQD-TEST-004</td>
+        </tr>
+        <tr>
+          <td>锁定力</td>
+          <td>≥50 N</td>
+          <td>≥100 N</td>
+          <td>拉力测试</td>
+        </tr>
+        <tr>
+          <td>重量</td>
+          <td>≤200g/对</td>
+          <td>≤500g/对</td>
+          <td>称重</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>5.2 流体性能要求</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>参数</th>
+          <th>UQD标准</th>
+          <th>UQDB标准</th>
+          <th>测试方法</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>额定流量</td>
+          <td>10-30 LPM</td>
+          <td>50-100 LPM</td>
+          <td>流量计测试</td>
+        </tr>
+        <tr>
+          <td>压降</td>
+          <td>≤0.5 bar @ 20 LPM</td>
+          <td>≤1.0 bar @ 80 LPM</td>
+          <td>压差传感器</td>
+        </tr>
+        <tr>
+          <td>工作压力</td>
+          <td>0-10 bar</td>
+          <td>0-15 bar</td>
+          <td>压力传感器</td>
+        </tr>
+        <tr>
+          <td>爆破压力</td>
+          <td>≥40 bar</td>
+          <td>≥60 bar</td>
+          <td>爆破测试</td>
+        </tr>
+        <tr>
+          <td>断开泄漏</td>
+          <td><0.1ml</td>
+          <td><0.2ml</td>
+          <td>称重法</td>
+        </tr>
+        <tr>
+          <td>连接泄漏</td>
+          <td>0 ml/h @ 10 bar</td>
+          <td>0 ml/h @ 15 bar</td>
+          <td>24小时压力保持</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>5.3 材料要求</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>部件</th>
+          <th>推荐材料</th>
+          <th>禁用材料</th>
+          <th>原因</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>本体</td>
+          <td>316不锈钢、黄铜镀镍</td>
+          <td>铝合金（易腐蚀）</td>
+          <td>耐腐蚀性</td>
+        </tr>
+        <tr>
+          <td>密封圈</td>
+          <td>EPDM、FKM（氟橡胶）</td>
+          <td>NBR（丁腈橡胶）</td>
+          <td>耐乙二醇</td>
+        </tr>
+        <tr>
+          <td>弹簧</td>
+          <td>316不锈钢</td>
+          <td>碳钢（易锈蚀）</td>
+          <td>长期可靠性</td>
+        </tr>
+        <tr>
+          <td>锁定机构</td>
+          <td>POM、PA66+GF</td>
+          <td>ABS（强度不足）</td>
+          <td>机械强度</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="info-box">
+      <strong>💡 材料选择金句：</strong><br>
+      "NVIDIA要求密封圈必须使用EPDM或FKM，因为NBR（丁腈橡胶）在乙二醇环境下会溶胀30%，导致6个月后漏液。多花$2买对的材料，省下$2,000的返修成本。"
+    </div>
+  </div>
+
+  <!-- 6. 案例学习 -->
+  <div class="section">
+    <h2>六、全球标杆案例学习</h2>
+
+    <h3>6.1 案例1：Meta OCP液冷部署（2023）</h3>
+    <div class="highlight-box">
+      <p><strong>项目背景：</strong>Meta在德克萨斯州新建AI超算中心，部署50,000张H100 GPU</p>
+      <p><strong>液冷方案：</strong></p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li>快接头：Stäubli RMI 209（UQD标准）</li>
+        <li>软管：Parker 794TC系列（EPDM内层）</li>
+        <li>冷却液：30%乙二醇水溶液</li>
+        <li>CDU：Vertiv Liebert DSE</li>
+      </ul>
+      <p><strong>实施效果：</strong></p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li>PUE从1.42降至1.09（节能23%）</li>
+        <li>18个月运行，零漏液事故</li>
+        <li>年节省电费：$18M</li>
+      </ul>
+      <p><strong>关键成功因素：</strong>严格遵循NVIDIA UQD规范，所有部件均为Tier 1供应商</p>
+    </div>
+
+    <h3>6.2 案例2：某中国AI公司液冷失败案例（2024）</h3>
+    <div class="warning-box">
+      <p><strong>项目背景：</strong>某AI独角兽公司为节省成本，采用非认证供应商的快接头</p>
+      <p><strong>问题：</strong></p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li>快接头单价$30（Stäubli的1/6）</li>
+        <li>密封圈使用NBR材料（不符合NVIDIA规范）</li>
+        <li>插拔寿命测试仅2,000次（远低于10,000次标准）</li>
+      </ul>
+      <p><strong>后果：</strong></p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li>运行6个月后，15%的快接头出现渗漏</li>
+        <li>更换成本：$500k（人工+停机损失）</li>
+        <li>最终全部更换为Stäubli产品，总损失$1.2M</li>
+      </ul>
+      <p><strong>教训：</strong>"省下的$150k，最终花了$1.2M来弥补"</p>
+    </div>
+  </div>
+
+  <!-- 7. 延伸学习 -->
+  <div class="section">
+    <h2>七、延伸学习资源</h2>
+
+    <h3>7.1 必读文档</h3>
+    <ul style="margin-left: 30px;">
+      <li><strong>NVIDIA UQD Specification v2.1</strong>（需NDA）<br>
+        <a href="https://www.nvidia.com/en-us/data-center/solutions/" target="_blank" style="color: #76b900; text-decoration: none;">🔗 联系NVIDIA企业解决方案团队</a>
+      </li>
+      <li style="margin-top: 15px;"><strong>Stäubli RMI产品手册</strong><br>
+        <a href="https://www.staubli.com/en-us/fluid-connectors/" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 访问Stäubli官网下载</a>
+      </li>
+      <li style="margin-top: 15px;"><strong>CPC LQ系列技术白皮书</strong><br>
+        <a href="https://www.cpcworldwide.com/liquid-cooling" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 访问CPC官网下载</a>
+      </li>
+      <li style="margin-top: 15px;"><strong>Parker液冷产品目录</strong><br>
+        <a href="https://www.parker.com/us/en/products/fluid-connectors.html" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 访问Parker官网</a>
+      </li>
+    </ul>
+
+    <h3>7.2 必看视频</h3>
+    <ul style="margin-left: 30px;">
+      <li><strong>NVIDIA GTC 2024 - GB200 NVL72液冷架构</strong><br>
+        <a href="https://www.youtube.com/results?search_query=NVIDIA+GTC+2024+GB200+NVL72+liquid+cooling" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 YouTube搜索链接</a> | 
+        <a href="https://www.nvidia.com/gtc/sessions/" target="_blank" style="color: #76b900; text-decoration: none;">🔗 GTC会议视频库</a><br>
+        重点时间戳：15:20（UQDB盲插演示）、22:30（Manifold设计）
+      </li>
+      <li style="margin-top: 15px;"><strong>Stäubli快接头工作原理动画</strong><br>
+        <a href="https://www.youtube.com/results?search_query=Staubli+quick+disconnect+animation" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 YouTube搜索链接</a> | 
+        <a href="https://www.staubli.com/en-us/fluid-connectors/products/" target="_blank" style="color: #76b900; text-decoration: none;">🔗 Stäubli产品演示</a>
+      </li>
+      <li style="margin-top: 15px;"><strong>CPC液冷快接头安装教程</strong><br>
+        <a href="https://www.youtube.com/results?search_query=CPC+liquid+cooling+quick+disconnect+installation" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 YouTube搜索链接</a>
+      </li>
+    </ul>
+
+    <h3>7.3 行业标准文档</h3>
+    <ul style="margin-left: 30px;">
+      <li><strong>ISO 16028:2003 快接头标准</strong><br>
+        <a href="https://www.iso.org/standard/29690.html" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 访问ISO官网</a>
+      </li>
+      <li style="margin-top: 15px;"><strong>UL 2196 数据中心液冷系统安全标准</strong><br>
+        <a href="https://www.ul.com/resources/ul-2196-standard-liquid-cooling-systems" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 访问UL官网</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 8. 复习题 -->
+  <div class="section">
+    <h2>八、模块2复习题</h2>
+
+    <h3>单选题（5道）</h3>
+    <ol style="margin-left: 30px;">
+      <li>NVIDIA在全球AI加速卡市场的份额约为？<br>
+        A. 70% &nbsp; B. 80% &nbsp; <strong>C. 92%</strong> &nbsp; D. 98%
+      </li>
+      <li>UQD标准要求的插拔寿命是？<br>
+        A. 1,000次 &nbsp; B. 5,000次 &nbsp; <strong>C. 10,000次</strong> &nbsp; D. 50,000次
+      </li>
+      <li>UQDB的盲插容差是？<br>
+        A. ±1mm &nbsp; B. ±2mm &nbsp; <strong>C. ±5mm</strong> &nbsp; D. ±10mm
+      </li>
+      <li>NVIDIA UQD认证的总成本约为？<br>
+        A. $50k &nbsp; B. $100k &nbsp; <strong>C. $150k-300k</strong> &nbsp; D. $500k
+      </li>
+      <li>快接头密封圈推荐使用哪种材料？<br>
+        A. NBR &nbsp; <strong>B. EPDM</strong> &nbsp; C. PVC &nbsp; D. 硅胶
+      </li>
+    </ol>
+
+    <h3>简答题（2道）</h3>
+    <ol style="margin-left: 30px;">
+      <li>请解释为什么NBR（丁腈橡胶）不适合用于液冷快接头的密封圈？<br>
+        <em>参考答案：NBR在乙二醇环境下会溶胀30%，导致密封失效。NVIDIA规范要求使用EPDM或FKM，这些材料在乙二醇中稳定，可确保10年以上的使用寿命。</em>
+      </li>
+      <li>客户问："为什么Stäubli的快接头要$200，而国产的只要$30？"请给出专业回答。<br>
+        <em>参考答案：Stäubli通过NVIDIA UQD认证，插拔寿命10,000次，使用EPDM密封圈和316不锈钢本体。$30的产品通常使用NBR密封圈和黄铜本体，插拔寿命仅2,000次，6个月后可能漏液。一次漏液事故的损失可能高达$50k，远超产品差价。您是要省$170，还是避免$50k的风险？</em>
+      </li>
+    </ol>
+  </div>
+
+  <!-- 导航 -->
+  <div class="section" style="text-align: center; background: #f5f7fa;">
+    <a href="../index.html" style="display: inline-block; background: #666; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none; margin-right: 20px;">
+      🏠 返回首页
+    </a>
+    <a href="module1.html" style="display: inline-block; background: #999; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none; margin-right: 20px;">
+      ← 上一模块：液冷为什么是唯一解
+    </a>
+    <a href="module3.html" style="display: inline-block; background: #76b900; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none;">
+      下一模块：软管与快接头的分合关系 →
+    </a>
+  </div>
+
+</div>
+
+</body>
+</html>
