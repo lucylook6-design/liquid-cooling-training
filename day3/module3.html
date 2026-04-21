@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 3 模块3：边缘计算场景方案设计</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    line-height: 1.8;
+    color: #222;
+    background: #f5f7fa;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  header {
+    background: linear-gradient(135deg, #34a853 0%, #2d8e47 100%);
+    color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+  }
+  h1 { font-size: 32px; margin-bottom: 10px; }
+  .subtitle { font-size: 16px; color: #e0ffe0; }
+  .section {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  h2 {
+    font-size: 24px;
+    color: #34a853;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #34a853;
+  }
+  h3 {
+    font-size: 20px;
+    color: #2d8e47;
+    margin: 25px 0 15px;
+  }
+  .highlight-box {
+    background: #e6f4ea;
+    border-left: 4px solid #34a853;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  .warning-box {
+    background: #fce8e6;
+    border-left: 4px solid #ea4335;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  .info-box {
+    background: #e8f4fd;
+    border-left: 4px solid #1a73e8;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+  }
+  th {
+    background: #34a853;
+    color: #fff;
+    font-weight: 600;
+  }
+  tr:nth-child(even) { background: #f9f9f9; }
+  .mermaid {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+  }
+  .key-point {
+    font-size: 18px;
+    font-weight: 600;
+    color: #34a853;
+    margin: 20px 0;
+  }
+  .edge-card {
+    background: linear-gradient(135deg, #fbbc04 0%, #f9ab00 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    margin: 30px 0;
+  }
+  .edge-card h3 {
+    color: #fff;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .edge-card table td {
+    color: #222;
+    background: #fff;
+  }
+  .edge-card table tr:nth-child(even) td {
+    background: #f9f9f9;
+  }
+  .scenario-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+  }
+  .scenario-item {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #fbbc04;
+  }
+  .scenario-item h4 {
+    color: #fbbc04;
+    margin-bottom: 10px;
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>Day 3 模块3：边缘计算场景方案设计</h1>
+    <div class="subtitle">学习时长：2小时 | 掌握小规模、分布式边缘计算液冷方案设计</div>
+  </header>
+
+  <!-- 1. 边缘计算场景特点 -->
+  <div class="section">
+    <h2>一、边缘计算vs数据中心：场景差异分析</h2>
+    
+    <div class="info-box">
+      <strong>📌 核心差异：</strong>边缘计算场景的特点是"小规模、分布式、环境复杂、运维困难"，方案设计必须考虑这些约束条件。
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>维度</th>
+          <th>数据中心</th>
+          <th>边缘计算</th>
+          <th>方案设计影响</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>规模</strong></td>
+          <td>100-10000台服务器</td>
+          <td>5-50台服务器</td>
+          <td>需要小批量供货能力</td>
+        </tr>
+        <tr>
+          <td><strong>部署位置</strong></td>
+          <td>专业机房</td>
+          <td>商业楼宇、工厂、基站</td>
+          <td>空间受限，噪音敏感</td>
+        </tr>
+        <tr>
+          <td><strong>环境条件</strong></td>
+          <td>恒温恒湿（20-25°C）</td>
+          <td>温度波动大（10-35°C）</td>
+          <td>需要更宽温度范围</td>
+        </tr>
+        <tr>
+          <td><strong>电力供应</strong></td>
+          <td>稳定（UPS保护）</td>
+          <td>不稳定（可能断电）</td>
+          <td>需要快速启停能力</td>
+        </tr>
+        <tr>
+          <td><strong>运维能力</strong></td>
+          <td>专业团队7×24值守</td>
+          <td>无专业团队，远程运维</td>
+          <td>需要高可靠性，少维护</td>
+        </tr>
+        <tr>
+          <td><strong>网络带宽</strong></td>
+          <td>高带宽（10Gbps+）</td>
+          <td>低带宽（100Mbps-1Gbps）</td>
+          <td>本地推理，减少数据传输</td>
+        </tr>
+        <tr>
+          <td><strong>成本敏感度</strong></td>
+          <td>中等（关注TCO）</td>
+          <td>极高（初始投资敏感）</td>
+          <td>需要低成本方案</td>
+        </tr>
+        <tr>
+          <td><strong>部署周期</strong></td>
+          <td>3-6个月</td>
+          <td>1-2周</td>
+          <td>需要快速交付</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="key-point">
+      💡 关键洞察：边缘计算的核心需求是"小规模+低成本+高可靠+易运维"，方案设计必须简化、标准化。
+    </div>
+  </div>
+
+  <!-- 2. 典型边缘计算场景 -->
+  <div class="section">
+    <h2>二、五大典型边缘计算场景</h2>
+
+    <div class="scenario-grid">
+      <div class="scenario-item">
+        <h4>场景1：智慧城市AI推理站</h4>
+        <p><strong>应用：</strong>视频监控、人脸识别、车牌识别</p>
+        <p><strong>规模：</strong>5-10台服务器/站点</p>
+        <p><strong>GPU：</strong>H100（推理优化）</p>
+        <p><strong>位置：</strong>商业楼宇、政府大楼</p>
+        <p><strong>特点：</strong>噪音敏感、空间受限</p>
+      </div>
+
+      <div class="scenario-item">
+        <h4>场景2：工业AI质检站</h4>
+        <p><strong>应用：</strong>产品缺陷检测、质量控制</p>
+        <p><strong>规模：</strong>3-5台服务器/工厂</p>
+        <p><strong>GPU：</strong>H100（实时推理）</p>
+        <p><strong>位置：</strong>工厂车间</p>
+        <p><strong>特点：</strong>环境恶劣、温度波动大</p>
+      </div>
+
+      <div class="scenario-item">
+        <h4>场景3：自动驾驶测试站</h4>
+        <p><strong>应用：</strong>自动驾驶模型训练、仿真测试</p>
+        <p><strong>规模：</strong>10-20台服务器/测试场</p>
+        <p><strong>GPU：</strong>H100/B200</p>
+        <p><strong>位置：</strong>测试场地、研发中心</p>
+        <p><strong>特点：</strong>高性能需求、快速部署</p>
+      </div>
+
+      <div class="scenario-item">
+        <h4>场景4：医疗AI诊断站</h4>
+        <p><strong>应用：</strong>医学影像分析、辅助诊断</p>
+        <p><strong>规模：</strong>2-5台服务器/医院</p>
+        <p><strong>GPU：</strong>H100（推理）</p>
+        <p><strong>位置：</strong>医院机房</p>
+        <p><strong>特点：</strong>高可靠性、低噪音</p>
+      </div>
+
+      <div class="scenario-item">
+        <h4>场景5：5G基站AI处理</h4>
+        <p><strong>应用：</strong>边缘AI计算、实时数据处理</p>
+        <p><strong>规模：</strong>1-3台服务器/基站</p>
+        <p><strong>GPU：</strong>H100（低功耗版）</p>
+        <p><strong>位置：</strong>5G基站机房</p>
+        <p><strong>特点：</strong>极小空间、无人值守</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. 边缘计算方案设计要点 -->
+  <div class="section">
+    <h2>三、边缘计算方案设计四大要点</h2>
+
+    <h3>要点1：紧凑化设计</h3>
+    <div class="highlight-box">
+      <p><strong>原则：</strong>在有限空间内实现最大算力密度。</p>
+      <p style="margin-top: 15px;"><strong>设计方法：</strong></p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>软管长度最小化：</strong>1米/根（vs 数据中心1.5米）</li>
+        <li><strong>弯曲半径优化：</strong>LT800A的40mm弯曲半径适合紧凑布管</li>
+        <li><strong>一体化CDU：</strong>服务器+CDU集成在1个机柜内</li>
+        <li><strong>垂直布管：</strong>利用机柜高度，减少水平空间占用</li>
+      </ul>
+      <p style="margin-top: 15px;"><strong>案例：</strong>5台H100服务器紧凑方案</p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li>机柜尺寸：600mm×1200mm×2000mm（标准42U机柜）</li>
+        <li>服务器：5台×4U = 20U</li>
+        <li>CDU：1台×10U = 10U</li>
+        <li>配电：2U</li>
+        <li>预留：10U（扩展或维护）</li>
+        <li>软管：5台×2根×1米 = 10米LT800A</li>
+      </ul>
+    </div>
+
+    <h3>要点2：低噪音设计</h3>
+    <div class="highlight-box">
+      <p><strong>原则：</strong>噪音控制在60 dB以下（办公环境标准）。</p>
+      <p style="margin-top: 15px;"><strong>降噪方法：</strong></p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>液冷替代风冷：</strong>噪音从75 dB降至55 dB（-27%）</li>
+        <li><strong>低转速泵：</strong>CDU泵转速<2000 RPM</li>
+        <li><strong>隔音机柜：</strong>机柜内壁贴隔音棉</li>
+        <li><strong>减震设计：</strong>CDU底部安装减震垫</li>
+      </ul>
+      <p style="margin-top: 15px;"><strong>噪音对比：</strong></p>
+      <table style="margin-top: 15px;">
+        <thead>
+          <tr>
+            <th>方案</th>
+            <th>噪音水平</th>
+            <th>适用场景</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>风冷</strong></td>
+            <td>75 dB</td>
+            <td>专业机房（不适合办公区）</td>
+          </tr>
+          <tr>
+            <td><strong>液冷（标准）</strong></td>
+            <td>60 dB</td>
+            <td>办公区边缘（可接受）</td>
+          </tr>
+          <tr>
+            <td><strong>液冷（降噪）</strong></td>
+            <td>55 dB</td>
+            <td>办公区内（舒适）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>要点3：免维护设计</h3>
+    <div class="highlight-box">
+      <p><strong>原则：</strong>5年内无需现场维护（远程监控+年度巡检）。</p>
+      <p style="margin-top: 15px;"><strong>设计方法：</strong></p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>高可靠性产品：</strong>LT800A设计寿命10年，5年内无需更换</li>
+        <li><strong>冗余设计：</strong>CDU双泵配置，单泵故障不影响运行</li>
+        <li><strong>远程监控：</strong>温度、压力、流量实时监控，异常自动告警</li>
+        <li><strong>自动补液：</strong>冷却液液位低于阈值，自动补液</li>
+        <li><strong>故障自诊断：</strong>系统自动诊断故障，提供维修建议</li>
+      </ul>
+      <p style="margin-top: 15px;"><strong>维护计划：</strong></p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>日常：</strong>远程监控（自动化，无需人工）</li>
+        <li><strong>月度：</strong>远程巡检（查看监控数据，10分钟）</li>
+        <li><strong>年度：</strong>现场巡检（压力测试、泄漏检测，2小时）</li>
+        <li><strong>5年：</strong>大修（更换冷却液、检查软管，1天）</li>
+      </ul>
+    </div>
+
+    <h3>要点4：快速部署</h3>
+    <div class="highlight-box">
+      <p><strong>原则：</strong>1周内完成从订货到上线。</p>
+      <p style="margin-top: 15px;"><strong>快速部署方法：</strong></p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>预装接头：</strong>软管出厂前预装接头，现场即插即用</li>
+        <li><strong>标准化配置：</strong>5台/10台/20台三种标准配置，无需定制</li>
+        <li><strong>快速交付：</strong>标准配置1周交付（vs 定制化4周）</li>
+        <li><strong>远程指导：</strong>提供安装视频+远程技术支持</li>
+        <li><strong>一体化测试：</strong>出厂前完成系统联调，现场只需通电</li>
+      </ul>
+      <p style="margin-top: 15px;"><strong>部署时间表：</strong></p>
+      <table style="margin-top: 15px;">
+        <thead>
+          <tr>
+            <th>阶段</th>
+            <th>时间</th>
+            <th>工作内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Day 1</strong></td>
+            <td>1天</td>
+            <td>需求确认、下单</td>
+          </tr>
+          <tr>
+            <td><strong>Day 2-5</strong></td>
+            <td>4天</td>
+            <td>生产、测试、发货</td>
+          </tr>
+          <tr>
+            <td><strong>Day 6</strong></td>
+            <td>1天</td>
+            <td>物流运输</td>
+          </tr>
+          <tr>
+            <td><strong>Day 7</strong></td>
+            <td>1天</td>
+            <td>现场安装、测试、上线</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <!-- 4. 典型案例 -->
+  <div class="section">
+    <div class="edge-card">
+      <h3>📊 典型案例：智慧城市AI推理站（10个站点，每站5台H100）</h3>
+      
+      <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 8px; margin: 20px 0;">
+        <h4 style="color: #fff; margin-bottom: 15px;">项目背景</h4>
+        <ul style="margin-left: 20px; color: #fff;">
+          <li><strong>客户：</strong>某二线城市智慧城市项目</li>
+          <li><strong>应用：</strong>视频监控AI分析（人脸识别、行为分析）</li>
+          <li><strong>规模：</strong>10个站点，每站5台H100服务器</li>
+          <li><strong>位置：</strong>商业楼宇、政府大楼（办公区边缘）</li>
+          <li><strong>约束：</strong>噪音<60 dB，空间<2㎡，1周部署</li>
+          <li><strong>预算：</strong>单站液冷系统<¥15万</li>
+        </ul>
+      </div>
+
+      <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 8px; margin: 20px 0;">
+        <h4 style="color: #fff; margin-bottom: 15px;">方案设计</h4>
+        <p style="color: #fff;"><strong>1. 紧凑化设计</strong></p>
+        <ul style="margin-left: 20px; color: #fff; margin-top: 10px;">
+          <li>机柜：1个标准42U机柜（600×1200×2000mm）</li>
+          <li>服务器：5台H100×4U = 20U</li>
+          <li>CDU：1台×10U = 10U</li>
+          <li>软管：5台×2根×1米 = 10米LT800A</li>
+          <li>接头：20个Parker H系列（预装）</li>
+          <li>占地面积：0.72㎡（满足<2㎡要求）</li>
+        </ul>
+
+        <p style="color: #fff; margin-top: 15px;"><strong>2. 低噪音设计</strong></p>
+        <ul style="margin-left: 20px; color: #fff; margin-top: 10px;">
+          <li>液冷替代风冷：噪音从75 dB降至60 dB</li>
+          <li>低转速泵：CDU泵1800 RPM（vs 标准2400 RPM）</li>
+          <li>隔音机柜：内壁贴10mm隔音棉</li>
+          <li>减震设计：CDU底部4个减震垫</li>
+          <li><strong>实测噪音：57 dB（满足<60 dB要求）</strong></li>
+        </ul>
+
+        <p style="color: #fff; margin-top: 15px;"><strong>3. 免维护设计</strong></p>
+        <ul style="margin-left: 20px; color: #fff; margin-top: 10px;">
+          <li>LT800A设计寿命10年，5年内无需更换</li>
+          <li>CDU双泵配置，单泵故障自动切换</li>
+          <li>远程监控：4G模块，实时上传数据到云平台</li>
+          <li>自动补液：液位低于80%自动补液</li>
+          <li>维护计划：年度巡检1次（2小时）</li>
+        </ul>
+
+        <p style="color: #fff; margin-top: 15px;"><strong>4. 快速部署</strong></p>
+        <ul style="margin-left: 20px; color: #fff; margin-top: 10px;">
+          <li>预装接头：软管出厂前预装，现场即插即用</li>
+          <li>一体化测试：出厂前完成系统联调</li>
+          <li>标准配置：5台H100标准方案，无需定制</li>
+          <li>交付周期：5天（vs 定制化4周）</li>
+          <li>安装时间：1天/站点（10个站点10天完成）</li>
+        </ul>
+      </div>
+
+      <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 8px; margin: 20px 0;">
+        <h4 style="color: #fff; margin-bottom: 15px;">成本分析</h4>
+        <table style="margin-top: 15px;">
+          <thead>
+            <tr style="background: rgba(255,255,255,0.2);">
+              <th style="background: transparent; color: #fff;">成本项</th>
+              <th style="background: transparent; color: #fff;">单价</th>
+              <th style="background: transparent; color: #fff;">数量</th>
+              <th style="background: transparent; color: #fff;">小计</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background: rgba(255,255,255,0.9);">
+              <td><strong>软管（LT800A）</strong></td>
+              <td>¥450/米</td>
+              <td>10米</td>
+              <td>¥4,500</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.8);">
+              <td><strong>接头（Parker H）</strong></td>
+              <td>¥220/个</td>
+              <td>20个</td>
+              <td>¥4,400</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.9);">
+              <td><strong>CDU（一体化）</strong></td>
+              <td>¥8万/台</td>
+              <td>1台</td>
+              <td>¥80,000</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.8);">
+              <td><strong>冷却液</strong></td>
+              <td>¥20/升</td>
+              <td>50升</td>
+              <td>¥1,000</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.9);">
+              <td><strong>机柜（隔音）</strong></td>
+              <td>¥1.5万/个</td>
+              <td>1个</td>
+              <td>¥15,000</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.8);">
+              <td><strong>安装调试</strong></td>
+              <td>-</td>
+              <td>-</td>
+              <td>¥5,000</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.9);">
+              <td><strong>远程监控模块</strong></td>
+              <td>-</td>
+              <td>-</td>
+              <td>¥3,000</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.9);">
+              <td><strong>单站总计</strong></td>
+              <td>-</td>
+              <td>-</td>
+              <td><strong>¥112,900</strong></td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.8);">
+              <td><strong>10站总计</strong></td>
+              <td>-</td>
+              <td>-</td>
+              <td><strong>¥112.9万</strong></td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="color: #fff; margin-top: 10px;"><strong>✅ 满足预算要求：</strong>¥11.29万/站 < ¥15万/站</p>
+      </div>
+
+      <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 8px; margin: 20px 0;">
+        <h4 style="color: #fff; margin-bottom: 15px;">项目成果</h4>
+        <table style="margin-top: 15px;">
+          <thead>
+            <tr style="background: rgba(255,255,255,0.2);">
+              <th style="background: transparent; color: #fff;">指标</th>
+              <th style="background: transparent; color: #fff;">要求</th>
+              <th style="background: transparent; color: #fff;">实际</th>
+              <th style="background: transparent; color: #fff;">达成</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background: rgba(255,255,255,0.9);">
+              <td><strong>噪音</strong></td>
+              <td><60 dB</td>
+              <td>57 dB</td>
+              <td>✅ 超额达成</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.8);">
+              <td><strong>占地面积</strong></td>
+              <td><2㎡</td>
+              <td>0.72㎡</td>
+              <td>✅ 超额达成</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.9);">
+              <td><strong>部署周期</strong></td>
+              <td>1周/站</td>
+              <td>1天/站</td>
+              <td>✅ 超额达成</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.8);">
+              <td><strong>单站成本</strong></td>
+              <td><¥15万</td>
+              <td>¥11.29万</td>
+              <td>✅ 节省25%</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.9);">
+              <td><strong>运行6个月故障率</strong></td>
+              <td><0.1%</td>
+              <td>0%</td>
+              <td>✅ 零故障</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <strong>🏆 客户评价：</strong><br>
+      "利通科技的边缘计算液冷方案完美满足我们的需求。57 dB的噪音让我们可以把服务器部署在办公区边缘，0.72㎡的占地面积节省了宝贵的空间。最重要的是，1天/站点的部署速度让我们10天完成了10个站点的部署，比预期提前了2周。运行6个月零故障，远程监控让我们随时掌握系统状态。" —— 客户项目经理
+    </div>
+  </div>
+
+  <!-- 5. 边缘计算方案设计清单 -->
+  <div class="section">
+    <h2>四、边缘计算方案设计清单</h2>
+
+    <div class="info-box">
+      <strong>📋 使用方法：</strong>在设计边缘计算液冷方案时，逐项检查以下清单，确保方案满足所有要求。
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>类别</th>
+          <th>检查项</th>
+          <th>标准要求</th>
+          <th>检查方法</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="3"><strong>空间</strong></td>
+          <td>机柜尺寸</td>
+          <td>标准42U机柜（600×1200×2000mm）</td>
+          <td>测量机房空间</td>
+        </tr>
+        <tr>
+          <td>占地面积</td>
+          <td><2㎡</td>
+          <td>计算机柜占地</td>
+        </tr>
+        <tr>
+          <td>层高</td>
+          <td>≥2.5米</td>
+          <td>测量机房层高</td>
+        </tr>
+        <tr>
+          <td rowspan="2"><strong>噪音</strong></td>
+          <td>运行噪音</td>
+          <td><60 dB（办公区）</td>
+          <td>噪音计测量</td>
+        </tr>
+        <tr>
+          <td>降噪措施</td>
+          <td>液冷+隔音机柜</td>
+          <td>方案设计</td>
+        </tr>
+        <tr>
+          <td rowspan="3"><strong>环境</strong></td>
+          <td>温度范围</td>
+          <td>10-35°C</td>
+          <td>测量环境温度</td>
+        </tr>
+        <tr>
+          <td>湿度范围</td>
+          <td>20-80%</td>
+          <td>测量环境湿度</td>
+        </tr>
+        <tr>
+          <td>电力供应</td>
+          <td>220V，单相/三相</td>
+          <td>确认电力条件</td>
+        </tr>
+        <tr>
+          <td rowspan="3"><strong>可靠性</strong></td>
+          <td>设计寿命</td>
+          <td>≥5年</td>
+          <td>产品规格确认</td>
+        </tr>
+        <tr>
+          <td>冗余设计</td>
+          <td>CDU双泵配置</td>
+          <td>方案设计</td>
+        </tr>
+        <tr>
+          <td>远程监控</td>
+          <td>4G/5G模块</td>
+          <td>方案设计</td>
+        </tr>
+        <tr>
+          <td rowspan="2"><strong>成本</strong></td>
+          <td>初始投资</td>
+          <td>单站<¥15万（5台服务器）</td>
+          <td>成本计算</td>
+        </tr>
+        <tr>
+          <td>5年TCO</td>
+          <td>比风冷节省≥20%</td>
+          <td>TCO计算</td>
+        </tr>
+        <tr>
+          <td rowspan="2"><strong>部署</strong></td>
+          <td>交付周期</td>
+          <td>≤1周</td>
+          <td>供应商确认</td>
+        </tr>
+        <tr>
+          <td>安装时间</td>
+          <td>≤1天/站</td>
+          <td>安装计划</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 6. 复习题 -->
+  <div class="section">
+    <h2>五、模块3复习题</h2>
+
+    <h3>单选题（5道）</h3>
+    <ol style="margin-left: 30px;">
+      <li>边缘计算场景的典型规模是多少台服务器？<br>
+        A. 100-1000台 &nbsp; <strong>B. 5-50台</strong> &nbsp; C. 1000-10000台 &nbsp; D. 1-5台
+      </li>
+      <li>边缘计算场景的噪音要求通常是多少？<br>
+        A. <50 dB &nbsp; <strong>B. <60 dB</strong> &nbsp; C. <70 dB &nbsp; D. <80 dB
+      </li>
+      <li>边缘计算紧凑方案中，软管长度通常是多少？<br>
+        A. 0.5米 &nbsp; <strong>B. 1米</strong> &nbsp; C. 1.5米 &nbsp; D. 2米
+      </li>
+      <li>5台H100服务器边缘站点的液冷系统成本约为多少？<br>
+        A. ¥5万 &nbsp; B. ¥8万 &nbsp; <strong>C. ¥11万</strong> &nbsp; D. ¥15万
+      </li>
+      <li>边缘计算方案的部署周期要求是多少？<br>
+        A. 1个月 &nbsp; B. 2周 &nbsp; <strong>C. 1周</strong> &nbsp; D. 3天
+      </li>
+    </ol>
+
+    <h3>简答题（2道）</h3>
+    <ol style="margin-left: 30px;">
+      <li>客户问："我们要在10个商业楼宇部署AI推理站，每站5台H100，噪音要求<60 dB，你们有方案吗？"请给出专业回答。<br>
+        <em>参考答案：完全可以！我们有成熟的边缘计算液冷方案，专门针对商业楼宇场景设计。方案特点：1）紧凑化：1个标准42U机柜，占地0.72㎡，满足空间受限要求；2）低噪音：液冷+隔音机柜+低转速泵，实测噪音57 dB，满足<60 dB要求；3）免维护：LT800A设计寿命10年，CDU双泵冗余，远程监控，5年内无需现场维护；4）快速部署：预装接头，1天/站点，10个站点10天完成。成本：¥11.29万/站，比风冷节省25%。我们已为某智慧城市项目部署10个类似站点，运行6个月零故障。</em>
+      </li>
+      <li>请说明边缘计算方案设计的四大要点及其核心价值。<br>
+        <em>参考答案：四大要点包括：1）紧凑化设计：软管1米/根，40mm弯曲半径，一体化CDU，1个机柜集成5台服务器，占地0.72㎡，满足空间受限要求；2）低噪音设计：液冷替代风冷（75 dB→57 dB），低转速泵，隔音机柜，满足办公区<60 dB要求；3）免维护设计：LT800A寿命10年，CDU双泵冗余，远程监控，自动补液，5年内无需现场维护，降低运维成本；4）快速部署：预装接头，标准配置，1周交付，1天安装，支持快速上线。核心价值：满足边缘计算"小规模+低成本+高可靠+易运维"的核心需求，单站成本¥11万，噪音57 dB，1天部署，5年免维护。</em>
+      </li>
+    </ol>
+  </div>
+
+  <!-- 导航 -->
+  <div class="section" style="text-align: center; background: #f5f7fa;">
+    <a href="module2.html" style="display: inline-block; background: #666; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none; margin-right: 20px;">
+      ← 上一模块：云服务商液冷方案设计
+    </a>
+    <a href="../index.html" style="display: inline-block; background: #666; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none; margin-right: 20px;">
+      🏠 返回首页
+    </a>
+    <a href="module4.html" style="display: inline-block; background: #34a853; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none;">
+      下一模块：方案设计工具与模板 →
+    </a>
+  </div>
+
+</div>
+
+</body>
+</html>

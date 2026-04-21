@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 3 模块4：方案设计工具与模板</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    line-height: 1.8;
+    color: #222;
+    background: #f5f7fa;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  header {
+    background: linear-gradient(135deg, #34a853 0%, #2d8e47 100%);
+    color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+  }
+  h1 { font-size: 32px; margin-bottom: 10px; }
+  .subtitle { font-size: 16px; color: #e0ffe0; }
+  .section {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  h2 {
+    font-size: 24px;
+    color: #34a853;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #34a853;
+  }
+  h3 {
+    font-size: 20px;
+    color: #2d8e47;
+    margin: 25px 0 15px;
+  }
+  .highlight-box {
+    background: #e6f4ea;
+    border-left: 4px solid #34a853;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  .info-box {
+    background: #e8f4fd;
+    border-left: 4px solid #1a73e8;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  .tool-box {
+    background: #fff9e6;
+    border: 2px solid #fbbc04;
+    border-radius: 12px;
+    padding: 25px;
+    margin: 20px 0;
+  }
+  .tool-box h4 {
+    color: #fbbc04;
+    margin-bottom: 15px;
+    font-size: 20px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+  }
+  th {
+    background: #34a853;
+    color: #fff;
+    font-weight: 600;
+  }
+  tr:nth-child(even) { background: #f9f9f9; }
+  .template-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 25px;
+    margin: 20px 0;
+  }
+  .template-card h4 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  .key-point {
+    font-size: 18px;
+    font-weight: 600;
+    color: #34a853;
+    margin: 20px 0;
+  }
+  .success-box {
+    background: #e6f4ea;
+    border-left: 4px solid #34a853;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>Day 3 模块4：方案设计工具与模板</h1>
+    <div class="subtitle">学习时长：2小时 | 掌握实用的方案设计工具和文档模板</div>
+  </header>
+
+  <!-- 1. 软管用量计算器 -->
+  <div class="section">
+    <h2>一、软管用量计算器</h2>
+    
+    <div class="info-box">
+      <strong>📌 使用场景：</strong>快速计算项目所需的软管总长度、接头数量、冷却液用量，生成物料清单（BOM）。
+    </div>
+
+    <div class="tool-box">
+      <h4>🧮 计算公式</h4>
+      
+      <p><strong>1. 软管总长度计算</strong></p>
+      <div style="background: #fff; padding: 15px; border-radius: 8px; margin: 15px 0;">
+        <p><strong>公式：</strong>软管总长度 = 服务器数量 × 每台软管根数 × 每根长度 × (1 + 备件率)</p>
+        <p style="margin-top: 10px;"><strong>示例：</strong></p>
+        <ul style="margin-left: 20px; margin-top: 10px;">
+          <li>服务器数量：1000台</li>
+          <li>每台软管根数：2根（进水+回水）</li>
+          <li>每根长度：1.5米</li>
+          <li>备件率：10%</li>
+          <li><strong>计算：</strong>1000 × 2 × 1.5 × 1.1 = 3,300米</li>
+        </ul>
+      </div>
+
+      <p><strong>2. 接头数量计算</strong></p>
+      <div style="background: #fff; padding: 15px; border-radius: 8px; margin: 15px 0;">
+        <p><strong>公式：</strong>接头数量 = (软管总长度 ÷ 每根长度) × 每根接头数 × (1 + 备件率)</p>
+        <p style="margin-top: 10px;"><strong>示例：</strong></p>
+        <ul style="margin-left: 20px; margin-top: 10px;">
+          <li>软管总长度：3,300米</li>
+          <li>每根长度：1.5米</li>
+          <li>每根接头数：2个（两端）</li>
+          <li>备件率：10%</li>
+          <li><strong>计算：</strong>(3300 ÷ 1.5) × 2 × 1.1 = 4,840个</li>
+        </ul>
+      </div>
+
+      <p><strong>3. 冷却液用量计算</strong></p>
+      <div style="background: #fff; padding: 15px; border-radius: 8px; margin: 15px 0;">
+        <p><strong>公式：</strong>冷却液用量 = (软管容积 + CDU容积 + 管路容积) × (1 + 预留率)</p>
+        <p style="margin-top: 10px;"><strong>示例：</strong></p>
+        <ul style="margin-left: 20px; margin-top: 10px;">
+          <li>软管容积：3300米 × π × (0.005m)² = 260升</li>
+          <li>CDU容积：125台 × 50升 = 6,250升</li>
+          <li>管路容积：估算500升</li>
+          <li>预留率：20%</li>
+          <li><strong>计算：</strong>(260 + 6250 + 500) × 1.2 = 8,412升 ≈ 8,500升</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tool-box">
+      <h4>📊 快速计算表（常用配置）</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>服务器数量</th>
+            <th>软管长度（米）</th>
+            <th>接头数量（个）</th>
+            <th>冷却液（升）</th>
+            <th>LT800A成本</th>
+            <th>LT800B成本</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>50台</strong></td>
+            <td>165米</td>
+            <td>242个</td>
+            <td>425升</td>
+            <td>¥7.4万</td>
+            <td>¥11.2万</td>
+          </tr>
+          <tr>
+            <td><strong>100台</strong></td>
+            <td>330米</td>
+            <td>484个</td>
+            <td>850升</td>
+            <td>¥14.9万</td>
+            <td>¥22.4万</td>
+          </tr>
+          <tr>
+            <td><strong>500台</strong></td>
+            <td>1,650米</td>
+            <td>2,420个</td>
+            <td>4,250升</td>
+            <td>¥74.3万</td>
+            <td>¥112.2万</td>
+          </tr>
+          <tr>
+            <td><strong>1000台</strong></td>
+            <td>3,300米</td>
+            <td>4,840个</td>
+            <td>8,500升</td>
+            <td>¥148.5万</td>
+            <td>¥224.4万</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="margin-top: 10px; font-size: 14px; color: #666;">注：成本仅含软管，不含接头、CDU、安装等。每根软管1.5米，备件率10%。</p>
+    </div>
+  </div>
+
+  <!-- 2. TCO计算模板 -->
+  <div class="section">
+    <h2>二、TCO计算模板（10年）</h2>
+
+    <div class="tool-box">
+      <h4>💰 TCO计算表（Excel模板）</h4>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>成本项</th>
+            <th>液冷方案</th>
+            <th>风冷方案</th>
+            <th>计算公式</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="4" style="background: #e6f4ea;"><strong>1. 建设成本（一次性）</strong></td>
+          </tr>
+          <tr>
+            <td>　软管/风扇</td>
+            <td>服务器数×3.3米×¥680</td>
+            <td>服务器数×¥1,500</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>　接头/散热器</td>
+            <td>服务器数×4.84个×¥300</td>
+            <td>服务器数×¥2,000</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>　CDU/空调</td>
+            <td>服务器数÷8×¥10万</td>
+            <td>服务器数÷20×¥30万</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>　冷却液</td>
+            <td>服务器数×8.5升×¥20</td>
+            <td>¥0</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>　安装成本</td>
+            <td>服务器数×¥500</td>
+            <td>服务器数×¥300</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td colspan="4" style="background: #e6f4ea;"><strong>2. 运营成本（10年）</strong></td>
+          </tr>
+          <tr>
+            <td>　IT设备功耗</td>
+            <td>GPU功耗×服务器数</td>
+            <td>GPU功耗×服务器数</td>
+            <td>持平</td>
+          </tr>
+          <tr>
+            <td>　冷却功耗</td>
+            <td>IT功耗×(PUE-1)</td>
+            <td>IT功耗×(PUE-1)</td>
+            <td>液冷PUE 1.15，风冷1.6</td>
+          </tr>
+          <tr>
+            <td>　年电费</td>
+            <td>总功耗×8760h×电价</td>
+            <td>总功耗×8760h×电价</td>
+            <td>电价¥0.8/kWh</td>
+          </tr>
+          <tr>
+            <td>　10年电费</td>
+            <td>年电费×10</td>
+            <td>年电费×10</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>　维护成本</td>
+            <td>建设成本×3%/年×10年</td>
+            <td>建设成本×5%/年×10年</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>　更换成本</td>
+            <td>¥0（LT800B寿命15年）</td>
+            <td>建设成本×50%（5年更换）</td>
+            <td>-</td>
+          </tr>
+          <tr style="background: #e6f4ea;">
+            <td><strong>总TCO（10年）</strong></td>
+            <td><strong>建设+运营</strong></td>
+            <td><strong>建设+运营</strong></td>
+            <td><strong>液冷通常节省20-30%</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="key-point">
+      💡 使用技巧：将此表格复制到Excel，输入服务器数量和GPU功耗，自动计算TCO。
+    </div>
+  </div>
+
+  <!-- 3. 方案文档模板 -->
+  <div class="section">
+    <h2>三、方案文档模板</h2>
+
+    <div class="template-card">
+      <h4>📄 模板1：方案说明书（50页PDF）</h4>
+      <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 8px; margin: 15px 0;">
+        <p style="color: #fff;"><strong>目录结构：</strong></p>
+        <ol style="margin-left: 20px; color: #fff; margin-top: 10px;">
+          <li><strong>项目概述</strong>（2页）：客户背景、项目目标、关键需求</li>
+          <li><strong>需求分析</strong>（5页）：五维需求分析、需求确认单</li>
+          <li><strong>方案设计</strong>（15页）：产品选型、容量计算、系统设计、管路布局图</li>
+          <li><strong>技术规格</strong>（10页）：软管规格、接头规格、CDU规格、冷却液规格</li>
+          <li><strong>方案验证</strong>（5页）：压降计算、冷却能力验证、TCO计算</li>
+          <li><strong>实施计划</strong>（5页）：施工计划、甘特图、里程碑</li>
+          <li><strong>质量保证</strong>（3页）：质量管控体系、验收标准</li>
+          <li><strong>售后服务</strong>（3页）：质保政策、维护计划、技术支持</li>
+          <li><strong>附录</strong>（2页）：UL认证证书、客户案例、联系方式</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="template-card">
+      <h4>📊 模板2：客户提案PPT（30页）</h4>
+      <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 8px; margin: 15px 0;">
+        <p style="color: #fff;"><strong>幻灯片结构：</strong></p>
+        <ol style="margin-left: 20px; color: #fff; margin-top: 10px;">
+          <li><strong>封面</strong>（1页）：项目名称、客户名称、日期</li>
+          <li><strong>公司介绍</strong>（3页）：利通科技简介、核心优势、客户案例</li>
+          <li><strong>需求理解</strong>（3页）：客户需求总结、痛点分析</li>
+          <li><strong>方案概述</strong>（5页）：方案架构图、核心亮点、差异化优势</li>
+          <li><strong>产品介绍</strong>（5页）：LT800系列产品、技术优势、竞品对比</li>
+          <li><strong>方案设计</strong>（5页）：系统设计图、管路布局、冗余设计</li>
+          <li><strong>TCO分析</strong>（3页）：成本对比、节省分析、投资回收期</li>
+          <li><strong>实施计划</strong>（2页）：时间表、里程碑</li>
+          <li><strong>成功案例</strong>（2页）：类似项目案例、客户评价</li>
+          <li><strong>Q&A</strong>（1页）：联系方式</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="template-card">
+      <h4>📋 模板3：物料清单（BOM Excel）</h4>
+      <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 8px; margin: 15px 0;">
+        <p style="color: #fff;"><strong>表格列：</strong></p>
+        <ul style="margin-left: 20px; color: #fff; margin-top: 10px;">
+          <li>序号、物料编码、物料名称、规格型号、单位、数量、单价、金额、供应商、交货周期、备注</li>
+        </ul>
+        <p style="color: #fff; margin-top: 15px;"><strong>分类：</strong></p>
+        <ul style="margin-left: 20px; color: #fff; margin-top: 10px;">
+          <li>1. 软管类（LT800A/B/C）</li>
+          <li>2. 接头类（Stäubli/Parker/CPC）</li>
+          <li>3. CDU类（Vertiv/Schneider）</li>
+          <li>4. 冷却液类（乙二醇/生物基）</li>
+          <li>5. 辅材类（卡箍、密封圈、标签）</li>
+          <li>6. 工具类（扭矩扳手、压力表）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. 复习题 -->
+  <div class="section">
+    <h2>四、模块4复习题</h2>
+
+    <h3>单选题（5道）</h3>
+    <ol style="margin-left: 30px;">
+      <li>1000台服务器，每台2根1.5米软管，备件率10%，软管总长度是？<br>
+        A. 3000米 &nbsp; <strong>B. 3300米</strong> &nbsp; C. 3600米 &nbsp; D. 4000米
+      </li>
+      <li>软管内径10mm，长度3300米，容积约为多少升？<br>
+        A. 200升 &nbsp; <strong>B. 260升</strong> &nbsp; C. 300升 &nbsp; D. 350升
+      </li>
+      <li>液冷方案的PUE通常是多少？<br>
+        A. 1.05 &nbsp; <strong>B. 1.15</strong> &nbsp; C. 1.3 &nbsp; D. 1.6
+      </li>
+      <li>方案说明书通常包含多少页？<br>
+        A. 20页 &nbsp; B. 30页 &nbsp; C. 40页 &nbsp; <strong>D. 50页</strong>
+      </li>
+      <li>客户提案PPT通常包含多少页？<br>
+        A. 20页 &nbsp; <strong>B. 30页</strong> &nbsp; C. 40页 &nbsp; D. 50页
+      </li>
+    </ol>
+
+    <h3>简答题（2道）</h3>
+    <ol style="margin-left: 30px;">
+      <li>客户问："你们能提供完整的方案文档吗？包含哪些内容？"请给出专业回答。<br>
+        <em>参考答案：当然可以！我们提供完整的方案文档包，包括：1）方案说明书（50页PDF）：项目概述、需求分析、方案设计、技术规格、方案验证、实施计划、质量保证、售后服务、附录；2）客户提案PPT（30页）：公司介绍、需求理解、方案概述、产品介绍、方案设计、TCO分析、实施计划、成功案例；3）物料清单（BOM Excel）：软管、接头、CDU、冷却液、辅材、工具等详细清单；4）系统设计图（CAD图纸）：管路布局、冷却液循环路径；5）TCO计算表（Excel模型）：10年成本对比分析；6）施工计划（甘特图）：时间表、里程碑；7）验收标准（测试清单）：压力测试、泄漏检测标准。所有文档均可根据您的需求定制。</em>
+      </li>
+      <li>请说明如何使用软管用量计算器快速生成BOM。<br>
+        <em>参考答案：使用软管用量计算器分3步：1）输入基础参数：服务器数量（如1000台）、每台软管根数（2根）、每根长度（1.5米）、备件率（10%）；2）计算软管用量：1000×2×1.5×1.1=3300米；3）计算接头用量：(3300÷1.5)×2×1.1=4840个；4）计算冷却液用量：软管容积260升+CDU容积6250升+管路容积500升，预留20%，总计8500升；5）生成BOM：软管3300米×¥680=¥224.4万，接头4840个×¥300=¥145.2万，冷却液8500升×¥20=¥17万，总计¥386.6万。也可使用快速计算表，直接查询1000台对应的用量和成本。</em>
+      </li>
+    </ol>
+  </div>
+
+  <!-- Day 3 总结 -->
+  <div class="section">
+    <h2>🎓 Day 3 学习总结</h2>
+
+    <div class="success-box">
+      <strong>恭喜！您已完成Day 3全部4个模块的学习。</strong>
+      <p style="margin-top: 15px;">通过今天的学习，您已经掌握：</p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li>✅ AI超算中心方案设计六步法和TCO计算方法</li>
+        <li>✅ 云服务商方案设计五大要点（模块化、A/B供、成本优化、质量管控、供应链协同）</li>
+        <li>✅ 边缘计算方案设计四大要点（紧凑化、低噪音、免维护、快速部署）</li>
+        <li>✅ 实用的方案设计工具（软管用量计算器、TCO计算模板）和文档模板</li>
+      </ul>
+      <p style="margin-top: 15px;"><strong>明天预告：</strong>Day 4将学习顾问式销售技巧，包括需求挖掘、价值呈现、异议处理、商务谈判等实战技能。</p>
+    </div>
+  </div>
+
+  <!-- 导航 -->
+  <div class="section" style="text-align: center; background: #f5f7fa;">
+    <a href="module3.html" style="display: inline-block; background: #666; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none; margin-right: 20px;">
+      ← 上一模块：边缘计算场景方案设计
+    </a>
+    <a href="../index.html" style="display: inline-block; background: #34a853; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none;">
+      🏠 返回首页
+    </a>
+  </div>
+
+</div>
+
+</body>
+</html>
