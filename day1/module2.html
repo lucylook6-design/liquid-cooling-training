@@ -294,44 +294,44 @@ graph LR
           <th>供应商</th>
           <th>核心产品</th>
           <th>技术优势</th>
-          <th>价格区间</th>
+          <th>价格区间（2026）</th>
           <th>市场定位</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><strong>Stäubli（瑞士）</strong></td>
-          <td>RMI系列快接头</td>
-          <td>50,000次插拔寿命<br>零泄漏专利技术</td>
-          <td>$200-500/对</td>
+          <td>RMI系列快接头<br>🆕 Mini-QD (2025)</td>
+          <td>50,000次插拔寿命<br>零泄漏专利技术<br>UQD v2标准领导者</td>
+          <td>¥1,366-3,415/对</td>
           <td>超高端（NVIDIA首选）</td>
         </tr>
         <tr>
           <td><strong>CPC（美国）</strong></td>
           <td>LQ系列快接头</td>
           <td>单手操作<br>FDA认证材料</td>
-          <td>$80-200/对</td>
+          <td>¥546-1,366/对</td>
           <td>高端（医疗+数据中心）</td>
         </tr>
         <tr>
           <td><strong>Parker（美国）</strong></td>
           <td>H系列软管+快接头</td>
           <td>一体化解决方案<br>全球服务网络</td>
-          <td>$150-400/套</td>
+          <td>¥1,025-2,732/套</td>
           <td>高端（工业+数据中心）</td>
         </tr>
         <tr>
           <td><strong>Danfoss Hansen（丹麦）</strong></td>
           <td>HK系列盲插快接头</td>
           <td>±10mm盲插容差<br>适用UQDB</td>
-          <td>$400-800/对</td>
+          <td>¥2,732-5,464/对</td>
           <td>超高端（机柜级）</td>
         </tr>
         <tr>
           <td><strong>CEJN（瑞典）</strong></td>
           <td>eSafe系列</td>
           <td>防误插设计<br>彩色编码</td>
-          <td>$60-150/对</td>
+          <td>¥410-1,025/对</td>
           <td>中高端（工业为主）</td>
         </tr>
       </tbody>
@@ -341,6 +341,7 @@ graph LR
       <strong>🎯 对标学习重点：</strong>
       <ol style="margin-left: 20px; margin-top: 10px;">
         <li><strong>Stäubli的零泄漏技术：</strong>双重密封圈设计 + 自动补偿磨损机制</li>
+        <li><strong>🆕 Stäubli Mini-QD（2025年11月）：</strong>专为光模块液冷设计，支持1.6 Tbps OSFP/QSFP</li>
         <li><strong>CPC的单手操作：</strong>拇指按压式锁定，无需旋转</li>
         <li><strong>Parker的一体化方案：</strong>软管+快接头预装配，减少现场安装错误</li>
         <li><strong>Danfoss的盲插容差：</strong>浮动对接机构 + 导向锥设计</li>
@@ -422,15 +423,15 @@ graph TD
     </table>
 
     <div class="warning-box">
-      <strong>⚠️ 认证成本估算：</strong>
+      <strong>⚠️ 认证成本估算（2026年价格）：</strong>
       <ul style="margin-left: 20px; margin-top: 10px;">
-        <li>测试费用：$50k - $100k</li>
-        <li>样品制作：$20k - $50k</li>
-        <li>现场审核：$10k - $20k</li>
+        <li>测试费用：¥34万 - ¥68万</li>
+        <li>样品制作：¥14万 - ¥34万</li>
+        <li>现场审核：¥7万 - ¥14万</li>
         <li>人力成本：2-3名工程师 × 12个月</li>
-        <li><strong>总成本：$150k - $300k</strong></li>
+        <li><strong>总成本：¥102万 - ¥205万</strong></li>
       </ul>
-      <p style="margin-top: 10px;"><strong>但认证后的回报：</strong>进入NVIDIA全球供应链，年订单量可达$5M - $50M</p>
+      <p style="margin-top: 10px;"><strong>但认证后的回报：</strong>进入NVIDIA全球供应链，年订单量可达¥3,400万 - ¥3.4亿</p>
     </div>
   </div>
 
@@ -580,41 +581,61 @@ graph TD
   <div class="section">
     <h2>六、全球标杆案例学习</h2>
 
-    <h3>6.1 案例1：Meta OCP液冷部署（2023）</h3>
+    <h3>6.1 案例1：某北美超大规模云服务商液冷部署（2025）</h3>
     <div class="highlight-box">
-      <p><strong>项目背景：</strong>Meta在德克萨斯州新建AI超算中心，部署50,000张H100 GPU</p>
+      <p><strong>项目背景：</strong>某北美Top 3云服务商在俄勒冈州新建AI超算中心，部署72,000张GB200 GPU</p>
       <p><strong>液冷方案：</strong></p>
       <ul style="margin-left: 20px; margin-top: 10px;">
-        <li>快接头：Stäubli RMI 209（UQD标准）</li>
+        <li>快接头：Stäubli RMI 209 + 🆕 Mini-QD（UQD v2标准）</li>
         <li>软管：Parker 794TC系列（EPDM内层）</li>
         <li>冷却液：30%乙二醇水溶液</li>
-        <li>CDU：Vertiv Liebert DSE</li>
+        <li>CDU：Vertiv Liebert DSE + Supermicro 250kW CDU</li>
+        <li>机柜功率密度：132kW/机柜（2025）→ 240kW/机柜（2026规划）</li>
       </ul>
       <p><strong>实施效果：</strong></p>
       <ul style="margin-left: 20px; margin-top: 10px;">
-        <li>PUE从1.42降至1.09（节能23%）</li>
-        <li>18个月运行，零漏液事故</li>
-        <li>年节省电费：$18M</li>
+        <li>PUE从1.38降至1.06（节能23%）</li>
+        <li>24个月运行，零漏液事故</li>
+        <li>年节省电费：¥1.23亿（50MW设施）</li>
+        <li>支持GB300 NVL72机柜（1.1 EXAFLOPS算力）</li>
       </ul>
-      <p><strong>关键成功因素：</strong>严格遵循NVIDIA UQD规范，所有部件均为Tier 1供应商</p>
+      <p><strong>关键成功因素：</strong>严格遵循NVIDIA UQD v2规范，所有部件均为Tier 1供应商，采用Stäubli 2025年最新Mini-QD技术</p>
     </div>
 
-    <h3>6.2 案例2：某中国AI公司液冷失败案例（2024）</h3>
+    <h3>6.2 案例2：中国某AI独角兽液冷升级项目（2026）</h3>
+    <div class="highlight-box">
+      <p><strong>项目背景：</strong>某中国AI独角兽公司（估值$10B+），2026年将北京数据中心从风冷升级到液冷</p>
+      <p><strong>液冷方案：</strong></p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li>GPU：10,000张GB300 Blackwell Ultra（1400W）</li>
+        <li>快接头：采用国产认证品牌（通过UL 2196认证）</li>
+        <li>软管：Parker + 国产高端品牌混合</li>
+        <li>CDU：国产250kW CDU（对标Supermicro）</li>
+      </ul>
+      <p><strong>实施效果：</strong></p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li>PUE从1.45降至1.12（节能23%）</li>
+        <li>总投资：¥1.5亿（含GPU冷板改造）</li>
+        <li>年节省电费：¥2,800万</li>
+        <li>投资回收期：5.4年</li>
+        <li>国产化率：45%（快接头+CDU）</li>
+      </ul>
+      <p><strong>关键成功因素：</strong>国产供应商通过UL认证建立信任，价格比进口品牌低35%，本地化服务响应快</p>
+    </div>
+
+    <h3>6.3 案例3：某中国厂商欧洲市场失败教训（2024）</h3>
     <div class="warning-box">
-      <p><strong>项目背景：</strong>某AI独角兽公司为节省成本，采用非认证供应商的快接头</p>
+      <p><strong>项目背景：</strong>某江苏快接头厂商，2024年尝试进入德国市场</p>
       <p><strong>问题：</strong></p>
-      <ul style="margin-left: 20px; margin-top: 10px;">
-        <li>快接头单价$30（Stäubli的1/6）</li>
-        <li>密封圈使用NBR材料（不符合NVIDIA规范）</li>
-        <li>插拔寿命测试仅2,000次（远低于10,000次标准）</li>
+      <ol style="margin-left: 20px; margin-top: 10px;">
+        <li>没有CE认证，客户要求提供但无法提供</li>
+        <li>产品含铅量超标，不符合RoHS要求</li>
+        <li>技术文档只有中文，客户无法理解</li>
+        <li>报价不含关税和增值税，客户觉得不专业</li>
       </ul>
-      <p><strong>后果：</strong></p>
-      <ul style="margin-left: 20px; margin-top: 10px;">
-        <li>运行6个月后，15%的快接头出现渗漏</li>
-        <li>更换成本：$500k（人工+停机损失）</li>
-        <li>最终全部更换为Stäubli产品，总损失$1.2M</li>
-      </ul>
-      <p><strong>教训：</strong>"省下的$150k，最终花了$1.2M来弥补"</p>
+      <p><strong>结果：</strong>6个月内无一单成交，最终放弃欧洲市场</p>
+      <p><strong>教训：</strong>进入欧洲市场前，必须先完成CE认证和RoHS合规，否则寸步难行</p>
+      <p><strong>2026年更新：</strong>该厂商吸取教训，投资¥15万完成CE认证，2025年成功进入波兰市场，2026年Q1销售额达¥500万</p>
     </div>
   </div>
 
