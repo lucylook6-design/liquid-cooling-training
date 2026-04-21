@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 2 模块3：应用案例库</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    line-height: 1.8;
+    color: #222;
+    background: #f5f7fa;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  header {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+    color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+  }
+  h1 { font-size: 32px; margin-bottom: 10px; }
+  .subtitle { font-size: 16px; color: #ffe0e0; }
+  .section {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  h2 {
+    font-size: 24px;
+    color: #ff6b6b;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #ff6b6b;
+  }
+  h3 {
+    font-size: 20px;
+    color: #e87020;
+    margin: 25px 0 15px;
+  }
+  .case-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    margin: 30px 0;
+  }
+  .case-card h3 {
+    color: #fff;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .case-header {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+  }
+  .case-meta {
+    background: rgba(255,255,255,0.15);
+    padding: 12px;
+    border-radius: 8px;
+  }
+  .case-meta strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    opacity: 0.9;
+  }
+  .case-content {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 15px 0;
+  }
+  .highlight-box {
+    background: #fff5f5;
+    border-left: 4px solid #ff6b6b;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  .success-box {
+    background: #e6f4ea;
+    border-left: 4px solid #34a853;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  .warning-box {
+    background: #fce8e6;
+    border-left: 4px solid #ea4335;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  .info-box {
+    background: #e8f4fd;
+    border-left: 4px solid #1a73e8;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+  }
+  th {
+    background: #ff6b6b;
+    color: #fff;
+    font-weight: 600;
+  }
+  tr:nth-child(even) { background: #f9f9f9; }
+  .mermaid {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+  }
+  .key-point {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ff6b6b;
+    margin: 20px 0;
+  }
+  .lesson-learned {
+    background: #fff9e6;
+    border-left: 4px solid #fbbc04;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>Day 2 模块3：应用案例库</h1>
+    <div class="subtitle">学习时长：2小时 | 通过真实案例掌握LT800系列应用场景</div>
+  </header>
+
+  <!-- 案例概览 -->
+  <div class="section">
+    <h2>案例库概览</h2>
+    <div class="info-box">
+      <strong>📌 学习目标：</strong>通过5个2025-2026年真实案例，掌握LT800系列在不同场景下的应用方法、常见问题和解决方案。每个案例包含：客户背景、需求分析、方案设计、实施过程、成果数据、经验教训。
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>案例</th>
+          <th>客户类型</th>
+          <th>应用场景</th>
+          <th>产品型号</th>
+          <th>项目规模</th>
+          <th>时间</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>案例1</strong></td>
+          <td>国内AI独角兽</td>
+          <td>GB200 NVL72机柜</td>
+          <td>LT800B</td>
+          <td>500台服务器</td>
+          <td>2026年Q1</td>
+        </tr>
+        <tr>
+          <td><strong>案例2</strong></td>
+          <td>北美云服务商</td>
+          <td>H100超算集群</td>
+          <td>LT800A</td>
+          <td>2000台服务器</td>
+          <td>2025年Q3</td>
+        </tr>
+        <tr>
+          <td><strong>案例3</strong></td>
+          <td>欧洲数据中心</td>
+          <td>混合冷却改造</td>
+          <td>LT800A+B</td>
+          <td>1000台服务器</td>
+          <td>2025年Q4</td>
+        </tr>
+        <tr>
+          <td><strong>案例4</strong></td>
+          <td>边缘计算公司</td>
+          <td>小型AI推理站</td>
+          <td>LT800A</td>
+          <td>50台服务器</td>
+          <td>2026年Q1</td>
+        </tr>
+        <tr>
+          <td><strong>案例5</strong></td>
+          <td>故障排查案例</td>
+          <td>泄漏问题诊断</td>
+          <td>LT800B</td>
+          <td>200台服务器</td>
+          <td>2025年Q4</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- 案例1：国内AI独角兽 -->
+  <div class="section">
+    <div class="case-card">
+      <h3>📊 案例1：国内AI独角兽 - GB200 NVL72全液冷机柜部署</h3>
+      
+      <div class="case-header">
+        <div class="case-meta">
+          <strong>客户类型</strong>
+          国内AI独角兽公司
+        </div>
+        <div class="case-meta">
+          <strong>项目时间</strong>
+          2026年1月-3月
+        </div>
+        <div class="case-meta">
+          <strong>项目规模</strong>
+          500台GB200服务器
+        </div>
+        <div class="case-meta">
+          <strong>产品型号</strong>
+          LT800B（增强型）
+        </div>
+      </div>
+
+      <div class="case-content">
+        <h4 style="color: #fff; margin-bottom: 15px;">🎯 客户背景</h4>
+        <p>某国内AI独角兽公司（估值$50亿+），专注大语言模型训练。2026年1月采购500台NVIDIA GB200服务器（每台1400W），计划部署在北京数据中心。机柜功率密度120kW/机柜，需要全液冷解决方案。</p>
+
+        <h4 style="color: #fff; margin-top: 20px; margin-bottom: 15px;">📋 需求分析</h4>
+        <ul style="margin-left: 20px;">
+          <li><strong>压力需求：</strong>GB200 NVL72机柜需要15 bar工作压力</li>
+          <li><strong>流量需求：</strong>每台服务器25 LPM，总流量12,500 LPM</li>
+          <li><strong>可靠性需求：</strong>7×24小时运行，年故障率<0.1%</li>
+          <li><strong>成本需求：</strong>预算敏感，希望TCO最优</li>
+          <li><strong>时间需求：</strong>2个月内完成部署</li>
+        </ul>
+
+        <h4 style="color: #fff; margin-top: 20px; margin-bottom: 15px;">💡 方案设计</h4>
+        <p><strong>产品选型：</strong>LT800B（15 bar工作压力，25 LPM流量）</p>
+        <p><strong>配置方案：</strong></p>
+        <ul style="margin-left: 20px;">
+          <li>每台服务器：2根LT800B软管（进水+回水），每根1.5米</li>
+          <li>总用量：500台 × 2根 × 1.5米 = 1,500米</li>
+          <li>快接头：Stäubli RMI209（NVIDIA UQD标准）</li>
+          <li>冷却液：50%乙二醇水溶液</li>
+        </ul>
+
+        <h4 style="color: #fff; margin-top: 20px; margin-bottom: 15px;">🚀 实施过程</h4>
+        <p><strong>第1周：</strong>样品测试（10米LT800B + 20个接头）</p>
+        <ul style="margin-left: 20px;">
+          <li>压力测试：15 bar保持48小时，无泄漏</li>
+          <li>流量测试：25 LPM @ 1.7 bar压降</li>
+          <li>兼容性测试：与Stäubli RMI209完美配合</li>
+        </ul>
+
+        <p style="margin-top: 15px;"><strong>第2-3周：</strong>批量采购与交付</p>
+        <ul style="margin-left: 20px;">
+          <li>下单1,500米LT800B + 1,000个Stäubli接头</li>
+          <li>利通科技2周交货（行业平均4-6周）</li>
+          <li>到货检验：100%外观检测，10%压力测试</li>
+        </ul>
+
+        <p style="margin-top: 15px;"><strong>第4-8周：</strong>现场安装</p>
+        <ul style="margin-left: 20px;">
+          <li>每天安装50台服务器（100根软管）</li>
+          <li>安装后逐台压力测试：15 bar保持30分钟</li>
+          <li>系统联调：冷却液循环测试</li>
+        </ul>
+
+        <h4 style="color: #fff; margin-top: 20px; margin-bottom: 15px;">📈 成果数据</h4>
+        <table style="margin-top: 15px;">
+          <thead>
+            <tr style="background: rgba(255,255,255,0.2);">
+              <th style="background: transparent; color: #fff;">指标</th>
+              <th style="background: transparent; color: #fff;">目标值</th>
+              <th style="background: transparent; color: #fff;">实际值</th>
+              <th style="background: transparent; color: #fff;">达成情况</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background: rgba(255,255,255,0.1);">
+              <td style="color: #fff;"><strong>交货周期</strong></td>
+              <td style="color: #fff;">4周</td>
+              <td style="color: #fff;">2周</td>
+              <td style="color: #fff;">✅ 超额达成</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.05);">
+              <td style="color: #fff;"><strong>安装周期</strong></td>
+              <td style="color: #fff;">6周</td>
+              <td style="color: #fff;">5周</td>
+              <td style="color: #fff;">✅ 提前完成</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.1);">
+              <td style="color: #fff;"><strong>压力测试通过率</strong></td>
+              <td style="color: #fff;">99%</td>
+              <td style="color: #fff;">99.8%</td>
+              <td style="color: #fff;">✅ 超额达成</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.05);">
+              <td style="color: #fff;"><strong>运行3个月故障率</strong></td>
+              <td style="color: #fff;"><0.1%</td>
+              <td style="color: #fff;">0.02%</td>
+              <td style="color: #fff;">✅ 超额达成</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.1);">
+              <td style="color: #fff;"><strong>TCO节省</strong></td>
+              <td style="color: #fff;">20%</td>
+              <td style="color: #fff;">28%</td>
+              <td style="color: #fff;">✅ 超额达成</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="success-box">
+      <strong>🏆 客户评价：</strong><br>
+      "利通科技的LT800B软管完全满足我们GB200 NVL72机柜的需求。2周交货周期让我们提前1个月完成部署，运行3个月零故障。最重要的是，相比国际品牌，TCO节省了28%，为我们节省了¥150万。" —— 客户基础设施总监
+    </div>
+
+    <div class="lesson-learned">
+      <strong>💡 经验教训：</strong>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>教训1：</strong>GB200/GB300必须选LT800B，LT800A的10 bar压力不够</li>
+        <li><strong>教训2：</strong>样品测试阶段要模拟真实工况（15 bar压力，48小时连续运行）</li>
+        <li><strong>教训3：</strong>快速交货是竞争优势，利通2周 vs 国际品牌4-6周</li>
+        <li><strong>教训4：</strong>现场安装要逐台压力测试，不能批量测试后再安装</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 案例2：北美云服务商 -->
+  <div class="section">
+    <div class="case-card">
+      <h3>📊 案例2：北美云服务商 - H100超算集群部署</h3>
+      
+      <div class="case-header">
+        <div class="case-meta">
+          <strong>客户类型</strong>
+          北美Top 3云服务商
+        </div>
+        <div class="case-meta">
+          <strong>项目时间</strong>
+          2025年7月-10月
+        </div>
+        <div class="case-meta">
+          <strong>项目规模</strong>
+          2000台H100服务器
+        </div>
+        <div class="case-meta">
+          <strong>产品型号</strong>
+          LT800A（标准型）
+        </div>
+      </div>
+
+      <div class="case-content">
+        <h4 style="color: #fff; margin-bottom: 15px;">🎯 客户背景</h4>
+        <p>北美Top 3云服务商，在俄勒冈州数据中心部署2000台NVIDIA H100服务器（每台700W）。机柜功率密度60kW/机柜，采用混合冷却方案（CPU风冷+GPU液冷）。</p>
+
+        <h4 style="color: #fff; margin-top: 20px; margin-bottom: 15px;">📋 需求分析</h4>
+        <ul style="margin-left: 20px;">
+          <li><strong>压力需求：</strong>H100仅需10 bar工作压力</li>
+          <li><strong>流量需求：</strong>每台服务器20 LPM，总流量40,000 LPM</li>
+          <li><strong>认证需求：</strong>必须通过UL 2196认证</li>
+          <li><strong>成本需求：</strong>极度敏感，要求最低TCO</li>
+          <li><strong>供应链需求：</strong>本地化供应，2周内补货</li>
+        </ul>
+
+        <h4 style="color: #fff; margin-top: 20px; margin-bottom: 15px;">💡 方案设计</h4>
+        <p><strong>产品选型：</strong>LT800A（10 bar工作压力，20 LPM流量，性价比最优）</p>
+        <p><strong>配置方案：</strong></p>
+        <ul style="margin-left: 20px;">
+          <li>每台服务器：2根LT800A软管（进水+回水），每根1.2米</li>
+          <li>总用量：2000台 × 2根 × 1.2米 = 4,800米</li>
+          <li>快接头：Parker H系列（客户指定）</li>
+          <li>冷却液：40%乙二醇水溶液</li>
+        </ul>
+
+        <h4 style="color: #fff; margin-top: 20px; margin-bottom: 15px;">🚀 实施过程</h4>
+        <p><strong>挑战：</strong>客户原计划采购Parker软管（¥820/米），但预算超支30%。利通科技通过代理商介绍，提供LT800A方案（¥450/米），节省¥177万。</p>
+
+        <p style="margin-top: 15px;"><strong>认证过程：</strong></p>
+        <ul style="margin-left: 20px;">
+          <li>客户要求提供UL 2196认证证书（已有）</li>
+          <li>客户要求提供Parker H系列兼容性测试报告（2周完成）</li>
+          <li>客户现场审核利通工厂（通过ISO 9001认证）</li>
+        </ul>
+
+        <p style="margin-top: 15px;"><strong>交付与安装：</strong></p>
+        <ul style="margin-left: 20px;">
+          <li>分3批交付：1600米+1600米+1600米（每批2周）</li>
+          <li>客户自行安装，利通提供远程技术支持</li>
+          <li>安装周期：12周（每周安装150-200台）</li>
+        </ul>
+
+        <h4 style="color: #fff; margin-top: 20px; margin-bottom: 15px;">📈 成果数据</h4>
+        <table style="margin-top: 15px;">
+          <thead>
+            <tr style="background: rgba(255,255,255,0.2);">
+              <th style="background: transparent; color: #fff;">指标</th>
+              <th style="background: transparent; color: #fff;">Parker方案</th>
+              <th style="background: transparent; color: #fff;">LT800A方案</th>
+              <th style="background: transparent; color: #fff;">节省</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background: rgba(255,255,255,0.1);">
+              <td style="color: #fff;"><strong>软管成本</strong></td>
+              <td style="color: #fff;">¥393.6万</td>
+              <td style="color: #fff;">¥216万</td>
+              <td style="color: #fff;">¥177.6万（45%）</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.05);">
+              <td style="color: #fff;"><strong>交货周期</strong></td>
+              <td style="color: #fff;">6周/批</td>
+              <td style="color: #fff;">2周/批</td>
+              <td style="color: #fff;">提前12周</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.1);">
+              <td style="color: #fff;"><strong>运行6个月故障率</strong></td>
+              <td style="color: #fff;">0.05%（预估）</td>
+              <td style="color: #fff;">0.03%</td>
+              <td style="color: #fff;">更可靠</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.05);">
+              <td style="color: #fff;"><strong>10年TCO</strong></td>
+              <td style="color: #fff;">¥450万</td>
+              <td style="color: #fff;">¥280万</td>
+              <td style="color: #fff;">¥170万（38%）</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="success-box">
+      <strong>🏆 客户评价：</strong><br>
+      "利通科技的LT800A软管帮助我们解决了预算超支问题。相比Parker，成本降低45%，交货周期缩短66%，运行6个月零重大故障。我们已将利通列为全球液冷软管首选供应商。" —— 客户采购总监
+    </div>
+
+    <div class="lesson-learned">
+      <strong>💡 经验教训：</strong>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>教训1：</strong>H100等700-1200W GPU选LT800A即可，无需LT800B</li>
+        <li><strong>教训2：</strong>北美市场UL认证是硬性要求，必须提前准备</li>
+        <li><strong>教训3：</strong>快接头兼容性测试报告是成交关键，要提前准备</li>
+        <li><strong>教训4：</strong>价格优势45%是打开北美市场的最大武器</li>
+        <li><strong>教训5：</strong>分批交付降低客户库存压力，提高合作意愿</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- 案例3：欧洲数据中心混合改造 -->
+  <div class="section">
+    <div class="case-card">
+      <h3>📊 案例3：欧洲数据中心 - 混合冷却改造项目</h3>
+      
+      <div class="case-header">
+        <div class="case-meta">
+          <strong>客户类型</strong>
+          欧洲Tier 3数据中心
+        </div>
+        <div class="case-meta">
+          <strong>项目时间</strong>
+          2025年10月-12月
+        </div>
+        <div class="case-meta">
+          <strong>项目规模</strong>
+          1000台服务器（混合）
+        </div>
+        <div class="case-meta">
+          <strong>产品型号</strong>
+          LT800A + LT800B
+        </div>
+      </div>
+
+      <div class="case-content">
+        <h4 style="color: #fff; margin-bottom: 15px;">🎯 客户背景</h4>
+        <p>德国法兰克福某Tier 3数据中心，原有800台H100服务器（风冷），计划新增200台GB200服务器（液冷），并将部分H100改造为液冷。总预算€2M，要求通过CE认证。</p>
+
+        <h4 style="color: #fff; margin-top: 20px; margin-bottom: 15px;">📋 需求分析</h4>
+        <ul style="margin-left: 20px;">
+          <li><strong>混合需求：</strong>800台H100（10 bar）+ 200台GB200（15 bar）</li>
+          <li><strong>改造需求：</strong>现有机房空间有限，需要灵活布管</li>
+          <li><strong>认证需求：</strong>必须通过CE认证和RoHS认证</li>
+          <li><strong>环保需求：</strong>使用生物基冷却液，软管需兼容</li>
+          <li><strong>时间需求：</strong>3个月内完成改造（圣诞节前上线）</li>
+        </ul>
+
+        <h4 style="color: #fff; margin-top: 20px; margin-bottom: 15px;">💡 方案设计</h4>
+        <p><strong>产品选型：</strong>LT800A（H100）+ LT800B（GB200）</p>
+        <p><strong>配置方案：</strong></p>
+        <ul style="margin-left: 20px;">
+          <li>H100区域：800台 × 2根 × 1.5米 = 2,400米LT800A</li>
+          <li>GB200区域：200台 × 2根 × 1.5米 = 600米LT800B</li>
+          <li>快接头：Stäubli RMI209（统一标准）</li>
+          <li>冷却液：生物基冷却液（客户指定）</li>
+        </ul>
+
+        <h4 style="color: #fff; margin-top: 20px; margin-bottom: 15px;">🚀 实施过程</h4>
+        <p><strong>挑战1：</strong>生物基冷却液兼容性测试</p>
+        <ul style="margin-left: 20px;">
+          <li>客户使用新型生物基冷却液（非传统乙二醇）</li>
+          <li>利通科技提供样品进行30天浸泡测试</li>
+          <li>测试结果：EPDM内层完全兼容，无膨胀、无腐蚀</li>
+        </ul>
+
+        <p style="margin-top: 15px;"><strong>挑战2：</strong>CE认证时效性</p>
+        <ul style="margin-left: 20px;">
+          <li>客户要求提供CE认证证书（利通已有）</li>
+          <li>客户要求提供RoHS测试报告（2周补充完成）</li>
+          <li>客户要求提供生物基冷却液兼容性报告（3周完成）</li>
+        </ul>
+
+        <p style="margin-top: 15px;"><strong>分阶段实施：</strong></p>
+        <ul style="margin-left: 20px;">
+          <li>第1阶段（4周）：200台GB200新增部署（LT800B）</li>
+          <li>第2阶段（6周）：400台H100改造为液冷（LT800A）</li>
+          <li>第3阶段（2周）：系统联调和性能优化</li>
+        </ul>
+
+        <h4 style="color: #fff; margin-top: 20px; margin-bottom: 15px;">📈 成果数据</h4>
+        <table style="margin-top: 15px;">
+          <thead>
+            <tr style="background: rgba(255,255,255,0.2);">
+              <th style="background: transparent; color: #fff;">指标</th>
+              <th style="background: transparent; color: #fff;">改造前</th>
+              <th style="background: transparent; color: #fff;">改造后</th>
+              <th style="background: transparent; color: #fff;">改善</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background: rgba(255,255,255,0.1);">
+              <td style="color: #fff;"><strong>机柜功率密度</strong></td>
+              <td style="color: #fff;">40kW/机柜</td>
+              <td style="color: #fff;">100kW/机柜</td>
+              <td style="color: #fff;">+150%</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.05);">
+              <td style="color: #fff;"><strong>PUE</strong></td>
+              <td style="color: #fff;">1.6</td>
+              <td style="color: #fff;">1.25</td>
+              <td style="color: #fff;">-22%</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.1);">
+              <td style="color: #fff;"><strong>年电费</strong></td>
+              <td style="color: #fff;">€800K</td>
+              <td style="color: #fff;">€650K</td>
+              <td style="color: #fff;">节省€150K</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.05);">
+              <td style="color: #fff;"><strong>噪音</strong></td>
+              <td style="color: #fff;">75 dB</td>
+              <td style="color: #fff;">55 dB</td>
+              <td style="color: #fff;">-27%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="success-box">
+      <strong>🏆 客户评价：</strong><br>
+      "利通科技的LT800系列帮助我们成功完成混合冷却改造。LT800A和LT800B可以共用Stäubli接头，简化了库存管理。生物基冷却液兼容性测试让我们放心使用环保方案。改造后PUE从1.6降至1.25，年节省电费€150K。" —— 客户运营总监
+    </div>
+
+    <div class="lesson-learned">
+      <strong>💡 经验教训：</strong>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>教训1：</strong>混合部署场景，LT800A+B组合最灵活</li>
+        <li><strong>教训2：</strong>欧洲市场CE和RoHS认证是硬性要求</li>
+        <li><strong>教训3：</strong>新型冷却液需要提前做兼容性测试（30天浸泡）</li>
+        <li><strong>教训4：</strong>分阶段实施降低风险，便于问题排查</li>
+        <li><strong>教训5：</strong>环保优势（生物基冷却液兼容）是欧洲市场加分项</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 案例4：边缘计算小型部署 -->
+  <div class="section">
+    <div class="case-card">
+      <h3>📊 案例4：边缘计算公司 - 小型AI推理站部署</h3>
+      
+      <div class="case-header">
+        <div class="case-meta">
+          <strong>客户类型</strong>
+          边缘计算初创公司
+        </div>
+        <div class="case-meta">
+          <strong>项目时间</strong>
+          2026年2月-3月
+        </div>
+        <div class="case-meta">
+          <strong>项目规模</strong>
+          50台服务器（10站点）
+        </div>
+        <div class="case-meta">
+          <strong>产品型号</strong>
+          LT800A（标准型）
+        </div>
+      </div>
+
+      <div class="case-content">
+        <h4 style="color: #fff; margin-bottom: 15px;">🎯 客户背景</h4>
+        <p>某边缘计算初创公司，在全国10个城市部署小型AI推理站（每站5台H100服务器）。站点位于商业楼宇，空间受限，噪音敏感，需要液冷方案。</p>
+
+        <h4 style="color: #fff; margin-top: 20px; margin-bottom: 15px;">📋 需求分析</h4>
+        <ul style="margin-left: 20px;">
+          <li><strong>小批量需求：</strong>总共50台服务器，分10个站点</li>
+          <li><strong>空间限制：</strong>每站仅1个机柜，需要紧凑布管</li>
+          <li><strong>噪音限制：</strong>商业楼宇，噪音需<60 dB</li>
+          <li><strong>成本敏感：</strong>初创公司，预算有限</li>
+          <li><strong>快速部署：</strong>1个月内完成10个站点部署</li>
+        </ul>
+
+        <h4 style="color: #fff; margin-top: 20px; margin-bottom: 15px;">💡 方案设计</h4>
+        <p><strong>产品选型：</strong>LT800A（性价比最优，40mm弯曲半径适合紧凑空间）</p>
+        <p><strong>配置方案：</strong></p>
+        <ul style="margin-left: 20px;">
+          <li>每台服务器：2根LT800A软管，每根1米（紧凑布管）</li>
+          <li>总用量：50台 × 2根 × 1米 = 100米</li>
+          <li>快接头：CPC LQ6（医疗级，低泄漏）</li>
+          <li>冷却液：50%乙二醇水溶液</li>
+        </ul>
+
+        <h4 style="color: #fff; margin-top: 20px; margin-bottom: 15px;">🚀 实施过程</h4>
+        <p><strong>挑战：</strong>小批量采购（100米），传统供应商起订量500米</p>
+        <ul style="margin-left: 20px;">
+          <li>利通科技接受100米小单，无起订量限制</li>
+          <li>1周交货，支持客户快速部署</li>
+          <li>提供预装接头服务，现场即插即用</li>
+        </ul>
+
+        <p style="margin-top: 15px;"><strong>部署方式：</strong></p>
+        <ul style="margin-left: 20px;">
+          <li>利通提供远程安装指导视频</li>
+          <li>客户自行安装（每站1天完成）</li>
+          <li>利通提供7×24小时技术支持热线</li>
+        </ul>
+
+        <h4 style="color: #fff; margin-top: 20px; margin-bottom: 15px;">📈 成果数据</h4>
+        <table style="margin-top: 15px;">
+          <thead>
+            <tr style="background: rgba(255,255,255,0.2);">
+              <th style="background: transparent; color: #fff;">指标</th>
+              <th style="background: transparent; color: #fff;">风冷方案</th>
+              <th style="background: transparent; color: #fff;">LT800A液冷方案</th>
+              <th style="background: transparent; color: #fff;">改善</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background: rgba(255,255,255,0.1);">
+              <td style="color: #fff;"><strong>机柜空间</strong></td>
+              <td style="color: #fff;">2个机柜</td>
+              <td style="color: #fff;">1个机柜</td>
+              <td style="color: #fff;">节省50%</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.05);">
+              <td style="color: #fff;"><strong>噪音</strong></td>
+              <td style="color: #fff;">75 dB</td>
+              <td style="color: #fff;">55 dB</td>
+              <td style="color: #fff;">-27%</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.1);">
+              <td style="color: #fff;"><strong>部署周期</strong></td>
+              <td style="color: #fff;">6周</td>
+              <td style="color: #fff;">4周</td>
+              <td style="color: #fff;">提前2周</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.05);">
+              <td style="color: #fff;"><strong>总成本</strong></td>
+              <td style="color: #fff;">¥80万</td>
+              <td style="color: #fff;">¥65万</td>
+              <td style="color: #fff;">节省¥15万</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="success-box">
+      <strong>🏆 客户评价：</strong><br>
+      "利通科技是唯一愿意接100米小单的供应商。LT800A的40mm弯曲半径让我们在1个机柜内完成5台服务器的紧凑布管。预装接头服务让我们现场安装只需1天。运行3个月零故障，噪音从75 dB降至55 dB，楼宇物业非常满意。" —— 客户CTO
+    </div>
+
+    <div class="lesson-learned">
+      <strong>💡 经验教训：</strong>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>教训1：</strong>小批量市场（<500米）是利通的差异化优势</li>
+        <li><strong>教训2：</strong>40mm弯曲半径是紧凑空间部署的关键</li>
+        <li><strong>教训3：</strong>预装接头服务大幅降低客户安装难度</li>
+        <li><strong>教训4：</strong>边缘计算场景，噪音控制是核心卖点</li>
+        <li><strong>教训5：</strong>远程技术支持和安装视频是小客户的刚需</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 案例5：故障排查 -->
+  <div class="section">
+    <div class="case-card" style="background: linear-gradient(135deg, #ea4335 0%, #c5221f 100%);">
+      <h3>📊 案例5：故障排查 - 泄漏问题诊断与解决</h3>
+      
+      <div class="case-header">
+        <div class="case-meta">
+          <strong>客户类型</strong>
+          国内AI训练公司
+        </div>
+        <div class="case-meta">
+          <strong>问题时间</strong>
+          2025年11月
+        </div>
+        <div class="case-meta">
+          <strong>问题规模</strong>
+          200台服务器，5%泄漏率
+        </div>
+        <div class="case-meta">
+          <strong>产品型号</strong>
+          LT800B（增强型）
+        </div>
+      </div>
+
+      <div class="case-content">
+        <h4 style="color: #fff; margin-bottom: 15px;">🎯 问题背景</h4>
+        <p>某国内AI训练公司，2025年9月部署200台GB200服务器（LT800B软管）。运行2个月后，发现10台服务器出现接头处微量泄漏（5%泄漏率），客户紧急求助。</p>
+
+        <h4 style="color: #fff; margin-top: 20px; margin-bottom: 15px;">🔍 问题诊断</h4>
+        <p><strong>第1步：现场勘查</strong></p>
+        <ul style="margin-left: 20px;">
+          <li>泄漏位置：100%发生在接头与软管连接处</li>
+          <li>泄漏形式：微量渗漏（1-2滴/小时）</li>
+          <li>泄漏时间：运行1-2个月后开始出现</li>
+        </ul>
+
+        <p style="margin-top: 15px;"><strong>第2步：样品检测</strong></p>
+        <ul style="margin-left: 20px;">
+          <li>拆解泄漏接头，发现软管外层有轻微磨损</li>
+          <li>测量软管外径：16.2mm（标准16mm±0.2mm）</li>
+          <li>检查接头卡箍：安装扭矩不足（5 N·m，标准8 N·m）</li>
+        </ul>
+
+        <p style="margin-top: 15px;"><strong>第3步：根因分析</strong></p>
+        <ul style="margin-left: 20px;">
+          <li><strong>根因1：</strong>安装扭矩不足，卡箍未压紧软管</li>
+          <li><strong>根因2：</strong>软管外径偏大（16.2mm），卡箍压力不均</li>
+          <li><strong>根因3：</strong>系统压力波动（14-16 bar），加速泄漏</li>
+        </ul>
+
+        <h4 style="color: #fff; margin-top: 20px; margin-bottom: 15px;">💡 解决方案</h4>
+        <p><strong>短期方案（1周内）：</strong></p>
+        <ul style="margin-left: 20px;">
+          <li>重新安装10个泄漏接头，扭矩扳手确保8 N·m</li>
+          <li>全面检查其余190台服务器，预防性加固</li>
+          <li>安装压力稳定器，减少压力波动</li>
+        </ul>
+
+        <p style="margin-top: 15px;"><strong>长期方案（1个月内）：</strong></p>
+        <ul style="margin-left: 20px;">
+          <li>利通科技优化生产工艺，外径公差收紧至±0.1mm</li>
+          <li>提供安装培训，强调扭矩扳手使用</li>
+          <li>提供安装检查清单，确保每个接头都符合标准</li>
+        </ul>
+
+        <h4 style="color: #fff; margin-top: 20px; margin-bottom: 15px;">📈 解决成果</h4>
+        <table style="margin-top: 15px;">
+          <thead>
+            <tr style="background: rgba(255,255,255,0.2);">
+              <th style="background: transparent; color: #fff;">指标</th>
+              <th style="background: transparent; color: #fff;">问题发生时</th>
+              <th style="background: transparent; color: #fff;">解决后</th>
+              <th style="background: transparent; color: #fff;">改善</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background: rgba(255,255,255,0.1);">
+              <td style="color: #fff;"><strong>泄漏率</strong></td>
+              <td style="color: #fff;">5%（10/200）</td>
+              <td style="color: #fff;">0%</td>
+              <td style="color: #fff;">✅ 完全解决</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.05);">
+              <td style="color: #fff;"><strong>解决周期</strong></td>
+              <td style="color: #fff;">-</td>
+              <td style="color: #fff;">1周</td>
+              <td style="color: #fff;">✅ 快速响应</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.1);">
+              <td style="color: #fff;"><strong>运行3个月复发率</strong></td>
+              <td style="color: #fff;">-</td>
+              <td style="color: #fff;">0%</td>
+              <td style="color: #fff;">✅ 根治问题</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.05);">
+              <td style="color: #fff;"><strong>客户满意度</strong></td>
+              <td style="color: #fff;">2/5</td>
+              <td style="color: #fff;">5/5</td>
+              <td style="color: #fff;">✅ 转危为机</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="warning-box">
+      <strong>⚠️ 重要提醒：</strong><br>
+      接头泄漏90%是安装问题，不是产品问题！必须使用扭矩扳手确保8 N·m安装扭矩。
+    </div>
+
+    <div class="lesson-learned">
+      <strong>💡 经验教训：</strong>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>教训1：</strong>接头泄漏90%是安装扭矩不足，必须使用扭矩扳手</li>
+        <li><strong>教训2：</strong>软管外径公差控制至关重要（±0.1mm vs ±0.2mm）</li>
+        <li><strong>教训3：</strong>压力波动会加速泄漏，需要安装压力稳定器</li>
+        <li><strong>教训4：</strong>提供安装培训和检查清单，预防问题发生</li>
+        <li><strong>教训5：</strong>快速响应（1周解决）是转危为机的关键</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 复习题 -->
+  <div class="section">
+    <h2>模块3复习题</h2>
+
+    <h3>单选题（5道）</h3>
+    <ol style="margin-left: 30px;">
+      <li>案例1中，国内AI独角兽选择LT800B的主要原因是？<br>
+        A. 价格便宜 &nbsp; <strong>B. 支持GB200的15 bar压力需求</strong> &nbsp; C. 交货快 &nbsp; D. 外观好看
+      </li>
+      <li>案例2中，LT800A相比Parker软管的价格优势是？<br>
+        A. 30% &nbsp; B. 40% &nbsp; <strong>C. 45%</strong> &nbsp; D. 50%
+      </li>
+      <li>案例3中，欧洲数据中心改造后PUE从1.6降至多少？<br>
+        A. 1.2 &nbsp; <strong>B. 1.25</strong> &nbsp; C. 1.3 &nbsp; D. 1.4
+      </li>
+      <li>案例4中，边缘计算公司选择LT800A的关键原因是？<br>
+        A. 价格最低 &nbsp; <strong>B. 40mm弯曲半径适合紧凑空间</strong> &nbsp; C. 颜色好看 &nbsp; D. 品牌知名
+      </li>
+      <li>案例5中，接头泄漏的主要根因是？<br>
+        A. 软管质量差 &nbsp; <strong>B. 安装扭矩不足</strong> &nbsp; C. 接头质量差 &nbsp; D. 冷却液腐蚀
+      </li>
+    </ol>
+
+    <h3>简答题（2道）</h3>
+    <ol style="margin-left: 30px;">
+      <li>客户问："我们是小批量部署（100米），你们能接单吗？交货周期多久？"请给出专业回答。<br>
+        <em>参考答案：当然可以！利通科技没有起订量限制，100米小单我们也接。我们理解边缘计算和小型部署场景的需求，专门为此优化了生产流程。交货周期1-2周，比行业平均4-6周快3倍。我们还提供预装接头服务，您现场只需即插即用，1天完成安装。案例4中的边缘计算客户就是100米小单，1周交货，4周完成10个站点部署。</em>
+      </li>
+      <li>客户反馈："我们安装后2个月出现接头泄漏，是不是你们软管质量有问题？"请给出专业回答和解决方案。<br>
+        <em>参考答案：感谢您的反馈！根据我们的经验，接头泄漏90%是安装问题，不是产品问题。主要原因是安装扭矩不足（<8 N·m）。建议您：1）使用扭矩扳手重新安装，确保8 N·m扭矩；2）检查软管外径是否在16mm±0.2mm范围内；3）检查系统压力是否稳定（避免14-16 bar大幅波动）。我们可以立即派技术人员现场支持，1周内解决问题。案例5中的客户就是这个情况，我们1周解决，运行3个月零复发。</em>
+      </li>
+    </ol>
+  </div>
+
+  <!-- 导航 -->
+  <div class="section" style="text-align: center; background: #f5f7fa;">
+    <a href="module2.html" style="display: inline-block; background: #666; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none; margin-right: 20px;">
+      ← 上一模块：技术创新与差异化优势
+    </a>
+    <a href="../index.html" style="display: inline-block; background: #666; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none; margin-right: 20px;">
+      🏠 返回首页
+    </a>
+    <a href="module4.html" style="display: inline-block; background: #ff6b6b; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none;">
+      下一模块：产品演示与实操 →
+    </a>
+  </div>
+
+</div>
+
+</body>
+</html>

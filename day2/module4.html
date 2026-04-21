@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 2 模块4：产品演示与实操</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    line-height: 1.8;
+    color: #222;
+    background: #f5f7fa;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  header {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+    color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+  }
+  h1 { font-size: 32px; margin-bottom: 10px; }
+  .subtitle { font-size: 16px; color: #ffe0e0; }
+  .section {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  h2 {
+    font-size: 24px;
+    color: #ff6b6b;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #ff6b6b;
+  }
+  h3 {
+    font-size: 20px;
+    color: #e87020;
+    margin: 25px 0 15px;
+  }
+  .step-card {
+    background: linear-gradient(135deg, #34a853 0%, #2d8e47 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 25px;
+    margin: 20px 0;
+  }
+  .step-card h4 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  .highlight-box {
+    background: #fff5f5;
+    border-left: 4px solid #ff6b6b;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  .warning-box {
+    background: #fce8e6;
+    border-left: 4px solid #ea4335;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  .info-box {
+    background: #e8f4fd;
+    border-left: 4px solid #1a73e8;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  .success-box {
+    background: #e6f4ea;
+    border-left: 4px solid #34a853;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+  }
+  th {
+    background: #ff6b6b;
+    color: #fff;
+    font-weight: 600;
+  }
+  tr:nth-child(even) { background: #f9f9f9; }
+  .mermaid {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+  }
+  .key-point {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ff6b6b;
+    margin: 20px 0;
+  }
+  .checklist {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+  }
+  .checklist li {
+    margin: 10px 0;
+    padding-left: 30px;
+    position: relative;
+  }
+  .checklist li:before {
+    content: "☐";
+    position: absolute;
+    left: 0;
+    font-size: 20px;
+    color: #ff6b6b;
+  }
+  .tool-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+  }
+  .tool-item {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+  }
+  .tool-item strong {
+    color: #ff6b6b;
+    display: block;
+    margin-bottom: 5px;
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>Day 2 模块4：产品演示与实操</h1>
+    <div class="subtitle">学习时长：2小时 | 掌握LT800系列安装、测试、维护全流程</div>
+  </header>
+
+  <!-- 1. 安装前准备 -->
+  <div class="section">
+    <h2>一、安装前准备：工具与检查清单</h2>
+    
+    <div class="info-box">
+      <strong>📌 学习目标：</strong>掌握安装前的准备工作，包括工具准备、产品检查、环境确认，确保安装过程顺利进行。
+    </div>
+
+    <h3>1.1 必备工具清单</h3>
+    <div class="tool-grid">
+      <div class="tool-item">
+        <strong>扭矩扳手</strong>
+        量程：5-15 N·m<br>
+        精度：±5%<br>
+        用途：安装卡箍
+      </div>
+      <div class="tool-item">
+        <strong>管道切割器</strong>
+        适用：Ø16-20mm<br>
+        刀片：不锈钢<br>
+        用途：切割软管
+      </div>
+      <div class="tool-item">
+        <strong>游标卡尺</strong>
+        量程：0-150mm<br>
+        精度：±0.02mm<br>
+        用途：测量尺寸
+      </div>
+      <div class="tool-item">
+        <strong>压力表</strong>
+        量程：0-25 bar<br>
+        精度：±0.5%<br>
+        用途：压力测试
+      </div>
+      <div class="tool-item">
+        <strong>流量计</strong>
+        量程：0-50 LPM<br>
+        精度：±2%<br>
+        用途：流量测试
+      </div>
+      <div class="tool-item">
+        <strong>泄漏检测液</strong>
+        类型：肥皂水<br>
+        浓度：10%<br>
+        用途：检测泄漏
+      </div>
+      <div class="tool-item">
+        <strong>清洁布</strong>
+        材质：无尘布<br>
+        规格：30×30cm<br>
+        用途：清洁表面
+      </div>
+      <div class="tool-item">
+        <strong>标签打印机</strong>
+        类型：热敏打印<br>
+        规格：12mm宽<br>
+        用途：标识管路
+      </div>
+    </div>
+
+    <h3>1.2 产品到货检查清单</h3>
+    <div class="checklist">
+      <ul style="list-style: none;">
+        <li>检查包装完整性，无破损、无水渍</li>
+        <li>核对数量：软管米数、接头数量、配件数量</li>
+        <li>检查软管外观：无划痕、无气泡、无杂质</li>
+        <li>测量软管尺寸：内径10mm±0.2mm，外径16mm±0.2mm（LT800A）或18mm±0.2mm（LT800B）</li>
+        <li>检查UL认证标签：每根软管应有UL标签</li>
+        <li>检查接头配件：卡箍、密封圈、螺栓齐全</li>
+        <li>核对产品型号：LT800A/B/C，避免混用</li>
+        <li>检查质量追溯码：扫码确认批次信息</li>
+      </ul>
+    </div>
+
+    <h3>1.3 安装环境确认</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>检查项</th>
+          <th>标准要求</th>
+          <th>检查方法</th>
+          <th>不合格处理</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>环境温度</strong></td>
+          <td>15-30°C</td>
+          <td>温度计测量</td>
+          <td>调整空调温度</td>
+        </tr>
+        <tr>
+          <td><strong>环境湿度</strong></td>
+          <td>30-70%</td>
+          <td>湿度计测量</td>
+          <td>开启除湿机</td>
+        </tr>
+        <tr>
+          <td><strong>工作空间</strong></td>
+          <td>≥2m²/人</td>
+          <td>目视检查</td>
+          <td>清理杂物</td>
+        </tr>
+        <tr>
+          <td><strong>照明亮度</strong></td>
+          <td>≥500 lux</td>
+          <td>照度计测量</td>
+          <td>增加照明</td>
+        </tr>
+        <tr>
+          <td><strong>地面清洁</strong></td>
+          <td>无油污、无水渍</td>
+          <td>目视检查</td>
+          <td>清洁地面</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- 2. 安装演示 -->
+  <div class="section">
+    <h2>二、安装演示：6步标准安装流程</h2>
+
+    <div class="info-box">
+      <strong>📌 安装原则：</strong>正确的安装是零泄漏的基础。90%的泄漏问题源于安装不当，特别是扭矩不足。严格按照6步流程操作，确保每个接头都符合标准。
+    </div>
+
+    <div class="mermaid">
+graph LR
+    A[步骤1<br>测量切割] --> B[步骤2<br>清洁端面]
+    B --> C[步骤3<br>安装接头]
+    C --> D[步骤4<br>紧固卡箍]
+    D --> E[步骤5<br>压力测试]
+    E --> F[步骤6<br>标识管路]
+    </div>
+
+    <div class="step-card">
+      <h4>步骤1：测量与切割软管</h4>
+      <p><strong>目标：</strong>获得长度精确、端面平整的软管</p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>测量：</strong>使用卷尺测量所需长度，预留5cm余量（考虑接头插入深度）</li>
+        <li><strong>标记：</strong>用记号笔在软管上标记切割位置</li>
+        <li><strong>切割：</strong>使用管道切割器垂直切割，旋转3-5圈完成切割</li>
+        <li><strong>检查：</strong>端面应平整，无毛刺，垂直度<2°</li>
+      </ul>
+      <div class="warning-box" style="margin-top: 15px; background: rgba(255,255,255,0.2); border-color: #fff;">
+        <strong style="color: #fff;">⚠️ 常见错误：</strong><span style="color: #fff;">使用刀片切割导致端面不平整，影响密封效果。必须使用管道切割器！</span>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <h4>步骤2：清洁软管端面</h4>
+      <p><strong>目标：</strong>去除油污、灰尘，确保密封面清洁</p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>擦拭：</strong>使用无尘布擦拭软管外表面（接头插入区域，约5cm）</li>
+        <li><strong>清洁：</strong>使用酒精棉片清洁端面，去除油污</li>
+        <li><strong>干燥：</strong>自然晾干30秒，或使用压缩空气吹干</li>
+        <li><strong>检查：</strong>目视检查，确保无油污、无灰尘、无水渍</li>
+      </ul>
+      <div class="info-box" style="margin-top: 15px; background: rgba(255,255,255,0.2); border-color: #fff;">
+        <strong style="color: #fff;">💡 专业技巧：</strong><span style="color: #fff;">清洁是最容易被忽视的步骤，但对密封效果影响巨大。油污会导致密封圈打滑，灰尘会划伤密封面。</span>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <h4>步骤3：安装快速接头</h4>
+      <p><strong>目标：</strong>将接头正确插入软管，确保插入深度</p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>润滑：</strong>在接头插入端涂抹少量冷却液（或甘油），降低摩擦</li>
+        <li><strong>插入：</strong>将接头垂直插入软管，旋转插入至标记线（通常3-4cm）</li>
+        <li><strong>检查：</strong>确认接头插入深度达到标记线，软管无明显膨胀</li>
+        <li><strong>定位：</strong>调整接头方向，确保进出水口朝向正确</li>
+      </ul>
+      <div class="warning-box" style="margin-top: 15px; background: rgba(255,255,255,0.2); border-color: #fff;">
+        <strong style="color: #fff;">⚠️ 常见错误：</strong><span style="color: #fff;">插入深度不足（<3cm）导致卡箍无法压紧，或插入过深（>4cm）导致软管内层损伤。</span>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <h4>步骤4：紧固卡箍（关键步骤！）</h4>
+      <p><strong>目标：</strong>使用扭矩扳手确保8 N·m紧固扭矩</p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>套入卡箍：</strong>将卡箍套在软管与接头连接处</li>
+        <li><strong>预紧：</strong>手动拧紧螺栓至有阻力感（约3 N·m）</li>
+        <li><strong>扭矩紧固：</strong>使用扭矩扳手，设定8 N·m，拧紧至"咔哒"声</li>
+        <li><strong>检查：</strong>目视检查卡箍是否均匀压紧软管，无明显缝隙</li>
+      </ul>
+      <div class="warning-box" style="margin-top: 15px; background: rgba(255,255,255,0.2); border-color: #fff;">
+        <strong style="color: #fff;">⚠️ 这是最关键的步骤！</strong><span style="color: #fff;">90%的泄漏问题源于扭矩不足（<8 N·m）。必须使用扭矩扳手，不能凭手感！</span>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <h4>步骤5：压力测试</h4>
+      <p><strong>目标：</strong>确认安装质量，检测泄漏</p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>连接系统：</strong>将软管连接到冷却系统</li>
+        <li><strong>升压：</strong>缓慢升压至工作压力（LT800A: 10 bar, LT800B: 15 bar）</li>
+        <li><strong>保压：</strong>保持工作压力30分钟</li>
+        <li><strong>检测泄漏：</strong>在接头处涂抹泄漏检测液（肥皂水），观察是否有气泡</li>
+        <li><strong>记录：</strong>记录压力值、保压时间、泄漏情况</li>
+      </ul>
+      <div class="success-box" style="margin-top: 15px; background: rgba(255,255,255,0.2); border-color: #fff;">
+        <strong style="color: #fff;">✅ 合格标准：</strong><span style="color: #fff;">保压30分钟，压力降<0.5 bar，无气泡产生。</span>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <h4>步骤6：标识管路</h4>
+      <p><strong>目标：</strong>便于后续维护和故障排查</p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>标签内容：</strong>服务器编号、安装日期、安装人员、产品型号</li>
+        <li><strong>标签位置：</strong>软管中部，易于观察的位置</li>
+        <li><strong>颜色编码：</strong>进水管（蓝色标签）、回水管（红色标签）</li>
+        <li><strong>记录：</strong>在安装记录表中登记管路信息</li>
+      </ul>
+    </div>
+
+    <div class="key-point">
+      💡 安装时间：熟练工人单根软管安装时间约10分钟（含测试）。新手建议预留20分钟。
+    </div>
+  </div>
+
+  <!-- 3. 压力测试详解 -->
+  <div class="section">
+    <h2>三、压力测试详解：3种测试方法</h2>
+
+    <div class="info-box">
+      <strong>📌 测试目的：</strong>压力测试是验证安装质量的唯一方法。通过不同压力等级的测试，确保软管和接头能够承受工作压力，并具备足够的安全裕度。
+    </div>
+
+    <h3>3.1 测试方法对比</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>测试方法</th>
+          <th>测试压力</th>
+          <th>保压时间</th>
+          <th>应用场景</th>
+          <th>合格标准</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>工作压力测试</strong></td>
+          <td>10 bar (LT800A)<br>15 bar (LT800B)</td>
+          <td>30分钟</td>
+          <td>安装后逐台测试</td>
+          <td>压降<0.5 bar<br>无泄漏</td>
+        </tr>
+        <tr>
+          <td><strong>超压测试</strong></td>
+          <td>15 bar (LT800A)<br>20 bar (LT800B)</td>
+          <td>10分钟</td>
+          <td>抽检（10%）</td>
+          <td>压降<1 bar<br>无泄漏</td>
+        </tr>
+        <tr>
+          <td><strong>爆破测试</strong></td>
+          <td>持续升压至爆破</td>
+          <td>-</td>
+          <td>质量验证（1%）</td>
+          <td>≥40 bar (LT800A)<br>≥60 bar (LT800B)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>3.2 工作压力测试流程（最常用）</h3>
+    <div class="mermaid">
+graph TD
+    A[准备阶段] --> A1[连接压力表]
+    A1 --> A2[关闭所有阀门]
+    A2 --> A3[准备泄漏检测液]
+    
+    A3 --> B[升压阶段]
+    B --> B1[缓慢升压<br>1 bar/分钟]
+    B1 --> B2[达到工作压力<br>10/15 bar]
+    
+    B2 --> C[保压阶段]
+    C --> C1[保压30分钟]
+    C1 --> C2[每5分钟记录压力]
+    
+    C2 --> D[检测阶段]
+    D --> D1[涂抹泄漏检测液]
+    D1 --> D2[观察气泡]
+    D2 --> D3{有气泡?}
+    
+    D3 -->|是| E[不合格<br>重新安装]
+    D3 -->|否| F[合格<br>放行]
+    </div>
+
+    <h3>3.3 泄漏检测方法</h3>
+    <div class="highlight-box">
+      <strong>方法1：肥皂水检测（最常用）</strong>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>配制：</strong>10%肥皂水溶液（100ml水+10ml洗洁精）</li>
+        <li><strong>涂抹：</strong>用刷子在接头处涂抹肥皂水</li>
+        <li><strong>观察：</strong>观察30秒，有气泡产生即为泄漏</li>
+        <li><strong>优点：</strong>成本低、操作简单、灵敏度高</li>
+        <li><strong>缺点：</strong>需要人工观察，效率较低</li>
+      </ul>
+    </div>
+
+    <div class="highlight-box">
+      <strong>方法2：压力降检测（最准确）</strong>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>原理：</strong>密闭系统压力降超过阈值即为泄漏</li>
+        <li><strong>操作：</strong>升压至工作压力，关闭阀门，记录压力变化</li>
+        <li><strong>判断：</strong>30分钟压降<0.5 bar为合格</li>
+        <li><strong>优点：</strong>定量检测、准确度高、可自动化</li>
+        <li><strong>缺点：</strong>无法定位泄漏点</li>
+      </ul>
+    </div>
+
+    <div class="highlight-box">
+      <strong>方法3：氦气检测（最灵敏）</strong>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>原理：</strong>氦气分子小，易泄漏，使用氦气检测仪检测</li>
+        <li><strong>操作：</strong>充入氦气，使用检测仪扫描接头</li>
+        <li><strong>判断：</strong>检测仪报警即为泄漏</li>
+        <li><strong>优点：</strong>灵敏度极高（10⁻⁹ mbar·L/s），可定位泄漏点</li>
+        <li><strong>缺点：</strong>成本高（设备¥10万+），操作复杂</li>
+      </ul>
+    </div>
+
+    <div class="warning-box">
+      <strong>⚠️ 安全提醒：</strong>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li>压力测试时，人员应远离测试区域（≥2米）</li>
+        <li>升压速度不得超过1 bar/分钟，避免冲击</li>
+        <li>测试压力不得超过爆破压力的50%（安全系数2）</li>
+        <li>发现泄漏立即泄压，不得继续测试</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 4. 维护保养指南 -->
+  <div class="section">
+    <h2>四、维护保养指南：延长使用寿命</h2>
+
+    <div class="info-box">
+      <strong>📌 维护原则：</strong>LT800系列设计寿命10-15年，但实际寿命取决于维护质量。定期检查、及时更换，可确保系统长期稳定运行。
+    </div>
+
+    <h3>4.1 日常巡检清单（每周1次）</h3>
+    <div class="checklist">
+      <ul style="list-style: none;">
+        <li>目视检查软管外观：无划痕、无鼓包、无变色</li>
+        <li>检查接头连接：无松动、无泄漏、无腐蚀</li>
+        <li>检查卡箍状态：无锈蚀、无变形、螺栓无松动</li>
+        <li>检查管路标识：标签清晰、无脱落</li>
+        <li>记录系统压力：是否在正常范围内</li>
+        <li>记录冷却液温度：是否在-40°C ~ +80°C范围内</li>
+      </ul>
+    </div>
+
+    <h3>4.2 定期维护计划</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>维护周期</th>
+          <th>维护项目</th>
+          <th>操作方法</th>
+          <th>判断标准</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>每月</strong></td>
+          <td>压力测试</td>
+          <td>升压至工作压力，保压10分钟</td>
+          <td>压降<0.5 bar</td>
+        </tr>
+        <tr>
+          <td><strong>每季度</strong></td>
+          <td>泄漏检测</td>
+          <td>肥皂水涂抹所有接头</td>
+          <td>无气泡产生</td>
+        </tr>
+        <tr>
+          <td><strong>每半年</strong></td>
+          <td>卡箍检查</td>
+          <td>使用扭矩扳手复检扭矩</td>
+          <td>扭矩≥7 N·m</td>
+        </tr>
+        <tr>
+          <td><strong>每年</strong></td>
+          <td>软管更换评估</td>
+          <td>检查软管老化程度</td>
+          <td>见下表</td>
+        </tr>
+        <tr>
+          <td><strong>每2年</strong></td>
+          <td>冷却液更换</td>
+          <td>排空旧液，冲洗，加注新液</td>
+          <td>pH值7-9</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>4.3 软管更换判断标准</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>检查项</th>
+          <th>正常状态</th>
+          <th>需要关注</th>
+          <th>必须更换</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>外观</strong></td>
+          <td>光滑、无划痕</td>
+          <td>轻微划痕（<0.5mm）</td>
+          <td>深度划痕（>0.5mm）</td>
+        </tr>
+        <tr>
+          <td><strong>颜色</strong></td>
+          <td>原色（黑色/灰色）</td>
+          <td>轻微变色</td>
+          <td>明显褪色或变黄</td>
+        </tr>
+        <tr>
+          <td><strong>硬度</strong></td>
+          <td>柔软有弹性</td>
+          <td>轻微硬化</td>
+          <td>明显硬化或开裂</td>
+        </tr>
+        <tr>
+          <td><strong>泄漏</strong></td>
+          <td>无泄漏</td>
+          <td>微量渗漏（<1滴/小时）</td>
+          <td>明显泄漏（>1滴/小时）</td>
+        </tr>
+        <tr>
+          <td><strong>使用年限</strong></td>
+          <td><5年</td>
+          <td>5-10年</td>
+          <td>>10年（LT800A）<br>>15年（LT800B）</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="warning-box">
+      <strong>⚠️ 强制更换条件（满足任一即更换）：</strong>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li>软管表面有深度划痕（>0.5mm）</li>
+        <li>软管出现鼓包或变形</li>
+        <li>接头处持续泄漏（重新安装后仍泄漏）</li>
+        <li>软管明显硬化或开裂</li>
+        <li>使用年限超过设计寿命（LT800A: 10年，LT800B: 15年）</li>
+      </ul>
+    </div>
+
+    <h3>4.4 常见故障排查</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>故障现象</th>
+          <th>可能原因</th>
+          <th>排查方法</th>
+          <th>解决方案</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>接头泄漏</strong></td>
+          <td>1. 扭矩不足<br>2. 软管外径偏大<br>3. 密封圈损坏</td>
+          <td>1. 扭矩扳手复检<br>2. 游标卡尺测量<br>3. 拆解检查</td>
+          <td>1. 重新紧固至8 N·m<br>2. 更换软管<br>3. 更换密封圈</td>
+        </tr>
+        <tr>
+          <td><strong>软管鼓包</strong></td>
+          <td>1. 压力过高<br>2. 软管老化<br>3. 编织层断裂</td>
+          <td>1. 压力表检查<br>2. 目视检查<br>3. 拆解检查</td>
+          <td>1. 降低压力<br>2. 更换软管<br>3. 更换软管</td>
+        </tr>
+        <tr>
+          <td><strong>流量不足</strong></td>
+          <td>1. 软管堵塞<br>2. 软管弯曲过度<br>3. 内层脱落</td>
+          <td>1. 流量计测量<br>2. 目视检查<br>3. 拆解检查</td>
+          <td>1. 冲洗或更换<br>2. 调整布管<br>3. 更换软管</td>
+        </tr>
+        <tr>
+          <td><strong>软管硬化</strong></td>
+          <td>1. 温度过高<br>2. 冷却液腐蚀<br>3. 使用年限过长</td>
+          <td>1. 温度计测量<br>2. pH值测试<br>3. 查看安装记录</td>
+          <td>1. 降低温度<br>2. 更换冷却液<br>3. 更换软管</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 5. 复习题 -->
+  <div class="section">
+    <h2>五、模块4复习题</h2>
+
+    <h3>单选题（5道）</h3>
+    <ol style="margin-left: 30px;">
+      <li>安装卡箍时，标准扭矩是多少？<br>
+        A. 5 N·m &nbsp; B. 6 N·m &nbsp; C. 7 N·m &nbsp; <strong>D. 8 N·m</strong>
+      </li>
+      <li>工作压力测试的保压时间是多少？<br>
+        A. 10分钟 &nbsp; B. 20分钟 &nbsp; <strong>C. 30分钟</strong> &nbsp; D. 60分钟
+      </li>
+      <li>工作压力测试的合格标准是压降小于多少？<br>
+        A. 0.2 bar &nbsp; B. 0.3 bar &nbsp; <strong>C. 0.5 bar</strong> &nbsp; D. 1 bar
+      </li>
+      <li>LT800A的设计使用寿命是多少年？<br>
+        A. 5年 &nbsp; <strong>B. 10年</strong> &nbsp; C. 15年 &nbsp; D. 20年
+      </li>
+      <li>软管表面划痕深度超过多少必须更换？<br>
+        A. 0.2mm &nbsp; B. 0.3mm &nbsp; <strong>C. 0.5mm</strong> &nbsp; D. 1mm
+      </li>
+    </ol>
+
+    <h3>简答题（2道）</h3>
+    <ol style="margin-left: 30px;">
+      <li>客户问："我们安装后发现接头泄漏，应该如何排查和解决？"请给出专业回答。<br>
+        <em>参考答案：接头泄漏90%是安装问题，建议按以下步骤排查：1）使用扭矩扳手复检扭矩，确保达到8 N·m（最常见原因）；2）使用游标卡尺测量软管外径，确认在16mm±0.2mm范围内（LT800A）；3）拆解检查密封圈是否损坏或老化；4）检查系统压力是否稳定，避免14-16 bar大幅波动。如果重新紧固至8 N·m后仍泄漏，建议更换软管或密封圈。我们可以提供远程技术支持或现场服务。</em>
+      </li>
+      <li>请说明LT800系列的日常维护要点和更换判断标准。<br>
+        <em>参考答案：日常维护要点：1）每周目视检查软管外观和接头连接；2）每月进行压力测试（保压10分钟）；3）每季度泄漏检测（肥皂水）；4）每半年复检卡箍扭矩；5）每年评估软管老化程度。更换判断标准：满足任一条件即更换：1）深度划痕>0.5mm；2）鼓包或变形；3）持续泄漏；4）明显硬化或开裂；5）超过设计寿命（LT800A: 10年，LT800B: 15年）。</em>
+      </li>
+    </ol>
+  </div>
+
+  <!-- Day 2 总结 -->
+  <div class="section">
+    <h2>🎓 Day 2 学习总结</h2>
+
+    <div class="success-box">
+      <strong>恭喜！您已完成Day 2全部4个模块的学习。</strong>
+      <p style="margin-top: 15px;">通过今天的学习，您已经掌握：</p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li>✅ LT800系列产品家族（LT800A/B/C）的技术规格和选型方法</li>
+        <li>✅ 双层编织、PTFE涂层等核心技术的差异化优势</li>
+        <li>✅ 5个真实案例的应用场景和经验教训</li>
+        <li>✅ 安装、测试、维护的标准流程和常见问题排查</li>
+      </ul>
+      <p style="margin-top: 15px;"><strong>明天预告：</strong>Day 3将学习客户场景与解决方案设计，包括AI超算中心、云服务商、边缘计算等典型场景的方案设计方法。</p>
+    </div>
+  </div>
+
+  <!-- 导航 -->
+  <div class="section" style="text-align: center; background: #f5f7fa;">
+    <a href="module3.html" style="display: inline-block; background: #666; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none; margin-right: 20px;">
+      ← 上一模块：应用案例库
+    </a>
+    <a href="../index.html" style="display: inline-block; background: #ff6b6b; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none;">
+      🏠 返回首页
+    </a>
+  </div>
+
+</div>
+
+</body>
+</html>

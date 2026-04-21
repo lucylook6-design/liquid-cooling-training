@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 2 模块2：技术创新与差异化优势</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    line-height: 1.8;
+    color: #222;
+    background: #f5f7fa;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  header {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+    color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+  }
+  h1 { font-size: 32px; margin-bottom: 10px; }
+  .subtitle { font-size: 16px; color: #ffe0e0; }
+  .section {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  h2 {
+    font-size: 24px;
+    color: #ff6b6b;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #ff6b6b;
+  }
+  h3 {
+    font-size: 20px;
+    color: #e87020;
+    margin: 25px 0 15px;
+  }
+  .highlight-box {
+    background: #fff5f5;
+    border-left: 4px solid #ff6b6b;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  .warning-box {
+    background: #fce8e6;
+    border-left: 4px solid #ea4335;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  .info-box {
+    background: #e8f4fd;
+    border-left: 4px solid #1a73e8;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  .success-box {
+    background: #e6f4ea;
+    border-left: 4px solid #34a853;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+  }
+  th {
+    background: #ff6b6b;
+    color: #fff;
+    font-weight: 600;
+  }
+  tr:nth-child(even) { background: #f9f9f9; }
+  .mermaid {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+  }
+  .key-point {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ff6b6b;
+    margin: 20px 0;
+  }
+  .tech-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 25px;
+    margin: 20px 0;
+  }
+  .tech-card h4 {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+  }
+  .comparison-item {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+  }
+  .comparison-item.winner {
+    border-color: #34a853;
+    background: #e6f4ea;
+  }
+  .comparison-item h5 {
+    color: #ff6b6b;
+    margin-bottom: 10px;
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>Day 2 模块2：技术创新与差异化优势</h1>
+    <div class="subtitle">学习时长：2小时 | 掌握LT800系列核心技术壁垒</div>
+  </header>
+
+  <!-- 1. 双层编织技术 -->
+  <div class="section">
+    <h2>一、双层编织技术：LT800B的核心竞争力</h2>
+    
+    <div class="info-box">
+      <strong>📌 技术背景：</strong>传统单层编织软管在15 bar以上压力下容易发生径向膨胀和轴向伸长，导致接头松动和泄漏风险。LT800B采用双层反向编织技术，彻底解决这一问题。
+    </div>
+
+    <h3>1.1 双层编织结构解析</h3>
+    <div class="mermaid">
+graph LR
+    A[EPDM内层<br>1.8mm] --> B[第一层编织<br>316钢丝 +45°]
+    B --> C[第二层编织<br>316钢丝 -45°]
+    C --> D[TPU外层<br>2.0mm]
+    
+    B --> B1[承受主要压力<br>防止径向膨胀]
+    C --> C1[抵消轴向力<br>防止伸长变形]
+    
+    </div>
+
+    <div class="tech-card">
+      <h4>🔬 技术参数对比</h4>
+      <table style="margin-top: 15px;">
+        <thead>
+          <tr>
+            <th>测试项目</th>
+            <th>单层编织（LT800A）</th>
+            <th>双层编织（LT800B）</th>
+            <th>提升幅度</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>爆破压力</strong></td>
+            <td>40 bar</td>
+            <td>60 bar</td>
+            <td>+50%</td>
+          </tr>
+          <tr>
+            <td><strong>径向膨胀率</strong></td>
+            <td>8% @ 10 bar</td>
+            <td>3% @ 15 bar</td>
+            <td>-62.5%</td>
+          </tr>
+          <tr>
+            <td><strong>轴向伸长率</strong></td>
+            <td>5% @ 10 bar</td>
+            <td>1.5% @ 15 bar</td>
+            <td>-70%</td>
+          </tr>
+          <tr>
+            <td><strong>疲劳寿命</strong></td>
+            <td>50,000次循环</td>
+            <td>100,000次循环</td>
+            <td>+100%</td>
+          </tr>
+          <tr>
+            <td><strong>使用寿命</strong></td>
+            <td>10年</td>
+            <td>15年</td>
+            <td>+50%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>1.2 双层编织的三大优势</h3>
+    <div class="comparison-grid">
+      <div class="comparison-item winner">
+        <h5>✅ 优势1：更高压力承受能力</h5>
+        <p><strong>工作压力：</strong>15 bar（vs 10 bar）</p>
+        <p><strong>爆破压力：</strong>60 bar（vs 40 bar）</p>
+        <p><strong>应用场景：</strong>支持GB200/GB300的1400W高功耗GPU</p>
+      </div>
+
+      <div class="comparison-item winner">
+        <h5>✅ 优势2：更低变形率</h5>
+        <p><strong>径向膨胀：</strong>3% @ 15 bar（vs 8% @ 10 bar）</p>
+        <p><strong>轴向伸长：</strong>1.5% @ 15 bar（vs 5% @ 10 bar）</p>
+        <p><strong>实际效果：</strong>接头更稳定，泄漏风险降低80%</p>
+      </div>
+
+      <div class="comparison-item winner">
+        <h5>✅ 优势3：更长使用寿命</h5>
+        <p><strong>疲劳寿命：</strong>100,000次循环（vs 50,000次）</p>
+        <p><strong>使用寿命：</strong>15年（vs 10年）</p>
+        <p><strong>TCO优势：</strong>长期成本更低，减少更换频率</p>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <strong>💡 销售话术：</strong><br>
+      "客户您好，LT800B的双层编织技术不是简单的'加一层钢丝'，而是通过+45°和-45°反向编织，形成'力学平衡结构'。这就像建筑中的交叉支撑，能够同时抵抗径向膨胀和轴向伸长。实测数据显示，LT800B在15 bar压力下的变形率仅为LT800A在10 bar下的1/3，这意味着接头更稳定、泄漏风险降低80%。对于GB200/GB300这种1400W高功耗GPU，LT800B是唯一能够保证长期可靠运行的选择。"
+    </div>
+  </div>
+
+  <!-- 2. PTFE内涂层技术 -->
+  <div class="section">
+    <h2>二、PTFE内涂层技术：降低压降，节省能耗</h2>
+
+    <div class="info-box">
+      <strong>📌 技术背景：</strong>传统EPDM内层虽然耐腐蚀，但摩擦系数较高（0.5），导致流体压降大、泵功耗高。LT800B在EPDM内层表面喷涂5-10μm PTFE（聚四氟乙烯）涂层，摩擦系数降低至0.2，压降降低15%。
+    </div>
+
+    <h3>2.1 PTFE涂层工作原理</h3>
+    <div class="mermaid">
+graph TD
+    A[冷却液流动] --> B{内层材料?}
+    B -->|EPDM<br>摩擦系数0.5| C[高摩擦阻力]
+    B -->|EPDM+PTFE<br>摩擦系数0.2| D[低摩擦阻力]
+    
+    C --> C1[压降2.0 bar<br>@ 25 LPM]
+    D --> D1[压降1.7 bar<br>@ 25 LPM]
+    
+    C1 --> C2[泵功耗500W]
+    D1 --> D2[泵功耗425W]
+    
+    C2 --> C3[年电费¥3,500]
+    D2 --> D3[年电费¥3,000<br>节省¥500]
+    </div>
+
+    <h3>2.2 PTFE涂层的三大优势</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>优势</th>
+          <th>技术参数</th>
+          <th>实际效果</th>
+          <th>经济效益</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. 降低摩擦系数</strong></td>
+          <td>0.5 → 0.2（-60%）</td>
+          <td>流体流动更顺畅</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td><strong>2. 降低压降</strong></td>
+          <td>2.0 bar → 1.7 bar（-15%）</td>
+          <td>泵负载降低</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td><strong>3. 降低泵功耗</strong></td>
+          <td>500W → 425W（-15%）</td>
+          <td>年节省电费¥500/100米</td>
+          <td>10年节省¥5,000</td>
+        </tr>
+        <tr>
+          <td><strong>4. 延长泵寿命</strong></td>
+          <td>负载降低15%</td>
+          <td>泵寿命延长20%</td>
+          <td>减少更换成本</td>
+        </tr>
+        <tr>
+          <td><strong>5. 更耐腐蚀</strong></td>
+          <td>PTFE化学惰性</td>
+          <td>耐强酸强碱</td>
+          <td>适配更多冷却液</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="success-box">
+      <strong>💰 TCO计算案例（100米软管，10年使用）：</strong>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>LT800A（无PTFE）：</strong>采购¥4.5万 + 电费¥3.5万 = ¥8万</li>
+        <li><strong>LT800B（有PTFE）：</strong>采购¥6.8万 + 电费¥3万 = ¥9.8万</li>
+        <li><strong>差额：</strong>¥1.8万（但LT800B寿命15年 vs 10年）</li>
+        <li><strong>15年TCO：</strong>LT800A需更换1次（¥8万×1.5=¥12万），LT800B仅¥9.8万</li>
+        <li><strong>最终节省：</strong>¥2.2万（18%）</li>
+      </ul>
+    </div>
+
+    <div class="highlight-box">
+      <strong>💡 销售话术：</strong><br>
+      "客户您好，LT800B的PTFE内涂层技术看似增加了成本，但实际上是一项'会赚钱的投资'。通过降低摩擦系数60%，压降降低15%，每年可为您节省电费¥500/100米。更重要的是，泵负载降低15%意味着泵寿命延长20%，减少了更换成本。我们为某AI独角兽公司计算过，1000米LT800B软管，10年可节省电费¥5万，加上减少的泵更换成本，总TCO降低18%。这就是为什么超大规模云服务商都选择LT800B的原因。"
+    </div>
+  </div>
+
+  <!-- 3. 快速接头兼容性 -->
+  <div class="section">
+    <h2>三、快速接头兼容性：一管通吃，降低库存成本</h2>
+
+    <div class="info-box">
+      <strong>📌 技术背景：</strong>市场上快接头品牌众多（Stäubli、Parker、CPC、Colder等），接口尺寸和密封方式各不相同。LT800系列采用"通用外径设计"，兼容95%以上的市场主流快接头，客户无需为不同品牌准备不同软管。
+    </div>
+
+    <h3>3.1 LT800系列快接头兼容性矩阵</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>快接头品牌</th>
+          <th>型号</th>
+          <th>接口尺寸</th>
+          <th>LT800A兼容性</th>
+          <th>LT800B兼容性</th>
+          <th>备注</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Stäubli</strong></td>
+          <td>RMI209, Mini-QD</td>
+          <td>10mm (3/8")</td>
+          <td>✅ 完全兼容</td>
+          <td>✅ 完全兼容</td>
+          <td>NVIDIA UQD标准</td>
+        </tr>
+        <tr>
+          <td><strong>Parker</strong></td>
+          <td>H系列, HPN系列</td>
+          <td>10mm (3/8")</td>
+          <td>✅ 完全兼容</td>
+          <td>✅ 完全兼容</td>
+          <td>市场主流</td>
+        </tr>
+        <tr>
+          <td><strong>CPC</strong></td>
+          <td>LQ6, HFC166</td>
+          <td>9.5mm (3/8")</td>
+          <td>✅ 兼容（需卡箍）</td>
+          <td>✅ 兼容（需卡箍）</td>
+          <td>医疗级</td>
+        </tr>
+        <tr>
+          <td><strong>Colder</strong></td>
+          <td>PMC系列</td>
+          <td>10mm (3/8")</td>
+          <td>✅ 完全兼容</td>
+          <td>✅ 完全兼容</td>
+          <td>工业级</td>
+        </tr>
+        <tr>
+          <td><strong>Faster</strong></td>
+          <td>ENK系列</td>
+          <td>10mm (3/8")</td>
+          <td>✅ 完全兼容</td>
+          <td>✅ 完全兼容</td>
+          <td>欧洲市场</td>
+        </tr>
+        <tr>
+          <td><strong>国产品牌</strong></td>
+          <td>各类仿制品</td>
+          <td>9-11mm</td>
+          <td>⚠️ 需测试</td>
+          <td>⚠️ 需测试</td>
+          <td>质量参差不齐</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>3.2 兼容性带来的三大优势</h3>
+    <div class="comparison-grid">
+      <div class="comparison-item winner">
+        <h5>✅ 优势1：降低库存成本</h5>
+        <p><strong>传统方案：</strong>需为每个快接头品牌准备专用软管</p>
+        <p><strong>LT800方案：</strong>一种软管兼容所有品牌</p>
+        <p><strong>库存成本：</strong>降低60%（6种→1种）</p>
+      </div>
+
+      <div class="comparison-item winner">
+        <h5>✅ 优势2：简化采购流程</h5>
+        <p><strong>传统方案：</strong>需分别询价、比价、下单</p>
+        <p><strong>LT800方案：</strong>一次采购，全部搞定</p>
+        <p><strong>采购周期：</strong>缩短50%（4周→2周）</p>
+      </div>
+
+      <div class="comparison-item winner">
+        <h5>✅ 优势3：提高灵活性</h5>
+        <p><strong>传统方案：</strong>更换快接头品牌需重新采购软管</p>
+        <p><strong>LT800方案：</strong>直接更换快接头，软管无需更换</p>
+        <p><strong>灵活性：</strong>提升100%</p>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <strong>💡 销售话术：</strong><br>
+      "客户您好，LT800系列最大的优势之一就是'一管通吃'。我们采用通用外径设计，兼容Stäubli、Parker、CPC等95%以上的市场主流快接头。这意味着您无需为不同品牌准备不同软管，库存成本降低60%。更重要的是，如果您未来想更换快接头品牌（比如从Parker换到Stäubli），软管无需更换，直接换接头即可。我们有客户因为这个特性，采购周期从4周缩短到2周，库存周转率提升50%。"
+    </div>
+  </div>
+
+  <!-- 4. 质量控制体系 -->
+  <div class="section">
+    <h2>四、质量控制体系：从原材料到出厂的全流程管控</h2>
+
+    <div class="info-box">
+      <strong>📌 质量理念：</strong>利通科技采用"六西格玛"质量管理体系，从原材料采购到成品出厂，共设置12道质量检测关卡，确保每一米软管都符合UL 2196标准。
+    </div>
+
+    <h3>4.1 质量控制流程图</h3>
+    <div class="mermaid">
+graph TD
+    A[原材料采购] --> A1[供应商审核<br>ISO 9001认证]
+    A1 --> A2[原材料检测<br>EPDM/TPU/钢丝]
+    
+    A2 --> B[生产过程]
+    B --> B1[内层挤出<br>厚度±0.1mm]
+    B1 --> B2[钢丝编织<br>编织角度±2°]
+    B2 --> B3[外层挤出<br>厚度±0.1mm]
+    B3 --> B4[硫化固化<br>温度±5°C]
+    
+    B4 --> C[成品检测]
+    C --> C1[外观检测<br>100%全检]
+    C1 --> C2[尺寸检测<br>抽检20%]
+    C2 --> C3[压力测试<br>抽检10%]
+    C3 --> C4[爆破测试<br>抽检5%]
+    
+    C4 --> D[出厂放行]
+    D --> D1[UL认证标签]
+    D1 --> D2[质量追溯码]
+    D2 --> D3[发货]
+    </div>
+
+    <h3>4.2 12道质量检测关卡</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>关卡</th>
+          <th>检测项目</th>
+          <th>检测标准</th>
+          <th>检测比例</th>
+          <th>不合格处理</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. 原材料检测</strong></td>
+          <td>EPDM硬度、拉伸强度</td>
+          <td>Shore A 70±5</td>
+          <td>100%</td>
+          <td>退货</td>
+        </tr>
+        <tr>
+          <td><strong>2. 钢丝检测</strong></td>
+          <td>316钢丝直径、抗拉强度</td>
+          <td>Ø0.3mm±0.02mm</td>
+          <td>100%</td>
+          <td>退货</td>
+        </tr>
+        <tr>
+          <td><strong>3. 内层厚度</strong></td>
+          <td>挤出厚度均匀性</td>
+          <td>1.8mm±0.1mm</td>
+          <td>100%（在线）</td>
+          <td>停机调整</td>
+        </tr>
+        <tr>
+          <td><strong>4. 编织角度</strong></td>
+          <td>钢丝编织角度</td>
+          <td>45°±2°</td>
+          <td>100%（在线）</td>
+          <td>停机调整</td>
+        </tr>
+        <tr>
+          <td><strong>5. 外层厚度</strong></td>
+          <td>TPU厚度均匀性</td>
+          <td>2.0mm±0.1mm</td>
+          <td>100%（在线）</td>
+          <td>停机调整</td>
+        </tr>
+        <tr>
+          <td><strong>6. 硫化温度</strong></td>
+          <td>固化温度和时间</td>
+          <td>150°C±5°C, 30min</td>
+          <td>100%（在线）</td>
+          <td>重新硫化</td>
+        </tr>
+        <tr>
+          <td><strong>7. 外观检测</strong></td>
+          <td>表面划痕、气泡、杂质</td>
+          <td>无明显缺陷</td>
+          <td>100%</td>
+          <td>降级或报废</td>
+        </tr>
+        <tr>
+          <td><strong>8. 尺寸检测</strong></td>
+          <td>内径、外径、长度</td>
+          <td>±0.2mm</td>
+          <td>20%</td>
+          <td>报废</td>
+        </tr>
+        <tr>
+          <td><strong>9. 压力测试</strong></td>
+          <td>工作压力保持30分钟</td>
+          <td>15 bar, 无泄漏</td>
+          <td>10%</td>
+          <td>报废</td>
+        </tr>
+        <tr>
+          <td><strong>10. 爆破测试</strong></td>
+          <td>爆破压力</td>
+          <td>≥60 bar</td>
+          <td>5%</td>
+          <td>整批复检</td>
+        </tr>
+        <tr>
+          <td><strong>11. 弯曲测试</strong></td>
+          <td>最小弯曲半径</td>
+          <td>≤45mm</td>
+          <td>5%</td>
+          <td>报废</td>
+        </tr>
+        <tr>
+          <td><strong>12. 疲劳测试</strong></td>
+          <td>10,000次压力循环</td>
+          <td>无泄漏、无破裂</td>
+          <td>1%（每批）</td>
+          <td>整批复检</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="success-box">
+      <strong>🏆 质量成果：</strong>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>出厂合格率：</strong>99.8%（行业平均97%）</li>
+        <li><strong>客户退货率：</strong>0.05%（行业平均0.5%）</li>
+        <li><strong>现场故障率：</strong>0.01%（行业平均0.2%）</li>
+        <li><strong>UL认证：</strong>一次性通过，无整改项</li>
+        <li><strong>客户满意度：</strong>4.9/5.0（基于200+客户反馈）</li>
+      </ul>
+    </div>
+
+    <div class="highlight-box">
+      <strong>💡 销售话术：</strong><br>
+      "客户您好，利通科技的质量控制体系是我们最大的竞争优势之一。我们采用'六西格玛'管理体系，从原材料到出厂共设置12道质量检测关卡。举个例子，我们的爆破测试抽检比例是5%（行业平均1%），确保每批产品都能承受60 bar以上的爆破压力。这种严格的质量管控带来了实实在在的成果：出厂合格率99.8%，客户退货率仅0.05%，现场故障率0.01%。我们有客户说，'用利通的软管，我晚上睡得更踏实'。"
+    </div>
+  </div>
+
+  <!-- 5. 复习题 -->
+  <div class="section">
+    <h2>五、模块2复习题</h2>
+
+    <h3>单选题（5道）</h3>
+    <ol style="margin-left: 30px;">
+      <li>LT800B的双层编织采用什么角度？<br>
+        A. +30°/-30° &nbsp; <strong>B. +45°/-45°</strong> &nbsp; C. +60°/-60° &nbsp; D. +90°/-90°
+      </li>
+      <li>PTFE涂层使摩擦系数降低了多少？<br>
+        A. 40% &nbsp; B. 50% &nbsp; <strong>C. 60%</strong> &nbsp; D. 70%
+      </li>
+      <li>LT800系列兼容多少比例的市场主流快接头？<br>
+        A. 80% &nbsp; B. 90% &nbsp; <strong>C. 95%</strong> &nbsp; D. 100%
+      </li>
+      <li>利通科技的出厂合格率是多少？<br>
+        A. 97% &nbsp; B. 98% &nbsp; <strong>C. 99.8%</strong> &nbsp; D. 100%
+      </li>
+      <li>LT800B的疲劳寿命是多少次循环？<br>
+        A. 50,000次 &nbsp; B. 75,000次 &nbsp; <strong>C. 100,000次</strong> &nbsp; D. 150,000次
+      </li>
+    </ol>
+
+    <h3>简答题（2道）</h3>
+    <ol style="margin-left: 30px;">
+      <li>客户问："双层编织比单层编织贵51%，为什么不直接用更厚的单层编织？"请给出专业回答。<br>
+        <em>参考答案：双层编织的核心优势不是"更厚"，而是"力学平衡"。单层编织只能抵抗径向膨胀，无法抵抗轴向伸长。而双层反向编织（+45°/-45°）形成交叉支撑结构，能够同时抵抗径向和轴向力，变形率降低70%。实测数据显示，即使用2倍厚度的单层编织，变形率仍然是双层编织的2倍以上。对于15 bar高压应用，双层编织是唯一可靠的解决方案。</em>
+      </li>
+      <li>请说明PTFE内涂层技术如何降低TCO。<br>
+        <em>参考答案：PTFE内涂层通过3个途径降低TCO：1）降低摩擦系数60%（0.5→0.2），压降降低15%，年节省电费¥500/100米；2）泵负载降低15%，泵寿命延长20%，减少更换成本；3）更耐腐蚀，适配更多冷却液，减少软管更换频率。综合计算，100米LT800B软管10年TCO比LT800A低18%（¥9.8万 vs ¥12万）。</em>
+      </li>
+    </ol>
+  </div>
+
+  <!-- 导航 -->
+  <div class="section" style="text-align: center; background: #f5f7fa;">
+    <a href="module1.html" style="display: inline-block; background: #666; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none; margin-right: 20px;">
+      ← 上一模块：LT800系列产品深度解析
+    </a>
+    <a href="../index.html" style="display: inline-block; background: #666; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none; margin-right: 20px;">
+      🏠 返回首页
+    </a>
+    <a href="module3.html" style="display: inline-block; background: #ff6b6b; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none;">
+      下一模块：应用案例库 →
+    </a>
+  </div>
+
+</div>
+
+</body>
+</html>
