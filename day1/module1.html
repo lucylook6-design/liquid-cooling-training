@@ -113,17 +113,19 @@
     <h3>1.1 NVIDIA GPU TDP演进时间轴</h3>
     <div class="mermaid">
 timeline
-    title NVIDIA GPU功耗演进（2020-2027）
+    title NVIDIA GPU功耗演进（2020-2028）
     2020 : A100 (400W)
     2022 : H100 (700W)
     2024 : B200 (1200W)
     2025 : GB200 (1400W)
-    2026 : GB300 (1500W)
-    2027 : Rubin (1800W+)
+    2026 : GB300 Blackwell Ultra (1400W, 288GB HBM3e)
+    2027 : Rubin (1600W, 支持45°C热水冷却)
+    2028 : Rubin Ultra (1800W+, 浸没式液冷)
     </div>
 
     <div class="highlight-box">
-      <strong>核心洞察：</strong>从2020年到2027年，单GPU功耗增长了<strong>4.5倍</strong>（400W → 1800W），而摩尔定律下芯片面积仅增长约1.5倍。这意味着<strong>功率密度</strong>（W/cm²）增长了约3倍，传统风冷已经无法应对。
+      <strong>核心洞察：</strong>从2020年到2028年，单GPU功耗增长了<strong>4.5倍</strong>（400W → 1800W），而摩尔定律下芯片面积仅增长约1.5倍。这意味着<strong>功率密度</strong>（W/cm²）增长了约3倍，传统风冷已经无法应对。<br><br>
+      <strong>2026年最新：</strong>NVIDIA GB300 (Blackwell Ultra) 已于2026年1月发布，配备288GB HBM3e内存，15 PFLOPS FP4性能。GB300 NVL72机柜（72个GPU）实现1.1 EXAFLOPS算力，<strong>全液冷架构</strong>已成为标配。
     </div>
 
     <h3>1.2 为什么功耗持续攀升？</h3>
@@ -138,7 +140,7 @@ timeline
     <ul style="margin-left: 30px; margin-top: 10px;">
       <li>芯片制程已接近3nm，晶体管密度提升空间有限</li>
       <li>要提升算力，只能增加芯片面积或提高频率 → 功耗必然上升</li>
-      <li>Rubin架构单GPU功耗突破<strong>1.8kW</strong>，相当于一个家用电磁炉</li>
+      <li>GB300单GPU功耗1.4kW，Rubin Ultra（2028）将突破<strong>1.8kW</strong>，相当于一个家用电磁炉</li>
     </ul>
 
     <div class="warning-box">
@@ -299,28 +301,35 @@ TCO = 初期投资 + 电费 + 维护成本 + 故障损失
     
     <h3>4.1 必看视频</h3>
     <ul style="margin-left: 30px;">
-      <li><strong>NVIDIA GTC 2024 - GB200液冷设计</strong><br>
-        <a href="https://www.youtube.com/results?search_query=NVIDIA+GTC+2024+GB200+liquid+cooling" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 YouTube搜索链接</a> | 
+      <li><strong>NVIDIA GTC 2026 - GB300 Blackwell Ultra发布</strong><br>
+        <a href="https://www.youtube.com/results?search_query=NVIDIA+GTC+2026+GB300+Blackwell+Ultra" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 YouTube搜索链接</a> | 
         <a href="https://www.nvidia.com/gtc/" target="_blank" style="color: #76b900; text-decoration: none;">🔗 NVIDIA GTC官网</a><br>
-        重点时间戳：12:30（UQD快接头演示）、18:45（Manifold布局）、25:10（盲插设计）
+        重点时间戳：14:20（GB300 NVL72演示）、22:30（288GB HBM3e架构）、31:15（全液冷机柜设计）
       </li>
-      <li style="margin-top: 15px;"><strong>Meta数据中心液冷实践</strong><br>
-        <a href="https://www.youtube.com/results?search_query=Meta+OCP+liquid+cooling+data+center" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 YouTube搜索链接</a> | 
+      <li><strong>CES 2026 - NVIDIA Rubin平台热水冷却技术</strong><br>
+        <a href="https://www.youtube.com/results?search_query=CES+2026+NVIDIA+Rubin+45C+hot+water+cooling" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 YouTube搜索链接</a><br>
+        重点：Rubin平台支持45°C热水冷却，大幅降低数据中心冷却成本
+      </li>
+      <li><strong>Meta数据中心液冷实践 2025更新</strong><br>
+        <a href="https://www.youtube.com/results?search_query=Meta+OCP+liquid+cooling+2025" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 YouTube搜索链接</a> | 
         <a href="https://www.opencompute.org/" target="_blank" style="color: #76b900; text-decoration: none;">🔗 OCP官网</a><br>
-        重点：PUE从1.4降至1.08的实施路径
+        重点：PUE从1.4降至1.08的实施路径，2025年最新案例
       </li>
     </ul>
 
     <h3>4.2 行业报告</h3>
     <ul style="margin-left: 30px;">
-      <li><strong>Uptime Institute《2024全球数据中心液冷渗透率报告》</strong><br>
-        <a href="https://uptimeinstitute.com/resources/research-and-reports" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 访问Uptime Institute报告库</a>
+      <li><strong>Mordor Intelligence《2026全球数据中心液冷市场报告》</strong><br>
+        <a href="https://www.mordorintelligence.com/industry-reports/data-center-liquid-cooling-market" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 访问报告</a><br>
+        核心数据：2026年$6.77B，2031年预测$18.79B（CAGR 22.65%）
       </li>
-      <li style="margin-top: 15px;"><strong>Gartner《液冷技术成熟度曲线2024》</strong><br>
-        <a href="https://www.gartner.com/en/research" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 访问Gartner研究中心</a>
+      <li style="margin-top: 15px;"><strong>MarketsandMarkets《数据中心液冷市场2026-2033》</strong><br>
+        <a href="https://www.marketsandmarkets.com/Market-Reports/data-center-liquid-cooling-market-84374345.html" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 访问报告</a><br>
+        核心数据：2026年$4.07B → 2033年$27.65B（CAGR 31.5%）
       </li>
-      <li style="margin-top: 15px;"><strong>IDC《数据中心液冷市场预测2024-2028》</strong><br>
-        <a href="https://www.idc.com/getdoc.jsp?containerId=prUS51234523" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 访问IDC报告</a>
+      <li style="margin-top: 15px;"><strong>Uptime Institute《2026全球数据中心液冷渗透率报告》</strong><br>
+        <a href="https://uptimeinstitute.com/resources/research-and-reports" target="_blank" style="color: #1a73e8; text-decoration: none;">🔗 访问Uptime Institute报告库</a><br>
+        核心数据：2026年全球38%数据中心已实施液冷（2024年20%）
       </li>
     </ul>
   </div>
