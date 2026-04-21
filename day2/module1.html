@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 2 模块1：LT800系列产品深度解析</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    line-height: 1.8;
+    color: #222;
+    background: #f5f7fa;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  header {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+    color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+  }
+  h1 { font-size: 32px; margin-bottom: 10px; }
+  .subtitle { font-size: 16px; color: #ffe0e0; }
+  .section {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  h2 {
+    font-size: 24px;
+    color: #ff6b6b;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #ff6b6b;
+  }
+  h3 {
+    font-size: 20px;
+    color: #e87020;
+    margin: 25px 0 15px;
+  }
+  .highlight-box {
+    background: #fff5f5;
+    border-left: 4px solid #ff6b6b;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  .warning-box {
+    background: #fce8e6;
+    border-left: 4px solid #ea4335;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  .info-box {
+    background: #e8f4fd;
+    border-left: 4px solid #1a73e8;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+  }
+  th {
+    background: #ff6b6b;
+    color: #fff;
+    font-weight: 600;
+  }
+  tr:nth-child(even) { background: #f9f9f9; }
+  .mermaid {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+  }
+  .key-point {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ff6b6b;
+    margin: 20px 0;
+  }
+  .product-card {
+    background: #fff;
+    border: 2px solid #ff6b6b;
+    border-radius: 12px;
+    padding: 25px;
+    margin: 20px 0;
+  }
+  .product-card h4 {
+    color: #ff6b6b;
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+  .spec-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+  }
+  .spec-item {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+  }
+  .spec-item strong {
+    color: #ff6b6b;
+    display: block;
+    margin-bottom: 5px;
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>Day 2 模块1：LT800系列产品深度解析</h1>
+    <div class="subtitle">学习时长：2小时 | 掌握利通科技核心产品技术优势</div>
+  </header>
+
+  <!-- 1. LT800系列产品概览 -->
+  <div class="section">
+    <h2>一、LT800系列产品家族概览</h2>
+    
+    <div class="info-box">
+      <strong>📌 产品定位：</strong>利通科技LT800系列是专为AI数据中心液冷系统设计的高性能软管产品线，符合NVIDIA UQD标准，通过UL 2196认证，服务于全球AI超算中心供应链。
+    </div>
+
+    <h3>1.1 产品家族架构</h3>
+    <div class="mermaid">
+graph TD
+    A[LT800系列] --> B[LT800A]
+    A --> C[LT800B]
+    A --> D[LT800C]
+    
+    B --> B1[标准型<br>10 bar工作压力]
+    C --> C1[增强型<br>15 bar工作压力]
+    D --> D1[超高压型<br>20 bar工作压力]
+    
+    B1 --> B2[适用：H100/B200<br>700-1200W GPU]
+    C1 --> C2[适用：GB200/GB300<br>1200-1400W GPU]
+    D1 --> D2[适用：Rubin/未来<br>1600W+ GPU]
+    </div>
+
+    <div class="key-point">
+      💡 核心策略：LT800系列采用"标准-增强-超高压"三级产品线，覆盖当前到未来5年的GPU功耗演进需求。
+    </div>
+  </div>
+
+  <!-- 2. LT800A 标准型详解 -->
+  <div class="section">
+    <h2>二、LT800A 标准型 - 主力产品</h2>
+
+    <div class="product-card">
+      <h4>🔧 LT800A 技术规格</h4>
+      
+      <div class="spec-grid">
+        <div class="spec-item">
+          <strong>内径</strong>
+          10mm (3/8")
+        </div>
+        <div class="spec-item">
+          <strong>外径</strong>
+          16mm
+        </div>
+        <div class="spec-item">
+          <strong>工作压力</strong>
+          10 bar (145 psi)
+        </div>
+        <div class="spec-item">
+          <strong>爆破压力</strong>
+          40 bar (580 psi)
+        </div>
+        <div class="spec-item">
+          <strong>额定流量</strong>
+          20 LPM @ 2 bar压降
+        </div>
+        <div class="spec-item">
+          <strong>温度范围</strong>
+          -40°C ~ +80°C
+        </div>
+        <div class="spec-item">
+          <strong>弯曲半径</strong>
+          40mm (4倍外径)
+        </div>
+        <div class="spec-item">
+          <strong>使用寿命</strong>
+          10年 / 50,000小时
+        </div>
+      </div>
+
+      <h4 style="margin-top: 25px;">📐 结构设计</h4>
+      <table style="margin-top: 15px;">
+        <thead>
+          <tr>
+            <th>层级</th>
+            <th>材料</th>
+            <th>厚度</th>
+            <th>功能</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>内层</strong></td>
+            <td>EPDM（三元乙丙橡胶）</td>
+            <td>1.5mm</td>
+            <td>耐乙二醇腐蚀、低摩擦</td>
+          </tr>
+          <tr>
+            <td><strong>增强层</strong></td>
+            <td>304不锈钢丝编织</td>
+            <td>2.0mm</td>
+            <td>承受10 bar压力、防爆破</td>
+          </tr>
+          <tr>
+            <td><strong>外层</strong></td>
+            <td>TPU（热塑性聚氨酯）</td>
+            <td>1.5mm</td>
+            <td>耐磨、耐候、阻燃（UL 94 V-0）</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 style="margin-top: 25px;">🎯 应用场景</h4>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>GPU型号：</strong>NVIDIA H100 (700W), B200 (1200W)</li>
+        <li><strong>服务器配置：</strong>2-8 GPU服务器</li>
+        <li><strong>机柜功率密度：</strong>50-80kW/机柜</li>
+        <li><strong>典型客户：</strong>中小型AI训练集群、边缘计算数据中心</li>
+      </ul>
+    </div>
+
+    <h3>2.1 LT800A vs 竞品对比</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>对比项</th>
+          <th>LT800A</th>
+          <th>Parker 794TC-10</th>
+          <th>Eaton 819-10</th>
+          <th>优势分析</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>价格（1米）</strong></td>
+          <td>¥450</td>
+          <td>¥820</td>
+          <td>¥750</td>
+          <td>价格优势45%</td>
+        </tr>
+        <tr>
+          <td><strong>工作压力</strong></td>
+          <td>10 bar</td>
+          <td>10 bar</td>
+          <td>10 bar</td>
+          <td>持平</td>
+        </tr>
+        <tr>
+          <td><strong>爆破压力</strong></td>
+          <td>40 bar</td>
+          <td>40 bar</td>
+          <td>35 bar</td>
+          <td>安全系数更高</td>
+        </tr>
+        <tr>
+          <td><strong>弯曲半径</strong></td>
+          <td>40mm</td>
+          <td>45mm</td>
+          <td>50mm</td>
+          <td>更灵活，节省空间</td>
+        </tr>
+        <tr>
+          <td><strong>重量</strong></td>
+          <td>180g/m</td>
+          <td>200g/m</td>
+          <td>210g/m</td>
+          <td>更轻便，安装更容易</td>
+        </tr>
+        <tr>
+          <td><strong>认证</strong></td>
+          <td>UL 2196, RoHS</td>
+          <td>UL 2196, RoHS, CE</td>
+          <td>UL 2196, RoHS</td>
+          <td>满足北美市场</td>
+        </tr>
+        <tr>
+          <td><strong>交货周期</strong></td>
+          <td>2周</td>
+          <td>4-6周</td>
+          <td>4-6周</td>
+          <td>快速响应</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight-box">
+      <strong>💰 TCO优势分析（100米采购，10年使用）：</strong>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>LT800A：</strong>¥4.5万（采购）+ ¥0.5万（维护）= ¥5万</li>
+        <li><strong>Parker 794TC-10：</strong>¥8.2万（采购）+ ¥0.3万（维护）= ¥8.5万</li>
+        <li><strong>节省：</strong>¥3.5万（41%），投资回收期：立即</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 3. LT800B 增强型详解 -->
+  <div class="section">
+    <h2>三、LT800B 增强型 - 高端产品</h2>
+
+    <div class="product-card">
+      <h4>🔧 LT800B 技术规格</h4>
+      
+      <div class="spec-grid">
+        <div class="spec-item">
+          <strong>内径</strong>
+          10mm (3/8")
+        </div>
+        <div class="spec-item">
+          <strong>外径</strong>
+          18mm
+        </div>
+        <div class="spec-item">
+          <strong>工作压力</strong>
+          15 bar (217 psi)
+        </div>
+        <div class="spec-item">
+          <strong>爆破压力</strong>
+          60 bar (870 psi)
+        </div>
+        <div class="spec-item">
+          <strong>额定流量</strong>
+          25 LPM @ 2 bar压降
+        </div>
+        <div class="spec-item">
+          <strong>温度范围</strong>
+          -40°C ~ +90°C
+        </div>
+        <div class="spec-item">
+          <strong>弯曲半径</strong>
+          45mm (2.5倍外径)
+        </div>
+        <div class="spec-item">
+          <strong>使用寿命</strong>
+          15年 / 75,000小时
+        </div>
+      </div>
+
+      <h4 style="margin-top: 25px;">📐 结构升级</h4>
+      <table style="margin-top: 15px;">
+        <thead>
+          <tr>
+            <th>层级</th>
+            <th>材料</th>
+            <th>厚度</th>
+            <th>升级点</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>内层</strong></td>
+            <td>EPDM + PTFE涂层</td>
+            <td>1.8mm</td>
+            <td>更低摩擦系数，更耐腐蚀</td>
+          </tr>
+          <tr>
+            <td><strong>增强层</strong></td>
+            <td>316不锈钢丝双层编织</td>
+            <td>3.0mm</td>
+            <td>承受15 bar压力，双层保护</td>
+          </tr>
+          <tr>
+            <td><strong>外层</strong></td>
+            <td>TPU + 芳纶纤维增强</td>
+            <td>2.0mm</td>
+            <td>更高耐磨性，抗紫外线</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 style="margin-top: 25px;">🎯 应用场景</h4>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>GPU型号：</strong>NVIDIA GB200 (1400W), GB300 (1400W)</li>
+        <li><strong>服务器配置：</strong>8-16 GPU服务器，GB200 NVL72机柜</li>
+        <li><strong>机柜功率密度：</strong>100-150kW/机柜</li>
+        <li><strong>典型客户：</strong>超大规模云服务商、AI独角兽公司</li>
+      </ul>
+    </div>
+
+    <h3>3.1 LT800B 核心技术优势</h3>
+    <div class="highlight-box">
+      <p><strong>1. 双层编织技术</strong></p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li>内层：316不锈钢丝，45°编织角，承受主要压力</li>
+        <li>外层：316不锈钢丝，-45°编织角，防止膨胀变形</li>
+        <li>优势：爆破压力提升50%（40 bar → 60 bar），使用寿命延长50%</li>
+      </ul>
+
+      <p style="margin-top: 15px;"><strong>2. PTFE内涂层技术</strong></p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li>摩擦系数降低60%（0.5 → 0.2）</li>
+        <li>压降降低15%（2.0 bar → 1.7 bar @ 25 LPM）</li>
+        <li>泵功耗降低15%，年节省电费¥5,000/100米</li>
+      </ul>
+
+      <p style="margin-top: 15px;"><strong>3. 芳纶纤维增强外层</strong></p>
+      <ul style="margin-left: 20px; margin-top: 10px;">
+        <li>耐磨性提升3倍（Taber磨耗测试：500mg → 150mg）</li>
+        <li>抗紫外线，户外暴露1年无老化</li>
+        <li>阻燃等级：UL 94 V-0（自熄时间<10秒）</li>
+      </ul>
+    </div>
+
+    <h3>3.2 LT800B vs LT800A 升级对比</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>对比项</th>
+          <th>LT800A</th>
+          <th>LT800B</th>
+          <th>提升幅度</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>价格（1米）</strong></td>
+          <td>¥450</td>
+          <td>¥680</td>
+          <td>+51%</td>
+        </tr>
+        <tr>
+          <td><strong>工作压力</strong></td>
+          <td>10 bar</td>
+          <td>15 bar</td>
+          <td>+50%</td>
+        </tr>
+        <tr>
+          <td><strong>爆破压力</strong></td>
+          <td>40 bar</td>
+          <td>60 bar</td>
+          <td>+50%</td>
+        </tr>
+        <tr>
+          <td><strong>流量</strong></td>
+          <td>20 LPM</td>
+          <td>25 LPM</td>
+          <td>+25%</td>
+        </tr>
+        <tr>
+          <td><strong>使用寿命</strong></td>
+          <td>10年</td>
+          <td>15年</td>
+          <td>+50%</td>
+        </tr>
+        <tr>
+          <td><strong>温度上限</strong></td>
+          <td>+80°C</td>
+          <td>+90°C</td>
+          <td>+10°C</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="info-box">
+      <strong>💡 选型建议：</strong><br>
+      - <strong>选LT800A：</strong>H100/B200 GPU，功率密度<80kW/机柜，预算敏感<br>
+      - <strong>选LT800B：</strong>GB200/GB300 GPU，功率密度>100kW/机柜，追求长期可靠性
+    </div>
+  </div>
+
+  <!-- 导航 -->
+  <div class="section" style="text-align: center; background: #f5f7fa;">
+    <a href="../index.html" style="display: inline-block; background: #666; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none; margin-right: 20px;">
+      🏠 返回首页
+    </a>
+    <a href="module2.html" style="display: inline-block; background: #ff6b6b; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none;">
+      下一模块：LT800C超高压型与技术创新 →
+    </a>
+  </div>
+
+</div>
+
+</body>
+</html>
