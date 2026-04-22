@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 4 模块4：商务流程与合同要点</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; line-height: 1.8; color: #222; background: #f5f7fa; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+  header { background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%); color: #fff; padding: 30px; border-radius: 12px; margin-bottom: 30px; }
+  h1 { font-size: 32px; margin-bottom: 10px; }
+  .subtitle { font-size: 16px; color: #e3f2fd; }
+  .section { background: #fff; padding: 30px; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  h2 { font-size: 24px; color: #1a73e8; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 3px solid #1a73e8; }
+  h3 { font-size: 20px; color: #0d47a1; margin: 25px 0 15px; }
+  .highlight-box { background: #e3f2fd; border-left: 4px solid #1a73e8; padding: 20px; margin: 20px 0; border-radius: 4px; }
+  .warning-box { background: #fff3e0; border-left: 4px solid #ff9800; padding: 20px; margin: 20px 0; border-radius: 4px; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+  th, td { border: 1px solid #ddd; padding: 12px; text-align: left; color: #222; }
+  th { background: #1a73e8; color: #fff; font-weight: 600; }
+  tr:nth-child(even) { background: #f9f9f9; }
+  .process-step { background: #f8f9fa; border-left: 4px solid #4caf50; padding: 15px; margin: 15px 0; border-radius: 4px; }
+  ul { margin-left: 20px; }
+  li { margin: 10px 0; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'default'});</script>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>Day 4 模块4：商务流程与合同要点</h1>
+    <div class="subtitle">学习时长：2小时 | 掌握销售流程和合同关键条款</div>
+  </header>
+
+  <div class="section">
+    <h2>一、销售流程7步法</h2>
+    
+    <div class="mermaid">
+graph LR
+    A[1.客户开发] --> B[2.需求挖掘]
+    B --> C[3.方案设计]
+    C --> D[4.提案演示]
+    D --> E[5.商务谈判]
+    E --> F[6.合同签订]
+    F --> G[7.交付验收]
+    </div>
+
+    <h3>Step 1：客户开发（1-2周）</h3>
+    <div class="process-step">
+      <strong>目标：</strong>找到目标客户，建立初步联系<br>
+      <strong>关键动作：</strong><br>
+      • 行业研究：AI超算中心、云服务商、数据中心名单<br>
+      • 联系人识别：CTO、数据中心总监、采购总监<br>
+      • 首次接触：电话/邮件/LinkedIn/行业会议<br>
+      • 预约拜访：争取30分钟面谈机会<br>
+      <strong>成功标准：</strong>获得面谈机会
+    </div>
+
+    <h3>Step 2：需求挖掘（1-2周）</h3>
+    <div class="process-step">
+      <strong>目标：</strong>了解客户痛点和需求<br>
+      <strong>关键动作：</strong><br>
+      • 使用SPIN提问法（参考Day 4 Module 1）<br>
+      • 了解客户现状：GPU型号、数量、冷却方案<br>
+      • 挖掘痛点：电费高、噪音大、散热不足<br>
+      • 确认预算和决策流程<br>
+      <strong>成功标准：</strong>客户认可痛点，愿意看方案
+    </div>
+
+    <h3>Step 3：方案设计（1周）</h3>
+    <div class="process-step">
+      <strong>目标：</strong>设计定制化液冷方案<br>
+      <strong>关键动作：</strong><br>
+      • 产品选型：LT800A/B/C + 快接头<br>
+      • 容量计算：软管用量、冷却液、CDU<br>
+      • TCO计算：10年总拥有成本对比<br>
+      • 方案文档：10页PDF + BOM清单<br>
+      <strong>成功标准：</strong>方案通过内部评审
+    </div>
+
+    <h3>Step 4：提案演示（1-2周）</h3>
+    <div class="process-step">
+      <strong>目标：</strong>向客户展示方案价值<br>
+      <strong>关键动作：</strong><br>
+      • 提案PPT：15页，重点讲ROI和案例<br>
+      • 产品演示：现场展示软管+快接头<br>
+      • 客户参观：安排参观标杆客户机房<br>
+      • 技术交流：CTO对CTO深度沟通<br>
+      <strong>成功标准：</strong>客户认可方案，进入商务谈判
+    </div>
+
+    <h3>Step 5：商务谈判（2-4周）</h3>
+    <div class="process-step">
+      <strong>目标：</strong>达成价格和条款共识<br>
+      <strong>关键动作：</strong><br>
+      • 价格谈判：使用锚定+让步策略（参考Day 4 Module 3）<br>
+      • 付款方式：争取预付30%，交付后70%<br>
+      • 交付周期：承诺时间+违约责任<br>
+      • 质保条款：10年质保，漏液险<br>
+      <strong>成功标准：</strong>双方达成一致，准备签约
+    </div>
+
+    <h3>Step 6：合同签订（1周）</h3>
+    <div class="process-step">
+      <strong>目标：</strong>签订正式合同<br>
+      <strong>关键动作：</strong><br>
+      • 合同起草：使用标准模板<br>
+      • 法务审核：双方法务确认条款<br>
+      • 盖章签字：获得授权签字<br>
+      • 预付款：收到30%预付款<br>
+      <strong>成功标准：</strong>合同生效，进入交付阶段
+    </div>
+
+    <h3>Step 7：交付验收（4-12周）</h3>
+    <div class="process-step">
+      <strong>目标：</strong>完成产品交付和验收<br>
+      <strong>关键动作：</strong><br>
+      • 生产发货：2周生产+1周物流<br>
+      • 现场安装：派工程师驻场指导<br>
+      • 压力测试：100%软管压力测试<br>
+      • 验收签字：客户确认验收合格<br>
+      <strong>成功标准：</strong>验收合格，收到尾款
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>二、合同关键条款</h2>
+
+    <h3>1. 产品规格条款</h3>
+    <table>
+      <thead>
+        <tr><th>条款项</th><th>内容示例</th><th>注意事项</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>产品型号</strong></td>
+          <td>LT800A液冷软管，规格DN20，长度1米</td>
+          <td>明确型号、规格、长度，避免歧义</td>
+        </tr>
+        <tr>
+          <td><strong>数量</strong></td>
+          <td>2000根，允许±2%误差</td>
+          <td>约定误差范围，避免纠纷</td>
+        </tr>
+        <tr>
+          <td><strong>技术标准</strong></td>
+          <td>符合NVIDIA UQD标准，通过UL认证</td>
+          <td>明确技术标准，作为验收依据</td>
+        </tr>
+        <tr>
+          <td><strong>配套产品</strong></td>
+          <td>Parker H系列快接头，4000个</td>
+          <td>明确配套产品型号和数量</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>2. 价格与付款条款</h3>
+    <table>
+      <thead>
+        <tr><th>条款项</th><th>内容示例</th><th>注意事项</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>单价</strong></td>
+          <td>LT800A：¥450/米，快接头：¥220/个</td>
+          <td>明确单价，是否含税</td>
+        </tr>
+        <tr>
+          <td><strong>总价</strong></td>
+          <td>合同总价：¥178万（含税）</td>
+          <td>大写+小写，避免篡改</td>
+        </tr>
+        <tr>
+          <td><strong>付款方式</strong></td>
+          <td>预付30%（¥53.4万），交付后70%（¥124.6万）</td>
+          <td>明确付款节点和金额</td>
+        </tr>
+        <tr>
+          <td><strong>发票</strong></td>
+          <td>收到预付款后3个工作日开具增值税专用发票</td>
+          <td>约定开票时间和类型</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>3. 交付与验收条款</h3>
+    <table>
+      <thead>
+        <tr><th>条款项</th><th>内容示例</th><th>注意事项</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>交付时间</strong></td>
+          <td>合同签订后6周内交付到客户指定地点</td>
+          <td>明确交付时间和地点</td>
+        </tr>
+        <tr>
+          <td><strong>交付方式</strong></td>
+          <td>供应商负责运输，运费由供应商承担</td>
+          <td>明确运输责任和费用</td>
+        </tr>
+        <tr>
+          <td><strong>验收标准</strong></td>
+          <td>100%软管通过21 bar压力测试，漏液率<0.01%</td>
+          <td>明确可量化的验收标准</td>
+        </tr>
+        <tr>
+          <td><strong>验收期限</strong></td>
+          <td>交付后10个工作日内完成验收</td>
+          <td>约定验收期限，避免拖延</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>4. 质保与售后条款</h3>
+    <table>
+      <thead>
+        <tr><th>条款项</th><th>内容示例</th><th>注意事项</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>质保期</strong></td>
+          <td>10年质保，自验收合格之日起计算</td>
+          <td>明确质保期起算时间</td>
+        </tr>
+        <tr>
+          <td><strong>质保范围</strong></td>
+          <td>非人为损坏的漏液、破裂、老化等质量问题</td>
+          <td>明确质保范围，排除人为损坏</td>
+        </tr>
+        <tr>
+          <td><strong>质保责任</strong></td>
+          <td>质保期内免费更换，48小时内到场处理</td>
+          <td>明确质保责任和响应时间</td>
+        </tr>
+        <tr>
+          <td><strong>技术支持</strong></td>
+          <td>7×24小时技术支持热线，远程指导</td>
+          <td>明确技术支持方式</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>5. 违约责任条款</h3>
+    <table>
+      <thead>
+        <tr><th>违约方</th><th>违约情形</th><th>违约责任</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>供应商</strong></td>
+          <td>延期交付</td>
+          <td>每延期1天，支付合同总价0.5%违约金，最高10%</td>
+        </tr>
+        <tr>
+          <td><strong>供应商</strong></td>
+          <td>产品不合格</td>
+          <td>免费更换，并赔偿客户损失</td>
+        </tr>
+        <tr>
+          <td><strong>客户</strong></td>
+          <td>延期付款</td>
+          <td>每延期1天，支付应付款0.05%滞纳金</td>
+        </tr>
+        <tr>
+          <td><strong>客户</strong></td>
+          <td>无故退货</td>
+          <td>支付合同总价20%违约金</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="warning-box">
+      <strong>⚠️ 合同审核要点</strong>
+      <ul style="margin-top: 10px;">
+        <li>所有数字必须大写+小写，避免篡改</li>
+        <li>所有时间必须明确起算点（签订日、交付日、验收日）</li>
+        <li>所有标准必须可量化、可验证</li>
+        <li>违约责任必须对等，不能只约束一方</li>
+        <li>重要条款必须加粗或下划线标注</li>
+        <li>合同必须经法务审核后才能签字</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>三、付款方式谈判策略</h2>
+
+    <h3>常见付款方式对比</h3>
+    <table>
+      <thead>
+        <tr><th>付款方式</th><th>对供应商</th><th>对客户</th><th>适用场景</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>预付100%</strong></td>
+          <td>风险最低，现金流最好</td>
+          <td>风险最高，不接受</td>
+          <td>小额订单（<¥10万）</td>
+        </tr>
+        <tr>
+          <td><strong>预付50%+尾款50%</strong></td>
+          <td>风险较低，现金流好</td>
+          <td>风险较高，谨慎接受</td>
+          <td>中等订单（¥10-50万）</td>
+        </tr>
+        <tr style="background: #e8f5e9;">
+          <td><strong>预付30%+尾款70%</strong></td>
+          <td>风险适中，现金流尚可</td>
+          <td>风险适中，可接受</td>
+          <td><strong>大额订单（¥50万+）推荐</strong></td>
+        </tr>
+        <tr>
+          <td><strong>交付后付款</strong></td>
+          <td>风险高，现金流差</td>
+          <td>风险最低，最优选择</td>
+          <td>战略大客户</td>
+        </tr>
+        <tr>
+          <td><strong>分期付款</strong></td>
+          <td>风险高，管理成本高</td>
+          <td>现金流压力小</td>
+          <td>预算紧张的客户</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>付款谈判话术</h3>
+    <div class="highlight-box">
+      <strong>场景1：客户要求"交付后付款"</strong><br><br>
+      <strong>客户：</strong>"我们的流程是验收合格后30天付款。"<br><br>
+      <strong>应对：</strong>"张总，我理解您的流程。但我们的成本压力也很大：<br>
+      • 原材料采购需要预付款<br>
+      • 生产周期6周，资金占用成本高<br>
+      <strong>我们可以这样：</strong><br>
+      • 您预付30%（¥53万），我们启动生产<br>
+      • 交付后您验收10天，合格后付70%（¥125万）<br>
+      • 如果验收不合格，我们全额退还预付款<br>
+      这样对双方都公平，您看可以吗？"
+    </div>
+
+    <div class="highlight-box">
+      <strong>场景2：客户要求"分期付款"</strong><br><br>
+      <strong>客户：</strong>"我们预算紧张，能不能分12个月付款？"<br><br>
+      <strong>应对：</strong>"张总，分期付款可以，但我们需要调整价格：<br>
+      • <strong>一次性付款：</strong>¥178万<br>
+      • <strong>分12期付款：</strong>¥195万（增加¥17万融资成本）<br>
+      或者我们可以这样：<br>
+      • 您预付50%（¥89万），剩余50%分6个月付清<br>
+      • 价格保持¥178万不变<br>
+      这样您的现金流压力小，我们的风险也可控。"
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>四、复习题</h2>
+
+    <h3>单选题</h3>
+    <ol>
+      <li>销售流程7步法，第一步是什么？<br>
+      A. 需求挖掘 B. 客户开发 C. 方案设计 D. 提案演示<br>
+      <strong>答案：B</strong></li>
+      
+      <li>大额订单（¥50万+）推荐的付款方式是？<br>
+      A. 预付100% B. 预付50%+尾款50% C. 预付30%+尾款70% D. 交付后付款<br>
+      <strong>答案：C</strong></li>
+      
+      <li>合同中，延期交付的违约金一般是多少？<br>
+      A. 每天0.05% B. 每天0.5% C. 每天5% D. 一次性10%<br>
+      <strong>答案：B</strong></li>
+    </ol>
+
+    <h3>实战练习</h3>
+    <div class="highlight-box">
+      <strong>任务：</strong>为以下订单起草合同关键条款<br><br>
+      <strong>订单信息：</strong><br>
+      • 客户：某AI独角兽<br>
+      • 产品：LT800A软管1000根 + Parker快接头2000个<br>
+      • 总价：¥134万<br>
+      • 交付：8周<br>
+      • 质保：10年<br><br>
+      <strong>要求：</strong><br>
+      1. 起草产品规格条款<br>
+      2. 起草价格与付款条款（预付30%+尾款70%）<br>
+      3. 起草交付与验收条款<br>
+      4. 起草违约责任条款
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>五、延伸学习资源</h2>
+    <ul>
+      <li>📚 <a href="https://www.amazon.com/SPIN-Selling-Neil-Rackham/dp/0070511136" target="_blank">《SPIN Selling》- 销售流程经典教材</a></li>
+      <li>📄 <a href="https://www.sba.gov/business-guide/manage-your-business/contracts" target="_blank">SBA: 商业合同指南</a></li>
+      <li>🎥 <a href="https://www.youtube.com/results?search_query=sales+contract+negotiation" target="_blank">YouTube: 合同谈判技巧</a></li>
+      <li>📄 内部资源：<a href="#">标准合同模板下载</a></li>
+    </ul>
+  </div>
+
+  <div class="section" style="text-align: center; background: #f5f7fa;">
+    <a href="module3.html" style="display: inline-block; background: #666; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none; margin-right: 20px;">← 上一模块</a>
+    <a href="../index.html" style="display: inline-block; background: #666; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none; margin-right: 20px;">🏠 返回首页</a>
+    <a href="../day5/module1.html" style="display: inline-block; background: #1a73e8; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none;">下一模块 →</a>
+  </div>
+</div>
+</body>
+</html>

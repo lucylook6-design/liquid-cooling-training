@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 4 模块2：价值呈现与ROI计算</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; line-height: 1.8; color: #222; background: #f5f7fa; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+  header { background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%); color: #fff; padding: 30px; border-radius: 12px; margin-bottom: 30px; }
+  h1 { font-size: 32px; margin-bottom: 10px; }
+  .subtitle { font-size: 16px; color: #e3f2fd; }
+  .section { background: #fff; padding: 30px; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  h2 { font-size: 24px; color: #1a73e8; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 3px solid #1a73e8; }
+  h3 { font-size: 20px; color: #0d47a1; margin: 25px 0 15px; }
+  .highlight-box { background: #e3f2fd; border-left: 4px solid #1a73e8; padding: 20px; margin: 20px 0; border-radius: 4px; }
+  .case-box { background: #f8f9fa; border: 2px solid #1a73e8; padding: 20px; margin: 20px 0; border-radius: 8px; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+  th, td { border: 1px solid #ddd; padding: 12px; text-align: left; color: #222; }
+  th { background: #1a73e8; color: #fff; font-weight: 600; }
+  tr:nth-child(even) { background: #f9f9f9; }
+  .formula { background: #fff3cd; border: 2px dashed #ff9800; padding: 15px; margin: 20px 0; border-radius: 8px; font-family: "Courier New", monospace; font-size: 16px; text-align: center; color: #222; }
+  ul { margin-left: 20px; }
+  li { margin: 10px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>Day 4 模块2：价值呈现与ROI计算</h1>
+    <div class="subtitle">学习时长：2小时 | 掌握FAB法则和ROI计算方法</div>
+  </header>
+
+  <div class="section">
+    <h2>一、价值呈现金字塔：FAB法则</h2>
+    
+    <div class="highlight-box">
+      <strong>📊 FAB法则：从产品到价值的三级跳</strong>
+      <ul style="margin-top: 10px;">
+        <li><strong>F (Feature 特性)：</strong>产品有什么功能？</li>
+        <li><strong>A (Advantage 优势)：</strong>这个功能比竞品好在哪里？</li>
+        <li><strong>B (Benefit 利益)：</strong>客户能获得什么实际好处？</li>
+      </ul>
+    </div>
+
+    <h3>案例：LT800A软管的FAB呈现</h3>
+    <table>
+      <thead>
+        <tr><th>层级</th><th>内容</th><th>话术示例</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>F 特性</strong></td>
+          <td>双层编织结构</td>
+          <td>"LT800A采用双层不锈钢编织网，内层304、外层316L"</td>
+        </tr>
+        <tr>
+          <td><strong>A 优势</strong></td>
+          <td>耐压性能提升40%</td>
+          <td>"相比单层编织，耐压从15 bar提升到21 bar，超出NVIDIA UQD标准40%"</td>
+        </tr>
+        <tr>
+          <td><strong>B 利益</strong></td>
+          <td>降低漏液风险，减少停机损失</td>
+          <td>"这意味着您的数据中心10年内漏液风险降低60%，避免单次停机损失¥50万+"</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>5个典型场景的FAB话术</h3>
+    
+    <div class="case-box">
+      <strong>场景1：客户关注"价格"</strong><br>
+      <strong>F：</strong>"LT800A单价¥450/米，比进口品牌低30%"<br>
+      <strong>A：</strong>"但我们通过了相同的UL认证，技术指标完全一致"<br>
+      <strong>B：</strong>"1000台服务器项目，您可以节省¥120万采购成本，这笔钱可以多部署60台服务器"
+    </div>
+
+    <div class="case-box">
+      <strong>场景2：客户担心"漏液风险"</strong><br>
+      <strong>F：</strong>"LT800A采用PTFE内涂层+双层编织+快接头三重防护"<br>
+      <strong>A：</strong>"我们的漏液率<0.01%，是行业平均水平的1/10"<br>
+      <strong>B：</strong>"按您5000台服务器规模，10年内可避免5次漏液事故，减少停机损失¥2500万"
+    </div>
+
+    <div class="case-box">
+      <strong>场景3：客户质疑"安装复杂"</strong><br>
+      <strong>F：</strong>"LT800A配套Parker快接头，单手即可完成连接"<br>
+      <strong>A：</strong>"安装时间从传统焊接的30分钟/台缩短到5分钟/台"<br>
+      <strong>B：</strong>"1000台服务器部署周期从3个月缩短到1个月，提前2个月投产，多赚¥800万算力收入"
+    </div>
+
+    <div class="case-box">
+      <strong>场景4：客户关注"维护成本"</strong><br>
+      <strong>F：</strong>"LT800A设计寿命10年，免维护"<br>
+      <strong>A：</strong>"竞品平均3年需更换，我们10年0更换"<br>
+      <strong>B：</strong>"10年节省2次更换成本¥240万，减少2次停机维护，避免损失¥100万"
+    </div>
+
+    <div class="case-box">
+      <strong>场景5：客户要求"快速交付"</strong><br>
+      <strong>F：</strong>"我们在深圳有5000米现货库存，北美仓库有3000米"<br>
+      <strong>A：</strong>"竞品交付周期8-12周，我们1周内发货"<br>
+      <strong>B：</strong>"您的项目可以提前2个月投产，抢占Q3算力租赁旺季，多赚¥1500万"
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>二、ROI计算：让数据说话</h2>
+
+    <h3>ROI计算公式</h3>
+    <div class="formula">
+      ROI = (总收益 - 总成本) / 总成本 × 100%
+    </div>
+
+    <h3>液冷 vs 风冷：10年TCO对比（1000台H100）</h3>
+    <table>
+      <thead>
+        <tr><th>成本项</th><th>风冷方案</th><th>液冷方案（LT800A）</th><th>节省</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>初始投资</strong></td><td>¥1.37亿</td><td>¥1.50亿</td><td>-¥1300万</td></tr>
+        <tr><td>服务器</td><td>¥1.00亿</td><td>¥1.00亿</td><td>-</td></tr>
+        <tr><td>冷却系统</td><td>¥3000万</td><td>¥4500万</td><td>-¥1500万</td></tr>
+        <tr><td>其中：软管</td><td>-</td><td>¥90万</td><td>-</td></tr>
+        <tr><td>机房建设</td><td>¥700万</td><td>¥500万</td><td>+¥200万</td></tr>
+        <tr><td colspan="4" style="background: #f0f0f0;"><strong>运营成本（10年）</strong></td></tr>
+        <tr><td><strong>电费</strong></td><td>¥8200万</td><td>¥5740万</td><td>+¥2460万</td></tr>
+        <tr><td>IT设备用电</td><td>¥5480万</td><td>¥5480万</td><td>-</td></tr>
+        <tr><td>冷却用电</td><td>¥2740万</td><td>¥274万</td><td>+¥2466万</td></tr>
+        <tr><td><strong>维护成本</strong></td><td>¥1200万</td><td>¥600万</td><td>+¥600万</td></tr>
+        <tr><td><strong>停机损失</strong></td><td>¥500万</td><td>¥100万</td><td>+¥400万</td></tr>
+        <tr><td colspan="4" style="background: #f0f0f0;"><strong>10年总成本</strong></td></tr>
+        <tr style="background: #fff3cd; font-weight: bold;">
+          <td><strong>TCO合计</strong></td>
+          <td><strong>¥2.33亿</strong></td>
+          <td><strong>¥1.79亿</strong></td>
+          <td style="color: #2e7d32;"><strong>+¥5400万</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight-box">
+      <strong>💰 ROI计算结果</strong><br>
+      <strong>投资回收期：</strong>2.4年<br>
+      <strong>10年ROI：</strong>(¥5400万 - ¥1300万) / ¥1300万 = <strong>315%</strong><br>
+      <strong>结论：</strong>虽然液冷初始投资多¥1300万，但10年可节省¥5400万，净收益¥4100万，ROI高达315%
+    </div>
+
+    <h3>销售话术：ROI呈现</h3>
+    <div class="case-box">
+      <strong>"张总，我给您算一笔账：</strong><br><br>
+      
+      <strong>初始投资：</strong>液冷方案比风冷多投入¥1300万，其中软管成本仅¥90万。<br><br>
+      
+      <strong>运营节省：</strong>但10年可以节省：<br>
+      • 电费：¥2460万（PUE从1.5降到1.05）<br>
+      • 维护：¥600万（免维护设计）<br>
+      • 停机：¥400万（漏液率<0.01%）<br>
+      <strong>合计节省：¥5400万</strong><br><br>
+      
+      <strong>净收益：</strong>¥5400万 - ¥1300万 = <strong>¥4100万</strong><br>
+      <strong>投资回收期：</strong>2.4年<br>
+      <strong>10年ROI：</strong>315%<br><br>
+      
+      <strong>换句话说，</strong>您今天多投入的¥1300万，2.4年就能回本，10年能赚回¥4100万。这还不包括提前投产带来的算力租赁收入。"
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>三、数据可视化：让客户一目了然</h2>
+
+    <h3>推荐的可视化工具</h3>
+    <ul>
+      <li><strong>对比表格：</strong>风冷 vs 液冷（如上表）</li>
+      <li><strong>柱状图：</strong>10年TCO对比（Excel生成）</li>
+      <li><strong>折线图：</strong>累计成本曲线（展示回本点）</li>
+      <li><strong>饼图：</strong>成本结构分析（电费占比最大）</li>
+      <li><strong>时间轴：</strong>投资回收期可视化</li>
+    </ul>
+
+    <h3>客户案例引用技巧</h3>
+    <div class="highlight-box">
+      <strong>📌 引用案例的3个原则：</strong>
+      <ol style="margin-left: 20px; margin-top: 10px;">
+        <li><strong>相似性：</strong>选择与客户规模、行业相似的案例</li>
+        <li><strong>数据化：</strong>用具体数字说话（节省¥XX万，ROI XX%）</li>
+        <li><strong>可验证：</strong>提供客户名称（经授权）或行业描述</li>
+      </ol>
+    </div>
+
+    <div class="case-box">
+      <strong>案例引用话术示例：</strong><br><br>
+      "张总，我们去年为一家北美云服务商部署了10000台H100的液冷方案，他们的情况和您很像——都是大规模AI训练集群。<br><br>
+      
+      <strong>他们的ROI数据：</strong><br>
+      • 初始多投入：¥1.3亿<br>
+      • 年节省电费：¥2500万<br>
+      • 投资回收期：1.9年<br>
+      • 5年ROI：280%<br><br>
+      
+      他们的CTO评价说：'液冷是我们做过ROI最高的投资之一'。我可以安排您和他们的技术团队交流。"
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>四、复习题</h2>
+
+    <h3>单选题</h3>
+    <ol>
+      <li>FAB法则中，"B"代表什么？<br>
+      A. 品牌 B. 利益 C. 预算 D. 购买<br>
+      <strong>答案：B</strong></li>
+      
+      <li>1000台H100液冷方案，10年TCO比风冷节省多少？<br>
+      A. ¥2000万 B. ¥3500万 C. ¥5400万 D. ¥8000万<br>
+      <strong>答案：C</strong></li>
+      
+      <li>液冷方案的投资回收期是多少年？<br>
+      A. 1.2年 B. 2.4年 C. 3.5年 D. 5年<br>
+      <strong>答案：B</strong></li>
+    </ol>
+
+    <h3>实战练习</h3>
+    <div class="highlight-box">
+      <strong>任务：</strong>为以下客户场景设计FAB话术<br><br>
+      <strong>场景：</strong>客户是一家AI独角兽，计划部署500台GB200服务器，担心液冷"技术不成熟"。<br><br>
+      <strong>要求：</strong><br>
+      1. 用FAB法则设计3句话术<br>
+      2. 计算500台GB200的10年TCO（液冷 vs 风冷）<br>
+      3. 计算ROI和投资回收期<br>
+      4. 准备一个可视化对比表格
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>五、延伸学习资源</h2>
+    <ul>
+      <li>📊 <a href="https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/the-three-cs-of-customer-satisfaction-consistency-consistency-consistency" target="_blank">McKinsey: 价值销售方法论</a></li>
+      <li>📈 <a href="https://www.gartner.com/en/sales/insights/b2b-buying-journey" target="_blank">Gartner: B2B销售中的ROI呈现</a></li>
+      <li>🎥 <a href="https://www.youtube.com/results?search_query=ROI+calculation+sales" target="_blank">YouTube: ROI计算实战教程</a></li>
+      <li>📄 Excel模板：<a href="#">TCO计算器下载</a>（内部资源）</li>
+    </ul>
+  </div>
+
+  <div class="section" style="text-align: center; background: #f5f7fa;">
+    <a href="module1.html" style="display: inline-block; background: #666; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none; margin-right: 20px;">← 上一模块</a>
+    <a href="../index.html" style="display: inline-block; background: #666; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none; margin-right: 20px;">🏠 返回首页</a>
+    <a href="module3.html" style="display: inline-block; background: #1a73e8; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none;">下一模块 →</a>
+  </div>
+</div>
+</body>
+</html>
