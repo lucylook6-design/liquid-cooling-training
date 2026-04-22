@@ -1,0 +1,294 @@
+{
+  "title": "液冷连接系统专家顾问特训营",
+  "website": "https://lucylook6-design.github.io/liquid-cooling-training/",
+  "totalModules": 20,
+  "days": {
+    "1": {
+      "title": "Day 1：液冷基础与行业生态",
+      "modules": [
+        {
+          "module": 1,
+          "title": "液冷为什么是AI超算的唯一解",
+          "file": "Day1/模块1_液冷为什么是AI超算的唯一解.md",
+          "url": "https://lucylook6-design.github.io/liquid-cooling-training/day1/module1.html"
+        },
+        {
+          "module": 2,
+          "title": "英伟达液冷生态与技术规范",
+          "file": "Day1/模块2_英伟达液冷生态与技术规范.md",
+          "url": "https://lucylook6-design.github.io/liquid-cooling-training/day1/module2.html"
+        },
+        {
+          "module": 3,
+          "title": "软管与快接头的分合关系",
+          "file": "Day1/模块3_软管与快接头的分合关系.md",
+          "url": "https://lucylook6-design.github.io/liquid-cooling-training/day1/module3.html"
+        },
+        {
+          "module": 4,
+          "title": "海外市场与合规认证",
+          "file": "Day1/模块4_海外市场与合规认证.md",
+          "url": "https://lucylook6-design.github.io/liquid-cooling-training/day1/module4.html"
+        }
+      ]
+    },
+    "2": {
+      "title": "Day 2：产品深度解析",
+      "modules": [
+        {
+          "module": 1,
+          "title": "LT800系列产品深度解析",
+          "file": "Day2/模块1_LT800系列产品深度解析.md",
+          "url": "https://lucylook6-design.github.io/liquid-cooling-training/day2/module1.html"
+        },
+        {
+          "module": 2,
+          "title": "技术创新与差异化优势",
+          "file": "Day2/模块2_技术创新与差异化优势.md",
+          "url": "https://lucylook6-design.github.io/liquid-cooling-training/day2/module2.html"
+        },
+        {
+          "module": 3,
+          "title": "应用案例库",
+          "file": "Day2/模块3_应用案例库.md",
+          "url": "https://lucylook6-design.github.io/liquid-cooling-training/day2/module3.html"
+        },
+        {
+          "module": 4,
+          "title": "产品演示与实操",
+          "file": "Day2/模块4_产品演示与实操.md",
+          "url": "https://lucylook6-design.github.io/liquid-cooling-training/day2/module4.html"
+        }
+      ]
+    },
+    "3": {
+      "title": "Day 3：客户场景与解决方案",
+      "modules": [
+        {
+          "module": 1,
+          "title": "AI超算中心解决方案设计",
+          "file": "Day3/模块1_AI超算中心解决方案设计.md",
+          "url": "https://lucylook6-design.github.io/liquid-cooling-training/day3/module1.html"
+        },
+        {
+          "module": 2,
+          "title": "云服务商液冷方案设计",
+          "file": "Day3/模块2_云服务商液冷方案设计.md",
+          "url": "https://lucylook6-design.github.io/liquid-cooling-training/day3/module2.html"
+        },
+        {
+          "module": 3,
+          "title": "边缘计算场景方案设计",
+          "file": "Day3/模块3_边缘计算场景方案设计.md",
+          "url": "https://lucylook6-design.github.io/liquid-cooling-training/day3/module3.html"
+        },
+        {
+          "module": 4,
+          "title": "方案设计工具与模板",
+          "file": "Day3/模块4_方案设计工具与模板.md",
+          "url": "https://lucylook6-design.github.io/liquid-cooling-training/day3/module4.html"
+        }
+      ]
+    },
+    "4": {
+      "title": "Day 4：顾问式销售技巧",
+      "modules": [
+        {
+          "module": 1,
+          "title": "需求挖掘与痛点分析",
+          "file": "Day4/模块1_需求挖掘与痛点分析.md",
+          "url": "https://lucylook6-design.github.io/liquid-cooling-training/day4/module1.html"
+        },
+        {
+          "module": 2,
+          "title": "价值呈现与ROI计算",
+          "file": "Day4/模块2_价值呈现与ROI计算.md",
+          "url": "https://lucylook6-design.github.io/liquid-cooling-training/day4/module2.html"
+        },
+        {
+          "module": 3,
+          "title": "异议处理与谈判技巧",
+          "file": "Day4/模块3_异议处理与谈判技巧.md",
+          "url": "https://lucylook6-design.github.io/liquid-cooling-training/day4/module3.html"
+        },
+        {
+          "module": 4,
+          "title": "商务流程与合同要点",
+          "file": "Day4/模块4_商务流程与合同要点.md",
+          "url": "https://lucylook6-design.github.io/liquid-cooling-training/day4/module4.html"
+        }
+      ]
+    },
+    "5": {
+      "title": "Day 5：实战演练与考核",
+      "modules": [
+        {
+          "module": 1,
+          "title": "角色扮演（客户拜访）",
+          "file": "Day5/模块1_角色扮演（客户拜访）.md",
+          "url": "https://lucylook6-design.github.io/liquid-cooling-training/day5/module1.html"
+        },
+        {
+          "module": 2,
+          "title": "方案设计（实战项目）",
+          "file": "Day5/模块2_方案设计（实战项目）.md",
+          "url": "https://lucylook6-design.github.io/liquid-cooling-training/day5/module2.html"
+        },
+        {
+          "module": 3,
+          "title": "客户提案（演讲技巧）",
+          "file": "Day5/模块3_客户提案（演讲技巧）.md",
+          "url": "https://lucylook6-design.github.io/liquid-cooling-training/day5/module3.html"
+        },
+        {
+          "module": 4,
+          "title": "综合考核与认证",
+          "file": "Day5/模块4_综合考核与认证.md",
+          "url": "https://lucylook6-design.github.io/liquid-cooling-training/day5/module4.html"
+        }
+      ]
+    }
+  },
+  "modules": [
+    {
+      "day": 1,
+      "module": 1,
+      "title": "液冷为什么是AI超算的唯一解",
+      "file": "Day1/模块1_液冷为什么是AI超算的唯一解.md",
+      "url": "https://lucylook6-design.github.io/liquid-cooling-training/day1/module1.html"
+    },
+    {
+      "day": 1,
+      "module": 2,
+      "title": "英伟达液冷生态与技术规范",
+      "file": "Day1/模块2_英伟达液冷生态与技术规范.md",
+      "url": "https://lucylook6-design.github.io/liquid-cooling-training/day1/module2.html"
+    },
+    {
+      "day": 1,
+      "module": 3,
+      "title": "软管与快接头的分合关系",
+      "file": "Day1/模块3_软管与快接头的分合关系.md",
+      "url": "https://lucylook6-design.github.io/liquid-cooling-training/day1/module3.html"
+    },
+    {
+      "day": 1,
+      "module": 4,
+      "title": "海外市场与合规认证",
+      "file": "Day1/模块4_海外市场与合规认证.md",
+      "url": "https://lucylook6-design.github.io/liquid-cooling-training/day1/module4.html"
+    },
+    {
+      "day": 2,
+      "module": 1,
+      "title": "LT800系列产品深度解析",
+      "file": "Day2/模块1_LT800系列产品深度解析.md",
+      "url": "https://lucylook6-design.github.io/liquid-cooling-training/day2/module1.html"
+    },
+    {
+      "day": 2,
+      "module": 2,
+      "title": "技术创新与差异化优势",
+      "file": "Day2/模块2_技术创新与差异化优势.md",
+      "url": "https://lucylook6-design.github.io/liquid-cooling-training/day2/module2.html"
+    },
+    {
+      "day": 2,
+      "module": 3,
+      "title": "应用案例库",
+      "file": "Day2/模块3_应用案例库.md",
+      "url": "https://lucylook6-design.github.io/liquid-cooling-training/day2/module3.html"
+    },
+    {
+      "day": 2,
+      "module": 4,
+      "title": "产品演示与实操",
+      "file": "Day2/模块4_产品演示与实操.md",
+      "url": "https://lucylook6-design.github.io/liquid-cooling-training/day2/module4.html"
+    },
+    {
+      "day": 3,
+      "module": 1,
+      "title": "AI超算中心解决方案设计",
+      "file": "Day3/模块1_AI超算中心解决方案设计.md",
+      "url": "https://lucylook6-design.github.io/liquid-cooling-training/day3/module1.html"
+    },
+    {
+      "day": 3,
+      "module": 2,
+      "title": "云服务商液冷方案设计",
+      "file": "Day3/模块2_云服务商液冷方案设计.md",
+      "url": "https://lucylook6-design.github.io/liquid-cooling-training/day3/module2.html"
+    },
+    {
+      "day": 3,
+      "module": 3,
+      "title": "边缘计算场景方案设计",
+      "file": "Day3/模块3_边缘计算场景方案设计.md",
+      "url": "https://lucylook6-design.github.io/liquid-cooling-training/day3/module3.html"
+    },
+    {
+      "day": 3,
+      "module": 4,
+      "title": "方案设计工具与模板",
+      "file": "Day3/模块4_方案设计工具与模板.md",
+      "url": "https://lucylook6-design.github.io/liquid-cooling-training/day3/module4.html"
+    },
+    {
+      "day": 4,
+      "module": 1,
+      "title": "需求挖掘与痛点分析",
+      "file": "Day4/模块1_需求挖掘与痛点分析.md",
+      "url": "https://lucylook6-design.github.io/liquid-cooling-training/day4/module1.html"
+    },
+    {
+      "day": 4,
+      "module": 2,
+      "title": "价值呈现与ROI计算",
+      "file": "Day4/模块2_价值呈现与ROI计算.md",
+      "url": "https://lucylook6-design.github.io/liquid-cooling-training/day4/module2.html"
+    },
+    {
+      "day": 4,
+      "module": 3,
+      "title": "异议处理与谈判技巧",
+      "file": "Day4/模块3_异议处理与谈判技巧.md",
+      "url": "https://lucylook6-design.github.io/liquid-cooling-training/day4/module3.html"
+    },
+    {
+      "day": 4,
+      "module": 4,
+      "title": "商务流程与合同要点",
+      "file": "Day4/模块4_商务流程与合同要点.md",
+      "url": "https://lucylook6-design.github.io/liquid-cooling-training/day4/module4.html"
+    },
+    {
+      "day": 5,
+      "module": 1,
+      "title": "角色扮演（客户拜访）",
+      "file": "Day5/模块1_角色扮演（客户拜访）.md",
+      "url": "https://lucylook6-design.github.io/liquid-cooling-training/day5/module1.html"
+    },
+    {
+      "day": 5,
+      "module": 2,
+      "title": "方案设计（实战项目）",
+      "file": "Day5/模块2_方案设计（实战项目）.md",
+      "url": "https://lucylook6-design.github.io/liquid-cooling-training/day5/module2.html"
+    },
+    {
+      "day": 5,
+      "module": 3,
+      "title": "客户提案（演讲技巧）",
+      "file": "Day5/模块3_客户提案（演讲技巧）.md",
+      "url": "https://lucylook6-design.github.io/liquid-cooling-training/day5/module3.html"
+    },
+    {
+      "day": 5,
+      "module": 4,
+      "title": "综合考核与认证",
+      "file": "Day5/模块4_综合考核与认证.md",
+      "url": "https://lucylook6-design.github.io/liquid-cooling-training/day5/module4.html"
+    }
+  ]
+}
